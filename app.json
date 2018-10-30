@@ -1,0 +1,11 @@
+{
+    "name": "ah-shakas-frontend",
+    "description": "Authors' Haven frontend application",
+    "scripts": {
+        "postdeploy": "yarn build"
+    },
+    "env": {},
+    "formation": {},
+    "addons": [],
+    "buildpacks": []
+}

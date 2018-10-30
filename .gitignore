@@ -29,6 +29,8 @@ connect.lock
 *.css
 .idea
 
+#env
+.env
 # Logs
 logs
 *.log

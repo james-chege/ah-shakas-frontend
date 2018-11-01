@@ -12,3 +12,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.center{
+  width:50%;
+  font-size: 50px;
+  font-weight: 900;
+  background-color: #E8F8F7;
+}
+
+.input-field label {
+  height: auto;
+}
+
+.center-btn {
+  margin-left: 200%;
+}
+
+.alert-err {
+  font-size: 18px;
+  font-weight: 100;
+  text-align: left;
+  margin-left: 5%;
+  color: red;
+}
+.signup-success{
+  font-size: 20px;
+  text-align: center;
+}
+
+.signup{
+  margin: 0 auto;
+}

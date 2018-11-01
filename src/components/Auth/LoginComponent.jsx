@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Input, Row } from 'react-materialize';
 
 // noinspection JSAnnotator
-const LoginPage = () => ({
+const LoginComponent = () => ({
 
   render() {
     return (
@@ -30,4 +30,4 @@ const LoginPage = () => ({
   },
 });
 
-export default LoginPage;
+export default LoginComponent;

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Input, Row } from 'react-materialize';
+import { Button, Input, Row } from 'react-materialize';
 
 // noinspection JSAnnotator
 const LoginPage = () => ({
@@ -24,7 +23,7 @@ const LoginPage = () => ({
               s={12}
             />
           </Row>
-          <Link to="/">Login</Link>
+          <Button>Login</Button>
         </Row>
       </div>
     );

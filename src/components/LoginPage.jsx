@@ -6,7 +6,7 @@ const LoginPage = () => ({
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Login page</h1>
         <Row>
           <Row>

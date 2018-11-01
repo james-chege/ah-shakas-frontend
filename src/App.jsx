@@ -5,10 +5,10 @@ import LoginPage from './components/LoginPage';
 import './App.scss';
 
 const App = () => (
-    <Switch>
+  <Switch>
     <Route path="/" exact component={HomePage} />
     <Route path="/login" exact component={LoginPage} />
-    </Switch>
+  </Switch>
 );
 
 export default App;

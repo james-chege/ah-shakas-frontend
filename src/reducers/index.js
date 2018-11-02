@@ -1,7 +1,7 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    // insert reducers here
-})
+  // insert reducers here
+});
 
 export default rootReducer;

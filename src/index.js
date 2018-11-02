@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import './index.scss';
 import App from './App';
@@ -9,9 +9,9 @@ import * as serviceWorker from './serviceWorker';
 const history = createHistory();
 
 ReactDOM.render(
-  <Router history={history}>
+  <BrowserRouter history={history}>
     <App />
-  </Router>,
+  </BrowserRouter>,
   document.getElementById('root'),
 );
 

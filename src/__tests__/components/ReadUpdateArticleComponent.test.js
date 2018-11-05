@@ -1,9 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ReadUpdateArticleComponent from '../../components/Articles/ReadUpdateArticleComponent';
+import AverageRatingContainer from '../../containers/Rating/AverageRatingContainer';
+import MyRatingContainer from '../../containers/Rating/MyRatingContainer';
 
 const props = {
   alert: () => {},
+  getRatings: jest.fn(),
   fetchState: {
     article: {
       title: 'title',
@@ -33,6 +36,7 @@ const props = {
   readOnly: true,
   update: jest.fn(),
   makeToast: jest.fn(),
+  // slug: 'test-slug',
 };
 
 const wrapper = shallow(<ReadUpdateArticleComponent {...props} />);
@@ -66,5 +70,13 @@ describe('Test Read and Update Articles Component', () => {
     const handleClickSpy = jest.spyOn(wrapper.instance(), 'setReadOnly');
     wrapper.instance().setReadOnly(props);
     expect(handleClickSpy.mock.calls.length).toEqual(1);
+  });
+
+  it('renders Average rating component', () => {
+    expect(wrapper.find(AverageRatingContainer).length).toBe(1);
+  });
+
+  it('renders myRatings component', () => {
+    expect(wrapper.find(MyRatingContainer).length).toBe(1);
   });
 });

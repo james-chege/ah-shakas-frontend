@@ -60,3 +60,20 @@ code {
   font-weight: 400;
   margin-left: 10px;
 }
+
+.ratings {
+  width: 70px;
+  float: left;
+  position: relative;
+}
+
+.myRating {
+  position: fixed;
+  top: 300px;
+  left: 30px;
+  transform: rotate(-90deg);
+}
+
+.star-container {
+  transform: rotate(90deg);
+}

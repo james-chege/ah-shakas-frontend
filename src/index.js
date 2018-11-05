@@ -21,8 +21,10 @@ const options = {
   zIndex: 1000,
 };
 
+const store = storeConfig();
+
 ReactDOM.render(
-  <Provider store={storeConfig()}>
+  <Provider store={store}>
     <AlertProvider template={Alert} {...options}>
       <Router history={history}>
         <App />

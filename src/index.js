@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import storeConfig from './store/index';
 
 const history = createHistory();
-
+ 
 ReactDOM.render(
   <Provider store={storeConfig()}>
     <Router history={history}>

@@ -1,28 +1,26 @@
-import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_ERROR } from '../actions/login.action.types';
-import * as types from '../actions/login.action';
+import { LOGIN } from '../actions/login.action.types';
 
-export default function loginReducer(state={
-    isLoginPending: false,
-    isLoginSuccess: false,
-    isLoginError: null
-}, action){
-    switch (action.type) {
-        case LOGIN_SUCCESS:
-            return {
-                ...state,
-                isLoginSuccess: action.isLoginSuccess
-            };
-        case LOGIN_PENDING:
-            return {
-                ...state,
-                isLoginPending: action.isLoginPending
-            };
-        case LOGIN_ERROR:
-            return{
-                ...state,
-                isLoginError: action.isLoginError
-            };
-        default:
-            return state;
+const loginReducer = (state = {
+  onFulfilled:false,
+  onRejected:{}
+}, action) => {
+    console.log(action)
+    switch(action.type) {
+      case `${LOGIN}_FULFILLED`:
+        return {
+          ...state,
+          onFulfilled: true,
+          data: action.payload
+        };
+  
+      case `${LOGIN}_REJECTED`:
+        return {
+          ...state,
+          onRejected: true,
+          error: action.payload
+        };
+  
+      default: return state;
     }
-}
+  }
+  export default loginReducer;

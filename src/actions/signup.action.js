@@ -1,9 +1,8 @@
 import api from '../api';
-import CONSTANTS from '../constants';
+import constants from '../constants';
 
-const { SIGNUP } = CONSTANTS;
+const { SIGNUP } = constants;
 
-// Action creator
 const signup = credentials => ({
   type: SIGNUP,
   payload: api({

@@ -10,18 +10,19 @@ class ResetPasswordComponent extends React.Component {
   render() {
     const { data } = this.props;
     const { user } = data;
-    const { match } = this.props;
+    const { match, alert } = this.props;
     const { params } = match;
     const { token } = params;
     return (
       <div className="container">
-        { user ? window.Materialize.toast('Password successfully reset!', 1000) && <Redirect to="/login" /> : <ResetPasswordForm token={token} /> }
+        { user ? alert.show('Password successfully reset!', 1000) && <Redirect to="/login" /> : <ResetPasswordForm token={token} /> }
       </div>
     );
   }
 }
 
 ResetPasswordComponent.propTypes = {
+  alert: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       token: PropTypes.string.isRequired,

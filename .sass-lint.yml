@@ -27,3 +27,4 @@ rules:
   quotes: 0
   shorthand-values: 0
   url-quotes: 0
+  selector-class-pattern: null

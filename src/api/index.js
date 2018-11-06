@@ -1,14 +1,26 @@
 import axios from 'axios';
+import authUser from '../utils/authUser.util';
+import config from '../config';
+
+const authUserHeader = () => {
+  if (authUser && authUser.token) {
+    return {
+      Authorization: authUser.token,
+    };
+  }
+  return {};
+};
 
 const client = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: config.BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+    ...authUserHeader(),
+  },
 });
 
-export default ({ method, data, url }) => client({
+export default ({ method, url, data }) => client({
   url,
   method,
   data,
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });

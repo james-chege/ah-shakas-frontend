@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import logger from 'redux-logger';
-import rootReducer from '../reducers/index';
+import rootReducer from '../reducers';
 
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsCreators and other options if needed here
@@ -18,9 +18,7 @@ const storeConfig = () => {
   const store = createStore(
     rootReducer,
     composeEnhancers(
-      applyMiddleware(
-        ...middlewares,
-      ), /* other store enhancers if any */
+      applyMiddleware(...middlewares),
     ),
   );
   return store;

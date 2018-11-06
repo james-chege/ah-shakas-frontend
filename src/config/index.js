@@ -1,0 +1,6 @@
+export default {
+  BASE_URL: process.env.REACT_APP_BASE_URL,
+  UPLOAD_BASE_URL: process.env.REACT_APP_UPLOAD_BASE_URL,
+  CLOUD_NAME: process.env.REACT_APP_CLOUD_NAME,
+  UPLOAD_PRESET: process.env.REACT_APP_UPLOAD_PRESET,
+};

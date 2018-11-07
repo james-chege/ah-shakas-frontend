@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Input, Row } from 'react-materialize';
+import { Link } from "react-router-dom";
 
 // noinspection JSAnnotator
 const LoginComponent = () => ({
@@ -24,6 +25,9 @@ const LoginComponent = () => ({
             />
           </Row>
           <Button>Login</Button>
+        </Row>
+        <Row>
+          <Link to="forgot_password">Forgot Password?</Link>
         </Row>
       </div>
     );

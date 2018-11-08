@@ -21,7 +21,7 @@ const loginReducer = (state = initialState.login, action) => {
       return {
         ...state,
         onRejected: true,
-        error: action.payload.response.data.errors,
+        error: action.payload,
       };
 
     default: return state;

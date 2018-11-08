@@ -8,6 +8,8 @@ import CreateArticleComponent from './containers/Articles/CreateArticleContainer
 import ReadUpdateArticleContainer from './containers/Articles/ReadUpdateArticleContainer';
 import ForgotPasswordContainer from './containers/Auth/ForgotPasswordContainer';
 import ResetPasswordContainer from './containers/Auth/ResetPasswordContainer';
+import Profile from './containers/Users/UserProfileContainer';
+import UpdateProfile from './containers/Users/UpdateProfileContainer';
 import './App.scss';
 import VerificationContainer from './containers/Auth/VerificationContainer';
 import SignUpSuccess from './components/Messages/SignUpSuccess';
@@ -26,6 +28,8 @@ const App = () => (
       <Route path="/article/:slug" exact component={withAlert(ReadUpdateArticleContainer)} />
       <Route path="/signup/success" exact component={SignUpSuccess} />
       <Route path="/verify/:token" exact component={VerificationContainer} />
+      <Route path="/profiles/:username" exact component={Profile} />
+      <Route path="/profiles/update-info/:username" exact component={UpdateProfile} />
     </Switch>
   </div>
 );

@@ -2,7 +2,7 @@ import { RESET_PASSWORD_ACTION, ERROR_ACTION } from '../constants';
 
 const initialState = {
   data: {},
-  errors: {}
+  errors: {},
 };
 
 const ResetPasswordReducer = (state = initialState, action) => {

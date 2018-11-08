@@ -68,9 +68,9 @@ class ResetPasswordForm extends React.Component {
               s={12}
               onChange={this.onChange}
             />
-            { errors.password && <InlineError text={ errors.password }/>}
-            { errors.message && <InlineError text={ errors.message }/>}
-            { errors.errors ? errors.errors.length && <InlineError text={ errors.errors.toString()}/> : ""}
+            { errors.password && <InlineError text={ errors.password }/> }
+            { errors.message && <InlineError text={ errors.message }/> }
+            { errors.errors ? errors.errors.length && <InlineError text={ errors.errors.toString() }/> : ''}
           </Row>
           <Button>Submit</Button>
         </form>
@@ -82,9 +82,9 @@ class ResetPasswordForm extends React.Component {
 ResetPasswordForm.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      token: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      token: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = ({ resetting }) => ({ ...resetting });

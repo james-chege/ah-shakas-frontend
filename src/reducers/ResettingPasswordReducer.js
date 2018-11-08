@@ -1,8 +1,8 @@
-import { RESETTING_PASSWORD_ACTION, RESETTING_ERROR_ACTION } from "../constants";
+import { RESETTING_PASSWORD_ACTION, RESETTING_ERROR_ACTION } from '../constants';
 
 const initialState = {
   data: {},
-  errors: {}
+  errors: {},
 };
 
 const ResettingPasswordReducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const ResettingPasswordReducer = (state = initialState, action) => {
       return { ...state, data: action.payload };
     }
     case RESETTING_ERROR_ACTION: {
-      return { ...state, errors: action.payload }
+      return { ...state, errors: action.payload };
     }
     default:
       return state;

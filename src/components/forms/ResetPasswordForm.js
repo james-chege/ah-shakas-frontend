@@ -87,10 +87,10 @@ ResetPasswordForm.propTypes = {
   }).isRequired
 };
 
-const mapStateToProps = ({ resetting }) => ( { ...resetting });
+const mapStateToProps = ({ resetting }) => ({ ...resetting });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  resettingPassword: ResettingPasswordRequest
+  resettingPassword: ResettingPasswordRequest,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordForm);

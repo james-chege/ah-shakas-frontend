@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import reset from './ResetPasswordReducer';
-import resetting from './ResettingPasswordReducer';
-import signUp from './signup.reducer';
+import reset from './reset.password.reducer';
+import resetting from './resetting.password.reducer';
+mport signUp from './signup.reducer';
 
 const rootReducer = combineReducers({
   // insert reducers here

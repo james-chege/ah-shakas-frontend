@@ -1,11 +1,11 @@
 import expect from 'expect';
-import { RESET_PASSWORD_ACTION, ERROR_ACTION  } from '../../constants/index';
-import restRequest from '../../reducers/ResetPasswordReducer';
+import { RESET_PASSWORD_ACTION, ERROR_ACTION } from '../../constants/index';
+import restRequest from '../../reducers/reset.password.reducer';
 import RESPONSES from '../../mock/responses';
 
 const initialState = {
   data: {},
-  errors: {}
+  errors: {},
 };
 
 const action = { payload: {} };
@@ -26,6 +26,4 @@ describe('Reset Password Reducer test', () => {
     action.payload = RESPONSES.ERROR_RESET_EMAIL_RESPONSE;
     expect(restRequest(initialState.data, action).errors).toEqual(action.payload);
   });
-
-
 });

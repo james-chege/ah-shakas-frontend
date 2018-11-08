@@ -4,8 +4,8 @@ import HomePage from './components/Home/HomeComponent';
 import LoginComponent from './components/Auth/LoginComponent';
 import SignUpContainer from './containers/Auth/SignUpContainer';
 import './App.scss';
-import ForgotPasswordComponent from "./components/Auth/ForgotPasswordComponent";
-import ResetPasswordComponent from "./components/Auth/ResetPasswordComponent";
+import ForgotPasswordComponent from './components/Auth/ForgotPasswordComponent';
+import ResetPasswordComponent from './components/Auth/ResetPasswordComponent';
 
 require('dotenv').config();
 

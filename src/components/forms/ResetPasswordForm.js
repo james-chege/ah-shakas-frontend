@@ -1,27 +1,28 @@
-import React from "react";
-import { Row, Button, Input, Card } from "react-materialize";
-import InlineError from "../Messages/InlineError";
-import { bindActionCreators } from "redux";
-import ResettingPasswordRequest from "../../actions/ResetingPasswordAction";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React from 'react';
+import {
+  Row, Button, Input, Card,
+} from 'react-materialize';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import ResettingPasswordRequest from '../../actions/reseting.password.action';
+import InlineError from '../Messages/InlineError';
 
 
 class ResetPasswordForm extends React.Component {
   state = {
     data: {
-      password: "",
-      confirm: "",
+      password: '',
+      confirm: '',
     },
     errors: {},
-    loading: false
+    loading: false,
   };
 
 
-  onChange = e =>
-    this.setState({...this.state, data: {...this.state.data, [e.target.name]: e.target.value}});
+  onChange = e => this.setState({ ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } });
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     const errors = this.validate(this.state.data);
     this.setState({ errors });
@@ -32,17 +33,16 @@ class ResetPasswordForm extends React.Component {
     }
   };
 
-  validate = data => {
+  validate = (data) => {
     const errors = {};
     if (!data.password) errors.password = "Can't be blank";
-    if (data.password !== data.confirm)
-      errors.password = "Passwords must match";
+    if (data.password !== data.confirm) errors.password = 'Passwords must match';
     return errors;
   };
 
   render() {
     const { data } = this.state;
-    const errors = {...this.state.errors, ...this.props};
+    const errors = { ...this.state.errors, ...this.props };
     return (
       <Card>
         <form onSubmit={this.onSubmit}>
@@ -50,27 +50,27 @@ class ResetPasswordForm extends React.Component {
             <Input
               label="New Password"
               name="password"
-              className={errors ? errors.password && "invalid" : errors.message && "invalid" }
-              value={ data.password }
+              className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}
+              value={data.password}
               s={12}
               onChange={this.onChange}
             />
-            { errors.password && <InlineError text={ errors.password }/>}
-            { errors.message && <InlineError text={ errors.message }/>}
-            { errors.errors ? errors.errors.length && <InlineError text={ errors.errors.toString()}/> : ""}
+            { errors.password && <InlineError text={errors.password} />}
+            { errors.message && <InlineError text={errors.message} />}
+            { errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
           </Row>
           <Row>
             <Input
               label="confirm"
               name="confirm"
-              className={errors ? errors.password && "invalid" : errors.message && "invalid" }
-              value={ data.confirm }
+              className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}
+              value={data.confirm}
               s={12}
               onChange={this.onChange}
             />
-            { errors.password && <InlineError text={ errors.password }/> }
-            { errors.message && <InlineError text={ errors.message }/> }
-            { errors.errors ? errors.errors.length && <InlineError text={ errors.errors.toString() }/> : ''}
+            { errors.password && <InlineError text={errors.password} /> }
+            { errors.message && <InlineError text={errors.message} /> }
+            { errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
           </Row>
           <Button>Submit</Button>
         </form>

@@ -10,6 +10,7 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint-config-airbnb": "^17.1.0",
+    "expect": "latest",
     "history": "^4.7.2",
     "jest": "^23.6.0",
     "node-sass": "^4.9.4",

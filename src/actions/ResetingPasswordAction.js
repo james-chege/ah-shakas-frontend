@@ -1,5 +1,5 @@
 import axios from "axios";
-import {RESETTING_ERROR_ACTION, RESETTING_PASSWORD_ACTION} from "../constants";
+import { RESETTING_ERROR_ACTION, RESETTING_PASSWORD_ACTION } from "../constants";
 
 const ResettingPassword = (token, password) => (dispatch) =>
   axios.put("http://127.0.0.1:8000/api/users/password_reset?token="+token, { password: password })

@@ -1,120 +1,12 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Row, Input } from 'react-materialize';
-import axios from 'axios';
-
-
-class SignUpComponent extends Component {
-  
-=======
 import PropTypes from 'proptypes';
 import { Row, Input, Button } from 'react-materialize';
 
 class SignUpComponent extends Component {
->>>>>>> 33f0d72... [feat #160577437] refactor according to feedback
   state = {
     username: '',
     email: '',
     password: '',
-<<<<<<< HEAD
-    confirm_password: '',
-    email_error: '',
-    password_error: '',
-    username_error: ''
-  }
-  
-  handleChange = (event) => {
-    event.preventDefault()
-    this.setState( {[event.currentTarget.name]: event.currentTarget.value} )
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    const { username, email, password, confirm_password } = this.state
-    if (password === confirm_password){
-      this.setState({error:null})
-      const data = {
-        user: {
-          username: username,
-          email: email,
-          password: password
-        }
-      }
-      console.log(data)
-
-      const client = axios.create({
-        baseURL: 'http://localhost:8000/api'
-      })
-
-      client({
-        url: '/users/',
-        method: 'post',
-        data: data,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-      })
-      .then(response =>{
-        console.log(response)
-        console.log(response.data)
-        this.setState({
-          email_error: '',
-          password_error: '',
-          username_error: '',
-          success: true
-        })
-
-      }
-      )
-      .catch(error => {
-        console.log(error.response.data)
-        const { errors } = error.response.data
-        this.setState({
-          email_error: errors.email,
-          password_error: errors.password,
-          username_error: errors.username
-        })
-      }
-    )
-  
-    } else {
-      this.setState({password_error: "Passwords don't match."})
-    }
-  }
-
-  render(){
-    if (this.state.success){
-      return(
-        <div className="container">
-          <div className="signup-success">
-            <span>Welcome to Author's haven. Check to confirm you have received your verification email..</span>
-          </div>
-        </div>
-      )
-     }
-    return(
-      <div className="container">
-        <h3 className="title">Create Account</h3>
-        <Row className="center">
-          <form onSubmit={this.handleSubmit}>
-            <Input name="username" placeholder="Enter username..." s={12} label="Username" onChange={this.handleChange} type="text" icon="account_circle" minLength="6" required/>
-            <div className="alert-err">{this.state.username_error}</div>
-            <Input name="email" placeholder="Enter email..." s={12} label="Email" onChange={this.handleChange} type="email" icon="email" required/>
-            <div className="alert-err">{this.state.email_error}</div>
-            <Input name="password" placeholder="Enter password..." s={12} label="Password" onChange={this.handleChange} type="password" icon="lock" minLength="8" required/>
-            <div className="alert-err">{this.state.password_error}</div>
-            <Input name="confirm_password" placeholder="Re-type password..." s={12} label="Confirm password" onChange={this.handleChange} type="password" minLength="8" icon="lock" required/>
-            <Input type="submit" className="btn center-btn" defaultValue="SIGN UP"/>
-          </form>
-        </Row>
-      </div>
-    )
-  }
-}
-
-
-export default SignUpComponent;
-=======
     confirmPassword: '',
   }
 
@@ -228,4 +120,3 @@ SignUpComponent.propTypes = {
   success: PropTypes.bool.isRequired,
 };
 export default SignUpComponent;
->>>>>>> 33f0d72... [feat #160577437] refactor according to feedback

@@ -12,34 +12,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+//Variables
+$error-color: #ff0000;
+$background-body: #eeeeee;
+$form-color: #ffffff;
 
+body {
+  background-color: $background-body;
+}
 .center{
-  width:50%;
+  background-color: $form-color;
+  border-radius: 5px;
   font-size: 50px;
   font-weight: 900;
-  background-color: #E8F8F7;
+  margin: 0 auto;
+  padding: 20px 20px 10px 10px;
+  width: 550px;
+}
+
+@media screen and (max-width: 800px) {
+  .center {
+    font-size: 50px;
+    width: 85%;
+  }
 }
 
 .input-field label {
   height: auto;
 }
-
+.nav{
+  margin-bottom: 50px;
+}
 .center-btn {
   margin-left: 200%;
 }
 
 .alert-err {
+  color: $error-color;
   font-size: 18px;
   font-weight: 100;
-  text-align: left;
   margin-left: 5%;
-  color: red;
-}
-.signup-success{
-  font-size: 20px;
-  text-align: center;
+  text-align: left;
 }
 
-.signup{
-  margin: 0 auto;
+.msg {
+  color: teal;
 }

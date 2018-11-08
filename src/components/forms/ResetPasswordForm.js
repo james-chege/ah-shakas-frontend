@@ -2,12 +2,10 @@ import React from 'react';
 import {
   Row, Button, Input, Card,
 } from 'react-materialize';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ResettingPasswordRequest from '../../actions/reseting.password.action';
 import InlineError from '../Messages/InlineError';
-
 
 class ResetPasswordForm extends React.Component {
   state = {
@@ -20,7 +18,7 @@ class ResetPasswordForm extends React.Component {
   };
 
 
-  onChange = e => this.setState({ ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } });
+  onChange = e => this.setState({ ...this.state,data: { ...this.state.data, [e.target.name]: e.target.value } });
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -28,8 +26,8 @@ class ResetPasswordForm extends React.Component {
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
-      const { resettingPassword } = this.props;
-      resettingPassword(this.props.token, this.state.data.password);
+      const { ResettingPasswordRequest } = this.props;
+      ResettingPasswordRequest(this.props.token, this.state.data.password);
     }
   };
 
@@ -89,8 +87,10 @@ ResetPasswordForm.propTypes = {
 
 const mapStateToProps = ({ resetting }) => ({ ...resetting });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  resettingPassword: ResettingPasswordRequest,
-}, dispatch);
+// const mapDispatchToProps = dispatch => bindActionCreators({
+//   resettingPassword: ResettingPasswordRequest,
+// }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordForm);
+export default connect(mapStateToProps, {
+  ResettingPasswordRequest,
+})(ResetPasswordForm);

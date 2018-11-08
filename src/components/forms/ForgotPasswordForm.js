@@ -17,7 +17,7 @@ class ForgotPasswordForm extends React.Component {
     errors: {},
   };
 
-  onChange = e => this.setState({ ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } });
+  onChange = e => this.setState({...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } });
 
   onSubmit = (e) => {
     e.preventDefault();

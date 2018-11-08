@@ -5,6 +5,7 @@ import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from '../reducers/index';
 import logger from 'redux-logger';
 import promiseMiddleware from 'redux-promise-middleware';
+import rootReducer from '../reducers/index';
 
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsCreators and other options if needed here

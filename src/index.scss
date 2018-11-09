@@ -12,3 +12,55 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+//Variables
+$error-color: #ff0000;
+$background-body: #eeeeee;
+$form-color: #ffffff;
+
+body {
+  background-color: $background-body;
+}
+
+.center {
+  background-color: $form-color;
+  border-radius: 5px;
+  font-size: 50px;
+  font-weight: 900;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  padding-left: 10;
+  padding-right: 10;
+  padding-top: 20px;
+  width: 550px;
+}
+
+@media screen and (max-width: 800px) {
+  .center {
+    font-size: 50px;
+    width: 85%;
+  }
+}
+
+.input-field label {
+  height: auto;
+}
+
+.nav {
+  margin-bottom: 50px;
+}
+
+.center-btn {
+  margin-left: 200%;
+}
+
+.alert-err {
+  color: $error-color;
+  font-size: 18px;
+  font-weight: 100;
+  margin-left: 5%;
+  text-align: left;
+}
+
+.msg {
+  color: #008080;
+}

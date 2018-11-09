@@ -11,7 +11,7 @@ import storeConfig from './store/index';
 const history = createHistory();
 
 ReactDOM.render(
-  <Provider store={storeConfig}>
+  <Provider store={storeConfig()}>
     <Router history={history}>
       <App />
     </Router>

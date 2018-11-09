@@ -1330,6 +1330,13 @@ axios-mock-adapter@^1.15.0:
   dependencies:
     deep-equal "^1.0.1"
 
+axios-mock-adapter@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/axios-mock-adapter/-/axios-mock-adapter-1.15.0.tgz#fbc06825d8302c95c3334d21023bba996255d45d"
+  integrity sha1-+8BoJdgwLJXDM00hAju6mWJV1F0=
+  dependencies:
+    deep-equal "^1.0.1"
+
 axios@^0.18.0:
   version "0.18.0"
   resolved "http://registry.npmjs.org/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
@@ -2735,6 +2742,11 @@ decode-uri-component@^0.2.0:
 dedent@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
+
+deep-diff@^0.3.5:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
+  integrity sha1-wB3mPvsO7JeYgB1Ax+Da4ltYLIQ=
 
 deep-equal@^1.0.1:
   version "1.0.1"
@@ -8141,6 +8153,13 @@ redux-logger@^3.0.6:
   integrity sha1-91VZZvMJjzyIYExEnPC69XeCdL8=
   dependencies:
     deep-diff "^0.3.5"
+
+redux-mock-store@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.5.3.tgz#1f10528949b7ce8056c2532624f7cafa98576c6d"
+  integrity sha512-ryhkkb/4D4CUGpAV2ln1GOY/uh51aczjcRz9k2L2bPx/Xja3c5pSGJJPyR25GNVRXtKIExScdAgFdiXp68GmJA==
+  dependencies:
+    lodash.isplainobject "^4.0.6"
 
 redux-promise-middleware@^5.1.1:
   version "5.1.1"

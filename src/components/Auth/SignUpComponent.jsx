@@ -91,7 +91,6 @@ class SignUpComponent extends Component {
               && <div className="alert-err">{errors.password}</div>
             }
 
-
             <Input
               s={12}
               name="confirmPassword"

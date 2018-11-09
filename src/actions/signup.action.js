@@ -1,5 +1,7 @@
 import api from '../api';
-import SIGNUP from '../constants/index';
+import CONSTANTS from '../constants';
+
+const { SIGNUP } = CONSTANTS;
 
 // Action creator
 const signup = credentials => ({

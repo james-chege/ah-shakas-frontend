@@ -1,3 +1,5 @@
-const SIGNUP = 'SIGNUP';
+const CONSTANTS = {
+  SIGNUP: 'SIGNUP',
+};
 
-export default SIGNUP;
+export default CONSTANTS;

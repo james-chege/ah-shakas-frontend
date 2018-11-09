@@ -4,7 +4,6 @@ import { mount } from 'enzyme';
 import { Button } from 'react-materialize';
 import SignUpContainer from '../../containers/Auth/SignUpContainer';
 
-
 const mock = configureStore();
 const store = mock({
   signUp: {

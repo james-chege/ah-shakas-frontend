@@ -1,7 +1,9 @@
-import SIGNUP from '../constants/index';
-import signupInitialState from './initialState';
+import constants from '../constants/index';
+import initialState from './initialState';
 
-const signUpReducer = (state = signupInitialState, action) => {
+const { SIGNUP } = constants;
+
+const signUpReducer = (state = initialState.signUp, action) => {
   const { payload, type } = action;
   switch (type) {
     case `${SIGNUP}_PENDING`:

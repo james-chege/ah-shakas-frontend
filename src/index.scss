@@ -20,7 +20,8 @@ $form-color: #ffffff;
 body {
   background-color: $background-body;
 }
-.center{
+
+.center {
   background-color: $form-color;
   border-radius: 5px;
   font-size: 50px;
@@ -43,9 +44,11 @@ body {
 .input-field label {
   height: auto;
 }
-.nav{
+
+.nav {
   margin-bottom: 50px;
 }
+
 .center-btn {
   margin-left: 200%;
 }

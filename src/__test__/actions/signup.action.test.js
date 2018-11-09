@@ -1,6 +1,5 @@
 import configureStore from 'redux-mock-store';
-import signUpAct from '../../actions/signup.actions';
-
+import signup from '../../actions/signup.action';
 
 const mockStore = configureStore();
 const store = mockStore({});
@@ -9,6 +8,7 @@ describe('signup', () => {
   beforeEach(() => {
     store.clearActions();
   });
+
   it('signup action', () => {
     const credentials = {
       username: 'gloria',
@@ -16,7 +16,7 @@ describe('signup', () => {
       password: 'Password123',
       confirm_password: 'Password123',
     };
-    store.dispatch(signUpAct(credentials));
+    store.dispatch(signup(credentials));
     expect(store.getActions()[0].type).toBe('SIGNUP');
   });
 });

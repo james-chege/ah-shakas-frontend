@@ -1,6 +1,6 @@
-const signupInitialState = {
-  loading: false,
-  success: false,
+export default {
+  signUp: {
+    loading: false,
+    success: false,
+  },
 };
-
-export default signupInitialState;

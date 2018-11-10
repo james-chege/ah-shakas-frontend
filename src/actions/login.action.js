@@ -1,9 +1,9 @@
-import axios from 'axios';
+import api from '../api';
 import { LOGIN } from '../constants/login.type';
 
 const loginAct = credentials => ({
   type: LOGIN,
-  payload: axios({
+  payload: api({
     url: 'http://127.0.0.1:8000/api/users/login/',
     method: 'POST',
     data: { user: credentials },

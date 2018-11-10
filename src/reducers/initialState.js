@@ -3,6 +3,10 @@ export default {
     loading: false,
     success: false,
   },
+  login: {
+    onPending: false,
+    onFulfilled: false,
+  },
   resetPassword: {
     data: {},
     errors: {},

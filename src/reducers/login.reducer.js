@@ -1,7 +1,7 @@
 import { LOGIN } from '../constants/login.type';
+import initialState from './initialState';
 
-const loginReducer = (state = {}, action) => {
-  console.log(action);
+const loginReducer = (state = initialState.login, action) => {
   switch (action.type) {
     case `${LOGIN}_PENDING`:
       return {
@@ -19,7 +19,7 @@ const loginReducer = (state = {}, action) => {
       return {
         ...state,
         onRejected: true,
-        error: action.payload,
+        error: action.payload.response.data.errors,
       };
 
     default: return state;

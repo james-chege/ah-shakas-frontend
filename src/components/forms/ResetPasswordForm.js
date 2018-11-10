@@ -48,6 +48,7 @@ class ResetPasswordForm extends React.Component {
             <Input
               label="New Password"
               name="password"
+              type="password"
               className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}
               value={data.password}
               s={12}

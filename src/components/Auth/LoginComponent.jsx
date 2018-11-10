@@ -10,15 +10,6 @@ class LoginComponent extends Component {
     onPending: true,
   };
 
-  myFunction = () => {
-    const x = document.getElementById('MyPass');
-    if (x.type === 'password') {
-      x.type = 'text';
-    } else {
-      x.type = 'password';
-    }
-  };
-
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -70,14 +61,6 @@ class LoginComponent extends Component {
                       required
                     />
                   </div>
-                </div>
-                <div className="row">
-                  <p>
-                    <label htmlFor="password">
-                      <input type="checkbox" onClick={this.myFunction} />
-                      <span>Show Password</span>
-                    </label>
-                  </p>
                 </div>
               </div>
               <div className="center-align">

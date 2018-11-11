@@ -3,8 +3,8 @@ import {
   Row, Button, Input, Card,
 } from 'react-materialize';
 import isEmail from 'validator/lib/isEmail';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import InlineError from '../Messages/InlineError';
 import resetPasswordRequest from '../../actions/password.reset.action';
 
@@ -17,7 +17,7 @@ class ForgotPasswordForm extends React.Component {
     errors: {},
   };
 
-  onChange = e => this.setState({...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } });
+  onChange = e => this.setState({ ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } });
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -25,8 +25,8 @@ class ForgotPasswordForm extends React.Component {
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
-      const { resetPassword } = this.props;
-      resetPassword(this.state.data);
+      const { resetPasswordRequest } = this.props;
+      resetPasswordRequest(this.state.data);
     }
   };
 
@@ -62,11 +62,12 @@ class ForgotPasswordForm extends React.Component {
   }
 }
 
+ForgotPasswordForm.propTypes = {
+  resetPasswordRequest: PropTypes.func.isRequired,
+}
 
-const mapStateToProps = ({ reset }) => ({ ...reset });
+export const mapStateToProps = ({ reset }) => ({ ...reset });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  resetPassword: resetPasswordRequest,
-}, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordForm);
+export default connect(mapStateToProps, {
+  resetPasswordRequest,
+})(ForgotPasswordForm);

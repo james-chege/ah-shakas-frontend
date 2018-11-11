@@ -18,7 +18,7 @@ class ResetPasswordForm extends React.Component {
   };
 
 
-  onChange = e => this.setState({ ...this.state,data: { ...this.state.data, [e.target.name]: e.target.value } });
+  onChange = e => this.setState({ ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } });
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -87,10 +87,6 @@ ResetPasswordForm.propTypes = {
 };
 
 const mapStateToProps = ({ resetting }) => ({ ...resetting });
-
-// const mapDispatchToProps = dispatch => bindActionCreators({
-//   resettingPassword: ResettingPasswordRequest,
-// }, dispatch);
 
 export default connect(mapStateToProps, {
   ResettingPasswordRequest,

@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import SuccessMessage from '../Messages/SuccessMessage';
 import ForgotPasswordForm from '../forms/ForgotPasswordForm';
 import resetPasswordRequest from '../../actions/password.reset.action';
 
-class ForgotPasswordComponent extends Component {
+const ForgotPasswordComponent = () => ({
   render() {
     return (
       <div className="container">
         { this.props.data.user ? <SuccessMessage text="Email has been sent" /> : <ForgotPasswordForm /> }
       </div>
     );
-  }
-}
+  },
+});
 
 ForgotPasswordComponent.propTypes = {
   resetPasswordRequest: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ reset }) => ({ ...reset });
+export const mapStateToProps = ({ reset }) => ({ ...reset });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  resetPassword: resetPasswordRequest,
-}, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordComponent);
+export default connect(mapStateToProps, {
+  resetPasswordRequest,
+})(ForgotPasswordComponent);

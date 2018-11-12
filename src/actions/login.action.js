@@ -1,6 +1,7 @@
 import api from '../api';
-import { LOGIN } from '../constants/login.type';
+import CONSTANTS from '../constants';
 
+const { LOGIN } = CONSTANTS;
 const loginAct = credentials => ({
   type: LOGIN,
   payload: api({

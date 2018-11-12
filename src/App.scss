@@ -30,7 +30,33 @@
     transform: rotate(360deg);
   }
 }
-
-.login-box {
-  height: 100%;
+.btn-primary{
+  padding: 0.5rem 2rem;
+  border: 1px white solid;
+  display: inline-block;
+  border-radius: 5px;
+  box-shadow: 0 9px #999;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.5s;
+  text-decoration: none;
+  background: teal;
+  color: white;
+  //transition: background 500ms ease;
 }
+
+.btn-secondary{
+  padding: 0.5rem 2rem;
+  border: 1px teal solid;
+  display: inline-block;
+  box-shadow: 0 9px #999;
+  cursor: pointer;
+  border-radius: 5px;
+  height: auto;
+  text-decoration: none;
+  background: white;
+  color: teal;
+  transition: background 500ms ease;
+}
+.btn-primary:hover {background-color: darkslategrey}
+.btn-secondary:hover {background-color: lightcyan}

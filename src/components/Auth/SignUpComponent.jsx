@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import { Row, Input, Button } from 'react-materialize';
+import { Button } from 'react-materialize';
 
 class SignUpComponent extends Component {
   state = {
@@ -42,72 +42,70 @@ class SignUpComponent extends Component {
       <div className="center">
         <h3 className="title">Create Account</h3>
         {success ? this.successMessage() : null}
-        <Row>
-          <form onSubmit={this.onSignUp}>
-            <Input
-              name="username"
-              s={12}
-              placeholder="Enter username..."
-              label="Username"
-              onChange={this.handleChange}
-              defaultValue={username}
-              type="text"
-              icon="account_circle"
-              minLength="6"
-              required
-            />
-            {errors
+        <form onSubmit={this.onSignUp}>
+          <input
+            name="username"
+            s={10}
+            placeholder="Enter username..."
+            label="Username"
+            onChange={this.handleChange}
+            defaultValue={username}
+            type="text"
+            icon="account_circle"
+            minLength="6"
+            required
+          />
+          {errors
               && <div className="alert-err">{errors.username}</div>
             }
 
-            <Input
-              name="email"
-              s={12}
-              placeholder="Enter email..."
-              label="Email"
-              onChange={this.handleChange}
-              defaultValue={email}
-              type="email"
-              icon="email"
-              required
-            />
-            {errors
+          <input
+            name="email"
+            s={10}
+            placeholder="Enter email..."
+            label="Email"
+            onChange={this.handleChange}
+            defaultValue={email}
+            type="email"
+            icon="email"
+            required
+          />
+          {errors
               && <div className="alert-err">{errors.email}</div>
             }
 
-            <Input
-              name="password"
-              s={12}
-              placeholder="Enter password..."
-              label="Password"
-              onChange={this.handleChange}
-              defaultValue={password}
-              type="password"
-              icon="lock"
-              minLength="8"
-              required
-            />
-            {errors
+          <input
+            name="password"
+            s={10}
+            placeholder="Enter password..."
+            label="Password"
+            onChange={this.handleChange}
+            defaultValue={password}
+            type="password"
+            icon="lock"
+            minLength="8"
+            required
+          />
+          {errors
               && <div className="alert-err">{errors.password}</div>
             }
 
-            <Input
-              s={12}
-              name="confirmPassword"
-              placeholder="Re-type password..."
-              label="Confirm password"
-              onChange={this.handleChange}
-              defaultValue={confirmPassword}
-              type="password"
-              minLength="8"
-              icon="lock"
-              required
-            />
-            <div className="alert-err">{passwordError}</div>
+          <input
+            s={10}
+            name="confirmPassword"
+            placeholder="Re-type password..."
+            label="Confirm password"
+            onChange={this.handleChange}
+            defaultValue={confirmPassword}
+            type="password"
+            minLength="8"
+            icon="lock"
+            required
+          />
+          <div className="alert-err">{passwordError}</div>
 
-            <Button type="submit" className="btn">Sign Up</Button>
-          </form>
-        </Row>
+          <Button type="submit" className="btn-primary">Sign Up</Button>
+        </form>
       </div>
     );
   }

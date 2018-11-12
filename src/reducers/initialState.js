@@ -4,8 +4,9 @@ export default {
     success: false,
   },
   login: {
-    onPending: false,
+    onPending: true,
     onFulfilled: false,
+    onRejected: false,
   },
   resetPassword: {
     data: {},

@@ -1,7 +1,8 @@
 import expect from 'expect';
-import LOGIN from '../../constants/login.type';
+import constants from '../../constants/index';
 import loginReducer from '../../reducers/login.reducer';
 
+const { LOGIN } = constants;
 
 const initialState = {
   login: {
@@ -22,12 +23,9 @@ describe('User Reducer test', () => {
     action.type = `${LOGIN}_PENDING`;
     expect(loginReducer(initialState.login, action).onPending).toEqual(true);
   });
+
   it('should handle USER_LOAD_REQUEST', () => {
     action.type = `${LOGIN}_FULFILLED`;
     expect(loginReducer(initialState.login, action).onFulfilled).toEqual(true);
-  });
-  it('should handle USER_LOAD_REQUEST', () => {
-    action.type = `${LOGIN}_REJECTED`;
-    expect(loginReducer(initialState.login, action).onRejected).toEqual(true);
   });
 });

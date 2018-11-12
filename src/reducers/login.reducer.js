@@ -1,5 +1,7 @@
-import { LOGIN } from '../constants/login.type';
+import constants from '../constants/index';
 import initialState from './initialState';
+
+const { LOGIN } = constants;
 
 const loginReducer = (state = initialState.login, action) => {
   switch (action.type) {

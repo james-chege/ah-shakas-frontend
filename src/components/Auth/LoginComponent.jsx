@@ -26,18 +26,20 @@ class LoginComponent extends Component {
       const userToken = redirect.logindata.data.data.user.token;
       if (userToken) {
         localStorage.setItem('userToken', userToken);
-        redirect.history.push('/dashboard');
+        // redirect.history.push('/dashboard');
+        window.location.replace('/dashboard');
       }
     }
     const { email, password } = this.state;
     return (
 
+
       <div className="defaultContainer" onSubmit={this.onSubmit}>
         <div className="valign-wrapper row login-box">
-          <div className="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+          <div className="col ">
             <form>
-              <div className="card-content">
-                <span className="card-title center-align">Login</span>
+              <div className="">
+                <span className="center-align">Sign In</span>
                 <div className="row">
                   <div className="input-field col s12">
                     <input
@@ -50,7 +52,7 @@ class LoginComponent extends Component {
                     />
                     <div id="errors" />
                   </div>
-                  <div className="input-field col s12">
+                  <div className="input-field col m12">
                     <input
                       placeholder="Enter password..."
                       id="MyPass"
@@ -66,17 +68,17 @@ class LoginComponent extends Component {
               <div className="center-align">
                 <a className="teal-text" href="#!"><b>Forgot Password?</b></a>
               </div>
-              <div className="card-action center-align">
-                <input type="submit" className="btn teal waves-effect waves-light" onClick={this.onSubmit} />
+
+              <div className="center-align">
+                <input type="submit" className="btn-primary" onClick={this.onSubmit} />
               </div>
             </form>
           </div>
         </div>
-        <div className="card-action center-align">
+        <div className="center-align">
           <a className="teal-text" href="#!">Create account</a>
         </div>
       </div>
-
     );
   }
 }

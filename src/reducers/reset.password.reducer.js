@@ -1,4 +1,6 @@
-import { RESET_PASSWORD_ACTION, ERROR_ACTION } from '../constants';
+import CONSTANTS from '../constants';
+
+const { RESET_PASSWORD_ACTION, ERROR_ACTION } = CONSTANTS;
 
 const initialState = {
   data: {},

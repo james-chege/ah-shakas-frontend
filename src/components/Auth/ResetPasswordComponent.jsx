@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import SuccessMessage from '../Messages/SuccessMessage';
-import ResettingPasswordRequest from '../../actions/reseting.password.action';
 import ResetPasswordForm from '../forms/ResetPasswordForm';
 
 const ResetPasswordComponent = () => ({
@@ -19,8 +17,4 @@ ResetPasswordComponent.propTypes = {
   ResettingPasswordRequest: PropTypes.func.isRequired,
 };
 
-export const mapStateToProps = ({ reset }) => ({ ...reset });
-
-export default connect(mapStateToProps, {
-  ResettingPasswordRequest,
-})(ResetPasswordComponent);
+export default ResetPasswordComponent;

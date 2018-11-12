@@ -4,12 +4,13 @@ import axios from 'axios';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import resetPasswordRequest from '../../actions/reseting.password.action';
-import { RESETTING_ERROR_ACTION, RESETTING_PASSWORD_ACTION } from '../../constants/index';
+import CONSTANTS from '../../constants/index';
 import RESPONSES from '../../mock/responses';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 let store;
+const { RESETTING_ERROR_ACTION, RESETTING_PASSWORD_ACTION } = CONSTANTS;
 
 describe('Password reset Action tests', () => {
   const mock = new MockAdapter(axios);

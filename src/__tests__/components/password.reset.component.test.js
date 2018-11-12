@@ -17,6 +17,7 @@ describe('Renders <ForgotPasswordForm /> correctly', () => {
     },
     loading: true,
     resetPasswordRequest: expect.any(Function),
+    onSubmit: jest.fn(),
   };
 
   const wrapper = shallow(

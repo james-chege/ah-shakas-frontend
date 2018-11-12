@@ -17,7 +17,9 @@ class ForgotPasswordForm extends React.Component {
     errors: {},
   };
 
-  onChange = e => this.setState({ ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } });
+  onChange = e => this.setState(
+    { ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } },
+  );
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -64,7 +66,7 @@ class ForgotPasswordForm extends React.Component {
 
 ForgotPasswordForm.propTypes = {
   resetPasswordRequest: PropTypes.func.isRequired,
-}
+};
 
 export const mapStateToProps = ({ reset }) => ({ ...reset });
 

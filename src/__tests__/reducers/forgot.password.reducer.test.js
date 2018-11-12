@@ -1,5 +1,5 @@
 import expect from 'expect';
-import { RESET_PASSWORD_ACTION, ERROR_ACTION } from '../../constants/index';
+import CONSTANTS from '../../constants/index';
 import restRequest from '../../reducers/reset.password.reducer';
 import RESPONSES from '../../mock/responses';
 
@@ -9,6 +9,7 @@ const initialState = {
 };
 
 const action = { payload: {} };
+const { RESET_PASSWORD_ACTION, ERROR_ACTION } = CONSTANTS;
 
 describe('Reset Password Reducer test', () => {
   it('should return initial state when there is no action', () => {

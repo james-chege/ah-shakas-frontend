@@ -1,6 +1,9 @@
 import React from 'react';
 import {
-  Row, Button, Input, Card,
+  Row,
+  Button,
+  Input,
+  Card,
 } from 'react-materialize';
 import { connect } from 'react-redux';
 import PropTypes from 'proptypes';

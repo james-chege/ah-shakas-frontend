@@ -4,7 +4,7 @@ import {
 } from 'react-materialize';
 import { connect } from 'react-redux';
 import PropTypes from 'proptypes';
-import ResettingPasswordRequest from '../../actions/reseting.password.action';
+import ResettingPasswordRequest from '../../actions/resetingPassword.action';
 import InlineError from '../Messages/InlineError';
 
 class ResetPasswordForm extends React.Component {

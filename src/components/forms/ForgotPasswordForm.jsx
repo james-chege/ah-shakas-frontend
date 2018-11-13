@@ -6,7 +6,7 @@ import isEmail from 'validator/lib/isEmail';
 import { connect } from 'react-redux';
 import PropTypes from 'proptypes';
 import InlineError from '../Messages/InlineError';
-import resetPasswordRequest from '../../actions/password.reset.action';
+import resetPasswordRequest from '../../actions/passwordReset.action';
 
 class ForgotPasswordForm extends React.Component {
   state = {

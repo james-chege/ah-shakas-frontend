@@ -9,6 +9,8 @@ import ReadUpdateArticleContainer from './containers/Articles/ReadUpdateArticleC
 import ForgotPasswordContainer from './containers/Auth/ForgotPasswordContainer';
 import ResetPasswordContainer from './containers/Auth/ResetPasswordContainer';
 import './App.scss';
+import VerificationContainer from './containers/Auth/VerificationContainer';
+import SignUpSuccess from './components/Messages/SignUpSuccess';
 
 require('dotenv').config();
 
@@ -22,6 +24,8 @@ const App = () => (
       <Route path="/reset_password/:token" exact component={withAlert(ResetPasswordContainer)} />
       <Route path="/article" exact component={withAlert(CreateArticleComponent)} />
       <Route path="/article/:slug" exact component={withAlert(ReadUpdateArticleContainer)} />
+      <Route path="/signup/success" exact component={SignUpSuccess} />
+      <Route path="/verify/:token" exact component={VerificationContainer} />
     </Switch>
   </div>
 );

@@ -3,7 +3,7 @@ import {
   Row, Button, Input, Card,
 } from 'react-materialize';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import PropTypes from 'proptypes';
 import ResettingPasswordRequest from '../../actions/reseting.password.action';
 import InlineError from '../Messages/InlineError';
 
@@ -14,22 +14,26 @@ class ResetPasswordForm extends React.Component {
       confirm: '',
     },
     errors: {},
-    loading: false,
   };
 
 
-  onChange = e => this.setState(
-    { ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } },
-  );
+  onChange = (e) => {
+    const { data } = this.state;
+    this.setState({
+      data: { ...data, [e.target.name]: e.target.value },
+    });
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
-    const errors = this.validate(this.state.data);
+    const { data } = this.state;
+    const errors = this.validate(data);
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
-      this.setState({ loading: true });
-      const { ResettingPasswordRequest } = this.props;
-      ResettingPasswordRequest(this.props.token, this.state.data.password);
+      const { resetpassword } = this.props;
+      const { password } = data;
+      const { token } = this.props;
+      resetpassword(token, password);
     }
   };
 
@@ -42,7 +46,8 @@ class ResetPasswordForm extends React.Component {
 
   render() {
     const { data } = this.state;
-    const errors = { ...this.state.errors, ...this.props };
+    let { errors } = this.state;
+    errors = { ...errors, ...this.props };
     return (
       <Card>
         <form onSubmit={this.onSubmit}>
@@ -56,22 +61,23 @@ class ResetPasswordForm extends React.Component {
               s={12}
               onChange={this.onChange}
             />
-            { errors.password && <InlineError text={errors.password} />}
-            { errors.message && <InlineError text={errors.message} />}
-            { errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
+            {errors.password && <InlineError text={errors.password} />}
+            {errors.message && <InlineError text={errors.message} />}
+            {errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
           </Row>
           <Row>
             <Input
               label="confirm"
               name="confirm"
+              type="password"
               className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}
               value={data.confirm}
               s={12}
               onChange={this.onChange}
             />
-            { errors.password && <InlineError text={errors.password} /> }
-            { errors.message && <InlineError text={errors.message} /> }
-            { errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
+            {errors.password && <InlineError text={errors.password} />}
+            {errors.message && <InlineError text={errors.message} />}
+            {errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
           </Row>
           <Button>Submit</Button>
         </form>
@@ -86,10 +92,12 @@ ResetPasswordForm.propTypes = {
       token: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  resetpassword: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ resetting }) => ({ ...resetting });
 
 export default connect(mapStateToProps, {
-  ResettingPasswordRequest,
+  resetpassword: ResettingPasswordRequest,
 })(ResetPasswordForm);

@@ -1,3 +1,4 @@
+import PropTypes from 'proptypes';
 import React from 'react';
 
 const InlineError = ({ text }) => (
@@ -5,4 +6,7 @@ const InlineError = ({ text }) => (
 
 );
 
+InlineError.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 export default InlineError;

@@ -16,7 +16,7 @@ describe('Renders <ForgotPasswordForm /> correctly', () => {
       user: '',
     },
     loading: true,
-    resetPasswordRequest: expect.any(Function),
+    resetPassword: expect.any(Function),
     onSubmit: jest.fn(),
   };
 

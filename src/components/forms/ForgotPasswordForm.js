@@ -4,7 +4,7 @@ import {
 } from 'react-materialize';
 import isEmail from 'validator/lib/isEmail';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import PropTypes from 'proptypes';
 import InlineError from '../Messages/InlineError';
 import resetPasswordRequest from '../../actions/password.reset.action';
 
@@ -13,22 +13,24 @@ class ForgotPasswordForm extends React.Component {
     data: {
       email: '',
     },
-    loading: false,
     errors: {},
   };
 
-  onChange = e => this.setState(
-    { ...this.state, data: { ...this.state.data, [e.target.name]: e.target.value } },
-  );
+  onChange = (e) => {
+    const { data } = this.state;
+    this.setState({
+      data: { ...data, [e.target.name]: e.target.value },
+    });
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
-    const errors = this.validate(this.state.data);
+    const { data } = this.state;
+    const errors = this.validate(data);
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
-      this.setState({ loading: true });
-      const { resetPasswordRequest } = this.props;
-      resetPasswordRequest(this.state.data);
+      const { resetPassword } = this.props;
+      resetPassword(data);
     }
   };
 
@@ -39,8 +41,10 @@ class ForgotPasswordForm extends React.Component {
   };
 
   render() {
+    const myprops = { ...this.props };
     const { data } = this.state;
-    const errors = { ...this.state.errors, ...this.props.errors };
+    let { errors } = this.state;
+    errors = { ...errors, ...myprops.errors };
     return (
       <Card>
         <form onSubmit={this.onSubmit}>
@@ -65,11 +69,11 @@ class ForgotPasswordForm extends React.Component {
 }
 
 ForgotPasswordForm.propTypes = {
-  resetPasswordRequest: PropTypes.func.isRequired,
+  resetPassword: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = ({ reset }) => ({ ...reset });
 
 export default connect(mapStateToProps, {
-  resetPasswordRequest,
+  resetPassword: resetPasswordRequest,
 })(ForgotPasswordForm);

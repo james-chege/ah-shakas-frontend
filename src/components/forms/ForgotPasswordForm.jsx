@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Row, Button, Input, Card,
+  Row, Button, Input, Card, Col,
 } from 'react-materialize';
 import isEmail from 'validator/lib/isEmail';
 import { connect } from 'react-redux';
@@ -46,24 +46,27 @@ class ForgotPasswordForm extends React.Component {
     let { errors } = this.state;
     errors = { ...errors, ...myprops.errors };
     return (
-      <Card>
-        <form onSubmit={this.onSubmit}>
-          <Row>
-            <Input
-              label="email"
-              name="email"
-              className={errors ? errors.email && 'invalid' : errors.message && 'invalid'}
-              value={data.email}
-              s={12}
-              onChange={this.onChange}
-            />
-            { errors.email && <InlineError text={errors.email} />}
-            { errors.message && <InlineError text={errors.message} />}
+      <Col>
+        <Card className="center">
+          <h4 className="left">Request reset link</h4>
+          <form onSubmit={this.onSubmit}>
+            <Row>
+              <Input
+                label="email"
+                name="email"
+                className={errors ? errors.email && 'invalid' : errors.message && 'invalid'}
+                value={data.email}
+                s={12}
+                onChange={this.onChange}
+              />
+              { errors.email && <InlineError text={errors.email} />}
+              { errors.message && <InlineError text={errors.message} />}
 
-          </Row>
-          <Button>Submit</Button>
-        </form>
-      </Card>
+            </Row>
+            <Button>Submit</Button>
+          </form>
+        </Card>
+      </Col>
     );
   }
 }

@@ -4,6 +4,7 @@ import {
   Button,
   Input,
   Card,
+  Col,
 } from 'react-materialize';
 import { connect } from 'react-redux';
 import PropTypes from 'proptypes';
@@ -52,39 +53,42 @@ class ResetPasswordForm extends React.Component {
     let { errors } = this.state;
     errors = { ...errors, ...this.props };
     return (
-      <Card>
-        <form onSubmit={this.onSubmit}>
-          <Row>
-            <Input
-              label="New Password"
-              name="password"
-              type="password"
-              className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}
-              value={data.password}
-              s={12}
-              onChange={this.onChange}
-            />
-            {errors.password && <InlineError text={errors.password} />}
-            {errors.message && <InlineError text={errors.message} />}
-            {errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
-          </Row>
-          <Row>
-            <Input
-              label="confirm"
-              name="confirm"
-              type="password"
-              className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}
-              value={data.confirm}
-              s={12}
-              onChange={this.onChange}
-            />
-            {errors.password && <InlineError text={errors.password} />}
-            {errors.message && <InlineError text={errors.message} />}
-            {errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
-          </Row>
-          <Button>Submit</Button>
-        </form>
-      </Card>
+      <Col>
+        <Card className="center">
+          <h4 className="left">Reset Password</h4>
+          <form onSubmit={this.onSubmit}>
+            <Row>
+              <Input
+                label="New Password"
+                name="password"
+                type="password"
+                className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}
+                value={data.password}
+                s={12}
+                onChange={this.onChange}
+              />
+              {errors.password && <InlineError text={errors.password} />}
+              {errors.message && <InlineError text={errors.message} />}
+              {errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
+            </Row>
+            <Row>
+              <Input
+                label="confirm"
+                name="confirm"
+                type="password"
+                className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}
+                value={data.confirm}
+                s={12}
+                onChange={this.onChange}
+              />
+              {errors.password && <InlineError text={errors.password} />}
+              {errors.message && <InlineError text={errors.message} />}
+              {errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
+            </Row>
+            <Button>Submit</Button>
+          </form>
+        </Card>
+      </Col>
     );
   }
 }

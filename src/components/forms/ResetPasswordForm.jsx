@@ -67,9 +67,11 @@ class ResetPasswordForm extends React.Component {
                 s={12}
                 onChange={this.onChange}
               />
-              {errors.password && <InlineError text={errors.password} />}
-              {errors.message && <InlineError text={errors.message} />}
-              {errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
+              <Row>
+                <p className="left inlineError">{errors.password && <InlineError text={errors.password} />}</p>
+                <p className="left inlineError">{errors.message && <InlineError text={errors.message} />}</p>
+                <p className="left inlineError">{errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}</p>
+              </Row>
             </Row>
             <Row>
               <Input
@@ -81,9 +83,11 @@ class ResetPasswordForm extends React.Component {
                 s={12}
                 onChange={this.onChange}
               />
-              {errors.password && <InlineError text={errors.password} />}
-              {errors.message && <InlineError text={errors.message} />}
-              {errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}
+              <Row>
+                <p className="left inlineError">{errors.password && <InlineError text={errors.password} />}</p>
+                <p className="left inlineError">{errors.message && <InlineError text={errors.message} />}</p>
+                <p className="left inlineError">{errors.errors ? errors.errors.length && <InlineError text={errors.errors.toString()} /> : ''}</p>
+              </Row>
             </Row>
             <Button>Submit</Button>
           </form>

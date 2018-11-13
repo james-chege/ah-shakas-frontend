@@ -28,8 +28,8 @@ body {
   font-weight: 900;
   margin: 0 auto;
   padding-bottom: 10px;
-  padding-left: 10;
-  padding-right: 10;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-top: 20px;
   width: 550px;
 }
@@ -63,4 +63,18 @@ body {
 
 .msg {
   color: #008080;
+}
+
+.center.card {
+  font-size: 15px;
+}
+
+.inlineError {
+  margin-left: 10px;
+  font-size: 15px !important;
+}
+
+p.left.inlineError {
+  margin-left: 10px;
+  font-weight: 400;
 }

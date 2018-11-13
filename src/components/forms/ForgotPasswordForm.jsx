@@ -59,9 +59,10 @@ class ForgotPasswordForm extends React.Component {
                 s={12}
                 onChange={this.onChange}
               />
-              { errors.email && <InlineError text={errors.email} />}
-              { errors.message && <InlineError text={errors.message} />}
-
+              <Row>
+                <h6 className="left inlineError">{ errors.email && <InlineError text={errors.email} />}</h6>
+                <h6 className="left">{ errors.message && <InlineError text={errors.message} />}</h6>
+              </Row>
             </Row>
             <Button>Submit</Button>
           </form>

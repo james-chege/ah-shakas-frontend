@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'proptypes';
-import SuccessMessage from '../Messages/SuccessMessage';
+import { Redirect } from 'react-router-dom';
 import ResetPasswordForm from '../forms/ResetPasswordForm';
 
 class ResetPasswordComponent extends React.Component {
@@ -15,7 +15,7 @@ class ResetPasswordComponent extends React.Component {
     const { token } = params;
     return (
       <div className="container">
-        { user ? <SuccessMessage text="Password successfully reset!" /> : <ResetPasswordForm token={token} /> }
+        { user ? <Redirect to="/login" /> : <ResetPasswordForm token={token} /> }
       </div>
     );
   }

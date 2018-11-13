@@ -60,7 +60,7 @@ class ForgotPasswordForm extends React.Component {
                 onChange={this.onChange}
               />
               <Row>
-                <h6 className="left inlineError">{ errors.email && <InlineError text={errors.email} />}</h6>
+                <h6 className="left inline-error">{ errors.email && <InlineError text={errors.email} />}</h6>
                 <h6 className="left">{ errors.message && <InlineError text={errors.message} />}</h6>
               </Row>
             </Row>

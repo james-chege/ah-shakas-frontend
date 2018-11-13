@@ -48,7 +48,7 @@ class ForgotPasswordForm extends React.Component {
     return (
       <Col>
         <Card className="center">
-          <h4 className="left">Request reset link</h4>
+          <h4 className="left">Request password reset link</h4>
           <form onSubmit={this.onSubmit}>
             <Row>
               <Input

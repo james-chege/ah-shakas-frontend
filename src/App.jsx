@@ -17,7 +17,8 @@ require('dotenv').config();
 const App = () => (
   <div>
     <Switch>
-      <Route path="/:activateModal?" exact component={HomePageContainer} />
+      <Route path="/" exact component={HomePageContainer} />
+      <Route path="/users/:activateModal?" exact component={HomePageContainer} />
       <Route path="/forgot_password" exact component={ForgotPasswordContainer} />
       <Route path="/reset_password/:token" exact component={withAlert(ResetPasswordContainer)} />
       <Route path="/article" exact component={withAlert(CreateArticleComponent)} />

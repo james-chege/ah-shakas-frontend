@@ -1,6 +1,6 @@
 import expect from 'expect';
 import CONSTANTS from '../../constants/index';
-import ResettingPasswordReducer from '../../reducers/resetting.password.reducer';
+import ResettingPasswordReducer from '../../reducers/resettingPassword.reducer';
 import RESPONSES from '../../mock/responses';
 
 const initialState = {

@@ -80,7 +80,8 @@ $color-white: #ffffff;
   z-index: 1000;
   padding: 1rem ;
 }
-.overlayCenter {
+
+.overlay-center {
   align-items: center;
 
   .row {
@@ -90,7 +91,7 @@ $color-white: #ffffff;
   }
 }
 
-.customModal {
+.custom-modal {
   padding: 0 10px 0 0;
   .image-wrapper {
     padding: 0 10px 0 0;

@@ -46,8 +46,8 @@ class App extends Component {
           open={open}
           onClose={this.closeLogin}
           classNames={{
-            overlay: 'overlayCenter',
-            modal: 'customModal',
+            overlay: 'overlay-center',
+            modal: 'custom-modal',
           }}
         >
           <div className="row">
@@ -62,8 +62,8 @@ class App extends Component {
           onClose={this.closeSignup}
           center
           classNames={{
-            overlay: 'overlayCenter',
-            modal: 'customModal',
+            overlay: 'overlay-center',
+            modal: 'custom-modal',
           }}
         >
           <div className="row">

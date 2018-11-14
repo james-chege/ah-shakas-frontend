@@ -4,6 +4,11 @@ files:
   include: '**/*.s+(a|c)ss'
 rules:
   # Disallows
+  rules:
+  indentation:
+    - 2
+    -
+      size: 2
   no-color-literals: 0
   no-ids: 0
   no-important: 0

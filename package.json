@@ -44,7 +44,7 @@
     "coverage": "yarn test --coverage",
     "precommit": "lint-staged",
     "eslint-check": "./node_modules/.bin/eslint",
-    "css-style-check": "./node_modules/.bin/stylelint --syntax scss"
+    "css-style-check": "./node_modules/.bin/stylelint"
   },
   "eslintConfig": {
     "extends": "react-app"

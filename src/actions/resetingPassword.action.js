@@ -3,7 +3,7 @@ import CONSTANTS from '../constants';
 
 const { RESETTING_ERROR_ACTION, RESETTING_PASSWORD_ACTION } = CONSTANTS;
 
-const ResettingPassword = (token, password) => dispatch => axios.put(`http://127.0.0.1:8000/api/users/password_reset?token=${token}`, { password })
+const ResettingPassword = (token, password) => dispatch => axios.put(`${process.env.REACT_APP_BASE_URL}/users/password_reset?token=${token}`, { password })
   .then((response) => {
     dispatch({
       type: RESETTING_PASSWORD_ACTION,

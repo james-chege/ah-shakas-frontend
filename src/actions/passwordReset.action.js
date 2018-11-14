@@ -4,7 +4,7 @@ import CONSTANTS from '../constants';
 
 const { ERROR_ACTION, RESET_PASSWORD_ACTION } = CONSTANTS;
 
-const resetPasswordRequest = ({ email }) => dispatch => axios.post('http://127.0.0.1:8000/api/users/email_sent', { email })
+const resetPasswordRequest = ({ email }) => dispatch => axios.post(`${process.env.REACT_APP_BASE_URL}/users/email_sent`, { email })
   .then((data) => {
     dispatch({
       type: RESET_PASSWORD_ACTION,

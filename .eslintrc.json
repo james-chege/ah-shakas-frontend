@@ -23,6 +23,6 @@
     "rules": {
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "object-curly-newline": "off",
-      "function-paren-newline": ["error", "never"]
+      "function-paren-newline":"off"
     }
   }

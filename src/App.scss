@@ -1,4 +1,5 @@
 $primary-color:#008080;
+$color-white: #ffffff;
 
 .App {
   text-align: center;
@@ -17,7 +18,7 @@ $primary-color:#008080;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #ffffff;
+  color: $color-white;
 }
 
 .App-link {
@@ -34,7 +35,7 @@ $primary-color:#008080;
 }
 .btn-primary {
   padding: 0.5rem 2rem;
-  border: 1px #ffffff solid;
+  border: 1px $color-white solid;
   display: inline-block;
   border-radius: 5px;
   height: auto;
@@ -42,7 +43,7 @@ $primary-color:#008080;
   transition: all 0.5s;
   text-decoration: none;
   background: $primary-color;
-  color: #ffffff;
+  color: $color-white;
 }
 
 .btn-secondary {
@@ -53,7 +54,7 @@ $primary-color:#008080;
   border-radius: 5px;
   height: auto;
   text-decoration: none;
-  background: #ffffff;
+  background: $color-white;
   color: $primary-color;
   transition: background 500ms ease;
 
@@ -61,7 +62,11 @@ $primary-color:#008080;
 .btn-primary:hover {background-color: #2f4f4f}
 .btn-secondary:hover {background-color: #e0ffff}
 
-.btn-flat {color:white;}
+.btn-flat {color:$color-white;}
+
+.center-align {
+  padding-bottom: 10px;
+}
 
 .overlay {
   display: flex;
@@ -78,6 +83,12 @@ $primary-color:#008080;
 }
 .overlayCenter {
   align-items: center;
+
+  .row {
+    display: block;
+    padding: 0 10px 0 0;
+    margin-bottom: 0;
+  }
 }
 
 .customModal {

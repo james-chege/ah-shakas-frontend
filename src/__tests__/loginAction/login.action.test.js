@@ -10,7 +10,7 @@ describe('login', () => {
     store.clearActions();
   });
 
-  it('signup action', () => {
+  it('login action', () => {
     const credentials = {
       email: 'michaelbasweti.com',
       password: 'lalalala123',

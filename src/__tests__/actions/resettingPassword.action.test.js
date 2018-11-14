@@ -16,7 +16,7 @@ describe('Password reset Action tests', () => {
   const mock = new MockAdapter(axios);
   const token = 'xaAaddddAD3323@#@$$@%@';
   const password = 'AverysecurePassword';
-  const url = `https://ah-shakas-staging.herokuapp.com/api/users/password_reset?token=${token}`;
+  const url = `${process.env.REACT_APP_BASE_URL}/users/password_reset?token=${token}`;
 
   store = mockStore({});
   afterEach(() => {

@@ -15,7 +15,7 @@ const { ERROR_ACTION, RESET_PASSWORD_ACTION } = CONSTANTS;
 
 describe('Password reset Action tests', () => {
   const mock = new MockAdapter(axios);
-  const url = 'https://ah-shakas-staging.herokuapp.com/api/users/email_sent';
+  const url = `${process.env.REACT_APP_BASE_URL}/users/email_sent`;
 
   store = mockStore({});
   afterEach(() => {

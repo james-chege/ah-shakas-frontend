@@ -75,7 +75,7 @@ class ResetPasswordForm extends React.Component {
             </Row>
             <Row>
               <Input
-                label="confirm"
+                label="confirm Password"
                 name="confirm"
                 type="password"
                 className={errors ? errors.password && 'invalid' : errors.message && 'invalid'}

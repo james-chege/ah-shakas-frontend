@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Row, Button, Input, Card, Col,
-} from 'react-materialize';
+import { Row, Button, Input, Card, Col } from 'react-materialize';
 import isEmail from 'validator/lib/isEmail';
 import { connect } from 'react-redux';
 import PropTypes from 'proptypes';

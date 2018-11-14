@@ -15,7 +15,7 @@ class ResetPasswordComponent extends React.Component {
     const { token } = params;
     return (
       <div className="container">
-        { user ? <Redirect to="/login" /> : <ResetPasswordForm token={token} /> }
+        { user ? window.Materialize.toast('Password successfully reset!', 1000) && <Redirect to="/login" /> : <ResetPasswordForm token={token} /> }
       </div>
     );
   }

@@ -1,13 +1,9 @@
 import CONSTANTS from '../constants';
+import initialState from './initialState';
 
 const { RESET_PASSWORD_ACTION, ERROR_ACTION } = CONSTANTS;
 
-const initialState = {
-  data: {},
-  errors: {},
-};
-
-const ResetPasswordReducer = (state = initialState, action) => {
+const ResetPasswordReducer = (state = initialState.resetPassword, action) => {
   switch (action.type) {
     case RESET_PASSWORD_ACTION: {
       return { ...state, data: action.payload };

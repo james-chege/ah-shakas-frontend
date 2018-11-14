@@ -3,4 +3,8 @@ export default {
     loading: false,
     success: false,
   },
+  resetPassword: {
+    data: {},
+    errors: {},
+  },
 };

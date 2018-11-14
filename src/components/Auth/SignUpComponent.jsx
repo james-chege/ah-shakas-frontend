@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import { Button } from 'react-materialize';
 
 class SignUpComponent extends Component {
   state = {
@@ -40,18 +39,15 @@ class SignUpComponent extends Component {
     } = this.state;
     return (
       <div className="center">
-        <h3 className="title">Create Account</h3>
+        <h5 className="title">Create Account</h5>
         {success ? this.successMessage() : null}
         <form onSubmit={this.onSignUp}>
           <input
             name="username"
-            s={10}
-            placeholder="Enter username..."
-            label="Username"
+            placeholder="Enter username"
             onChange={this.handleChange}
             defaultValue={username}
             type="text"
-            icon="account_circle"
             minLength="6"
             required
           />
@@ -61,13 +57,10 @@ class SignUpComponent extends Component {
 
           <input
             name="email"
-            s={10}
-            placeholder="Enter email..."
-            label="Email"
+            placeholder="Enter email"
             onChange={this.handleChange}
             defaultValue={email}
             type="email"
-            icon="email"
             required
           />
           {errors
@@ -76,9 +69,7 @@ class SignUpComponent extends Component {
 
           <input
             name="password"
-            s={10}
             placeholder="Enter password..."
-            label="Password"
             onChange={this.handleChange}
             defaultValue={password}
             type="password"
@@ -91,10 +82,8 @@ class SignUpComponent extends Component {
             }
 
           <input
-            s={10}
             name="confirmPassword"
-            placeholder="Re-type password..."
-            label="Confirm password"
+            placeholder="Re-type password"
             onChange={this.handleChange}
             defaultValue={confirmPassword}
             type="password"
@@ -104,7 +93,7 @@ class SignUpComponent extends Component {
           />
           <div className="alert-err">{passwordError}</div>
 
-          <Button type="submit" className="btn-primary">Sign Up</Button>
+          <input type="submit" value="Sign Up" className="btn-primary" />
         </form>
       </div>
     );

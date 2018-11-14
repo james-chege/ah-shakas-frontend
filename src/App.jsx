@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './components/Home/HomeComponent';
 import LoginContainer from './containers/Auth/LoginContainer';
 import SignUpContainer from './containers/Auth/SignUpContainer';
-import DashboardComponent from './components/Dashboard/dashboard';
+import DashboardComponent from './components/Dashboard/Dashboard';
 import './App.scss';
 import ForgotPasswordContainer from './containers/Auth/ForgotPasswordContainer';
 import ResetPasswordContainer from './containers/Auth/ResetPasswordContainer';

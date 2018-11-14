@@ -1,3 +1,5 @@
+$primary-color:#008080;
+
 .App {
   text-align: center;
 }
@@ -15,7 +17,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #ffffff;
 }
 
 .App-link {
@@ -30,33 +32,125 @@
     transform: rotate(360deg);
   }
 }
-.btn-primary{
+.btn-primary {
   padding: 0.5rem 2rem;
-  border: 1px white solid;
+  border: 1px #ffffff solid;
   display: inline-block;
   border-radius: 5px;
-  box-shadow: 0 9px #999;
   height: auto;
   cursor: pointer;
   transition: all 0.5s;
   text-decoration: none;
-  background: teal;
-  color: white;
-  //transition: background 500ms ease;
+  background: $primary-color;
+  color: #ffffff;
 }
 
-.btn-secondary{
+.btn-secondary {
   padding: 0.5rem 2rem;
-  border: 1px teal solid;
+  border: 1px $primary-color solid;
   display: inline-block;
-  box-shadow: 0 9px #999;
   cursor: pointer;
   border-radius: 5px;
   height: auto;
   text-decoration: none;
-  background: white;
-  color: teal;
+  background: #ffffff;
+  color: $primary-color;
   transition: background 500ms ease;
+
 }
-.btn-primary:hover {background-color: darkslategrey}
-.btn-secondary:hover {background-color: lightcyan}
+.btn-primary:hover {background-color: #2f4f4f}
+.btn-secondary:hover {background-color: #e0ffff}
+
+.btn-flat {color:white;}
+
+.overlay {
+  display: flex;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+  padding: 1rem ;
+}
+.overlayCenter {
+  align-items: center;
+
+  .row {
+    display: block;
+    padding: 0 10px 0 0;
+    margin-bottom: 0;
+  }
+}
+
+.customModal {
+  padding: 0 10px 0 0;
+  .image-wrapper {
+    padding: 0 10px 0 0;
+    margin-right: 20px;
+    margin-bottom: 0;
+    min-height: 400px;
+    width: 150px;
+    background: url('./images/write1.jpg') no-repeat center center;
+    background-size: cover;
+  }
+  .col {
+    padding: 0 10px 0 0;
+    margin-bottom: 0;
+  }
+}
+.center-align {
+  padding-bottom: 1rem;
+}
+form {
+  padding-bottom: 0;
+}
+.modal {
+  max-width: 800px;
+  position: relative;
+  padding: 0;
+  border-radius: 5px;
+  background: red;
+  background-clip: padding-box;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
+  margin: 0 0 0 0;
+}
+.closeButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  display: flex;
+}
+.closeIcon {
+}
+.transitionEnter {
+  opacity: 0.01;
+}
+.transitionEnterActive {
+  opacity: 1;
+  transition: opacity 500ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.transitionExit {
+  opacity: 1;
+}
+.transitionExitActive {
+  opacity: 0.01;
+  transition: opacity 500ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.home-img {
+  padding-left: -10px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

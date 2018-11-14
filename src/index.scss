@@ -24,14 +24,13 @@ body {
 .center {
   background-color: $form-color;
   border-radius: 5px;
-  font-size: 50px;
-  font-weight: 900;
   margin: 0 auto;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 20px;
   width: 350px;
+
 }
 
 @media screen and (max-width: 800px) {
@@ -42,7 +41,7 @@ body {
 }
 
 .input-field label {
-  height: auto;
+  height: 1px;
 }
 
 .nav {

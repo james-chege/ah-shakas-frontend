@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import Sociallogin from '../../containers/Auth/SocialAuthContainer';
 
@@ -25,16 +24,14 @@ class LoginComponent extends Component {
   render() {
     const redirect = this.props;
     if (redirect.logindata.onFulfilled) {
-      const userToken = redirect.logindata.data.data.user.token;
-      if (userToken) {
-        localStorage.setItem('userToken', userToken);
-        window.location.replace('/dashboard');
+      const { user } = redirect.logindata.data.data;
+      if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        window.location.replace('/');
       }
     }
     const { email, password } = this.state;
     return (
-
-
       <div className="center" onSubmit={this.onSubmit}>
         <form>
           <div className="">

@@ -7,5 +7,5 @@
     "env": {},
     "formation": {},
     "addons": [],
-    "buildpacks": []
+    "buildpacks": ["mars/create-react-app"]
 }

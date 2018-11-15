@@ -12,6 +12,11 @@ export default {
     data: {},
     errors: {},
   },
+  articles: {
+    article: {},
+    loading: false,
+    success: false,
+  },
   socialauth: {
     resolved: false,
     rejected: false,

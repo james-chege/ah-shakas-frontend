@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Modal from 'react-responsive-modal';
-import { Link } from 'react-router-dom';
-import { Navbar } from 'react-materialize';
-import LoginContainer from '../../containers/Auth/LoginContainer';
-import SignUpComponent from '../../containers/Auth/SignUpContainer';
+import { Icon, Navbar as MaterialNavbar, NavItem } from 'react-materialize';
+import LoginContainer from '../containers/Auth/LoginContainer';
+import SignUpComponent from '../containers/Auth/SignUpContainer';
+import Dropdown from './Dropdown';
+import authUser from '../utils/authUser.util';
 
-
-class App extends Component {
+class Navbar extends React.Component {
   state = {
     open: false,
     openRegistration: false,
+    menuOpen: false,
+  };
+
+  toggleMenu = () => {
+    const { menuOpen } = this.state;
+    this.setState({
+      menuOpen: !menuOpen,
+    });
   };
 
   openSignup = () => {
@@ -29,18 +37,26 @@ class App extends Component {
   };
 
   render() {
-    const { open, openRegistration } = this.state;
+    const { open, menuOpen, openRegistration } = this.state;
     return (
-      <div className="nav">
-        <Navbar className="teal teal-text row">
-          <div className="nav-wrapper">
-            <ul id="nav-mobile" textclassname="teal" className="right hide-on-med-and-down">
-              <li><Link to="/">HOME</Link></li>
-              <li><button type="button" className="waves-effect waves-teal btn-flat" onClick={this.openSignup}>SignUp</button></li>
-              <li><button type="button" className="waves-effect waves-teal btn-flat" onClick={this.openLogin}>Login</button></li>
-            </ul>
-          </div>
-        </Navbar>
+      <>
+        <MaterialNavbar fixed className="white" brand={'Authors\' Haven'} right>
+          {authUser
+            ? (
+            <>
+              <NavItem href="#"><Icon>search</Icon></NavItem>
+              <NavItem href="#"><Icon>notifications_none</Icon></NavItem>
+              <NavItem onClick={this.toggleMenu}><Icon>more_vert</Icon></NavItem>
+            </>
+            ) : (
+            <>
+              <NavItem onClick={this.openLogin}>Login</NavItem>
+              <NavItem onClick={this.openSignup}>Sign Up</NavItem>
+            </>
+            )
+        }
+        </MaterialNavbar>
+        <Dropdown shown={menuOpen} />
 
         <Modal
           open={open}
@@ -73,9 +89,9 @@ class App extends Component {
             </div>
           </div>
         </Modal>
-      </div>
+      </>
     );
   }
 }
 
-export default App;
+export default Navbar;

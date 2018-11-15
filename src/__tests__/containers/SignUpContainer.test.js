@@ -1,7 +1,6 @@
-import configureStore from 'redux-mock-store';
 import React from 'react';
+import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
-// import { Button } from 'react-materialize';
 import SignUpContainer from '../../containers/Auth/SignUpContainer';
 
 const mock = configureStore();

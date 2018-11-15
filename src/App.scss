@@ -1,3 +1,6 @@
+$primary-color:#008080;
+$color-white: #fff;
+
 .App {
   text-align: center;
 }
@@ -15,7 +18,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: $color-white;
 }
 
 .App-link {
@@ -26,7 +29,91 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+.btn-primary {
+  background: $primary-color;
+  border: 1px $color-white solid;
+  border-radius: 5px;
+  color: $color-white;
+  cursor: pointer;
+  display: inline-block;
+  height: auto;
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.btn-secondary {
+  background: $color-white;
+  border: 1px $primary-color solid;
+  border-radius: 5px;
+  color: $primary-color;
+  cursor: pointer;
+  display: inline-block;
+  height: auto;
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+  transition: background 500ms ease;
+}
+
+.btn-primary:hover {
+  background-color: #2f4f4f;
+}
+
+.btn-secondary:hover {
+  background-color: #e0ffff;
+}
+
+.btn-flat {
+  color: $color-white;
+}
+
+.center-align {
+  padding-bottom: 10px;
+}
+
+.overlay {
+  display: flex;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.overlay-center {
+  align-items: center;
+
+  .row {
+    display: block;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+  }
+}
+
+.custom-modal {
+  padding: 0 10px 0 0;
+
+  .image-wrapper {
+    padding: 0 10px 0 0;
+    margin-right: 20px;
+    margin-bottom: 0;
+    min-height: 400px;
+    width: 150px;
+    background: url("./images/write1.jpg") no-repeat center center;
+    background-size: cover;
   }
 }

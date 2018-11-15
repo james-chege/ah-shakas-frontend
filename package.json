@@ -10,25 +10,30 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint-config-airbnb": "^17.1.0",
-    "expect": "latest",
+    "expect": "^23.6.0",
     "history": "^4.7.2",
     "jest": "^23.6.0",
     "node-sass": "^4.9.4",
+    "prop-types": "^15.6.2",
     "proptypes": "^1.1.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-materialize": "^2.4.8",
     "react-redux": "^5.1.0",
+    "react-responsive-modal": "^3.5.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "2.0.5",
     "react-test-renderer": "^16.6.0",
     "redux": "^4.0.1",
     "redux-devtools": "^3.4.1",
     "redux-devtools-extension": "^2.13.5",
+    "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.3",
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.3.0",
-    "validator": "^10.8.0"
+    "validator": "^10.9.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,8 +43,8 @@
     "coveralls": "node node_modules/.bin/coveralls",
     "coverage": "yarn test --coverage",
     "precommit": "lint-staged",
-    "eslint-check": "./node_modules/.bin/eslint --fix",
-    "css-style-check": "./node_modules/.bin/stylelint --fix"
+    "eslint-check": "./node_modules/.bin/eslint",
+    "css-style-check": "./node_modules/.bin/stylelint --syntax scss"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -66,14 +71,8 @@
     "concurrent": false,
     "subTaskConcurrency": 1,
     "linters": {
-      "*{.js,jsx}": [
-        "npm run eslint-check",
-        "git add"
-      ],
-      "*{scss}": [
-        "npm run css-style-check",
-        "git add"
-      ]
+      "*{.js,jsx}": "yarn eslint-check",
+      "*{.sass,scss}": "yarn css-style-check"
     }
   }
 }

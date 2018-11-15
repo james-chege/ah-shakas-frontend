@@ -44,7 +44,7 @@
     "coverage": "yarn test --coverage",
     "precommit": "lint-staged",
     "eslint-check": "./node_modules/.bin/eslint",
-    "css-style-check": "./node_modules/.bin/stylelint"
+    "css-style-check": "./node_modules/.bin/stylelint --syntax scss"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -71,7 +71,8 @@
     "concurrent": false,
     "subTaskConcurrency": 1,
     "linters": {
-      "*{.js,jsx}": "yarn eslint-check"
+      "*{.js,jsx}": "yarn eslint-check",
+      "*{.sass,scss}": "yarn css-style-check"
     }
   }
 }

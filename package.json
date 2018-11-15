@@ -71,8 +71,7 @@
     "concurrent": false,
     "subTaskConcurrency": 1,
     "linters": {
-      "*{.js,jsx}": "yarn eslint-check",
-      "*{.sass,scss}": "yarn css-style-check"
+      "*{.js,jsx}": "yarn eslint-check"
     }
   }
 }

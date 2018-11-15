@@ -15,7 +15,7 @@ class ResetPasswordComponent extends React.Component {
     const { token } = params;
     return (
       <div className="container">
-        { user ? alert.show('Password successfully reset!', 1000) && <Redirect to="/login" /> : <ResetPasswordForm token={token} /> }
+        { user ? alert.show('Password successfully reset!', 1000) && <Redirect to="/users/login" /> : <ResetPasswordForm token={token} /> }
       </div>
     );
   }

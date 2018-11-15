@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import configureMockStore from 'redux-mock-store';
 import ReadUpdateArticleComponent from '../../components/Articles/ReadUpdateArticleComponent';
 import AverageRatingContainer from '../../containers/Rating/AverageRatingContainer';
 import MyRatingContainer from '../../containers/Rating/MyRatingContainer';
@@ -7,6 +8,7 @@ import MyRatingContainer from '../../containers/Rating/MyRatingContainer';
 const props = {
   alert: () => {},
   getRatings: jest.fn(),
+  data: { highlights: [''] },
   fetchState: {
     article: {
       title: 'title',
@@ -36,11 +38,25 @@ const props = {
   readOnly: true,
   update: jest.fn(),
   makeToast: jest.fn(),
+  highlighting: jest.fn(),
+  getHighlight: jest.fn(),
+  highlightStore: jest.fn(),
+  logOut: jest.fn(),
 };
 
-const wrapper = shallow(<ReadUpdateArticleComponent {...props} />);
+const mock = configureMockStore();
+
+const store = mock({});
+
+const wrapper = shallow(<ReadUpdateArticleComponent {...props} store={store} />);
 
 describe('Test Read and Update Articles Component', () => {
+  it('test componentWillMount', () => {
+    const spy = jest.spyOn(ReadUpdateArticleComponent.prototype, 'componentWillMount');
+    wrapper.instance().componentWillMount();
+    expect(spy.mock.calls.length).toEqual(1);
+  });
+
   it('mounts components accordingly', () => {
     const spy = jest.spyOn(ReadUpdateArticleComponent.prototype, 'componentDidMount');
     wrapper.instance().componentDidMount();

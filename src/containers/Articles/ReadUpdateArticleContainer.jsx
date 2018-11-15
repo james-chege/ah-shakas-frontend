@@ -3,10 +3,16 @@ import { fetchArticle, updateArticle } from '../../actions/articles.action';
 import { getRatings } from '../../actions/rating.action';
 import ReadUpdateArticleComponent from '../../components/Articles/ReadUpdateArticleComponent';
 import { getComments } from '../../actions/getComments.action';
+import highlightRequest from '../../actions/highlight.action';
+import GetHighlightRequest from '../../actions/getHighlight.action';
+import StoreHighlightRequest from '../../actions/storeHighlightSnippet.action';
 
-export const mapStateToProps = ({ article }) => ({
+export const mapStateToProps = ({ article, highlight, getHighlight, highlightStore }) => ({
   fetchState: article.fetchArticle,
   updateState: article.updateArticle,
+  ...highlight,
+  ...getHighlight,
+  ...highlightStore,
 });
 
 export default connect(mapStateToProps, {
@@ -14,4 +20,7 @@ export default connect(mapStateToProps, {
   update: updateArticle,
   getRatings,
   getComments,
+  highlighting: highlightRequest,
+  getHighlight: GetHighlightRequest,
+  highlightStore: StoreHighlightRequest,
 })(ReadUpdateArticleComponent);

@@ -17,6 +17,9 @@ import likeDislike from './likedislike.reducer';
 import followUserReducer from './follow.reducer';
 import followersReducer from './followers.reducer';
 import followingReducer from './following.reducer';
+import highlight from './highlight.reducer';
+import getHighlight from './getHighlight.reducer';
+import storeHighlights from './storeHiglights.reducer';
 
 const rootReducer = combineReducers({
   reset,
@@ -41,6 +44,9 @@ const rootReducer = combineReducers({
   followUserReducer,
   followersReducer,
   followingReducer,
+  highlight,
+  getHighlight,
+  storeHighlights,
 });
 
 export default rootReducer;

@@ -102,4 +102,12 @@ export default {
     loading: false,
     following: [],
   },
+  highlight: {
+    data: {},
+    errors: {},
+  },
+  storeHighlight: {
+    data: {},
+    errors: {},
+  },
 };

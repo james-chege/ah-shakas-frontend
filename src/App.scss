@@ -97,7 +97,10 @@ $color-white: #fff;
   .row {
     display: block;
     margin-bottom: 0;
-    padding: 0 10px 0 0;  
+    padding-top: 0;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
   }
 }
 

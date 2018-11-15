@@ -12,4 +12,9 @@ export default {
     data: {},
     errors: {},
   },
+  socialauth: {
+    resolved: false,
+    rejected: false,
+    pending: false,
+  },
 };

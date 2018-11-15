@@ -3,6 +3,7 @@ import reset from './resetPassword.reducer';
 import resetting from './resettingPassword.reducer';
 import signUp from './signup.reducer';
 import loginReducer from './login.reducer';
+import SocialAuthReducer from './socialauth.reducer';
 
 const rootReducer = combineReducers({
   // insert reducers here
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   resetting,
   signUp,
   loginReducer,
+  social: SocialAuthReducer,
 });
 
 export default rootReducer;

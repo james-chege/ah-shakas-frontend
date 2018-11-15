@@ -8,6 +8,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import storeConfig from './store/index';
 
+require('dotenv').config();
+
 const history = createHistory();
 
 ReactDOM.render(

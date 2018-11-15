@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
+import Sociallogin from '../../containers/Auth/SocialAuthContainer';
 
 class LoginComponent extends Component {
   state = {
@@ -69,6 +70,8 @@ class LoginComponent extends Component {
 
           <div className="center-align">
             <input type="submit" value="Login" className="btn-primary" onClick={this.onSubmit} />
+            <span className="center-align"><h6>or</h6></span>
+            <Sociallogin />
           </div>
         </form>
         <div className="center-align">

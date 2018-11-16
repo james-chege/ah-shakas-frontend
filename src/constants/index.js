@@ -16,4 +16,4 @@ const CONSTANTS = {
 };
 
 export default CONSTANTS;
-export const TOKEN = localStorage.getItem('userToken');
+export const TOKEN = JSON.parse(localStorage.getItem('user')).token;

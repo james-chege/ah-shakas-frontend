@@ -9,11 +9,15 @@ const loginReducer = (state = initialState.login, action) => {
       return {
         ...state,
         onPending: true,
+        onRejected: false,
+        onFulfilled: false,
       };
     case `${LOGIN}_FULFILLED`:
       return {
         ...state,
+        onRejected: false,
         onFulfilled: true,
+        onPending: false,
         data: action.payload,
       };
 
@@ -21,7 +25,9 @@ const loginReducer = (state = initialState.login, action) => {
       return {
         ...state,
         onRejected: true,
-        error: action.payload,
+        onPending: false,
+        onFulfilled: false,
+        errors: action.payload,
       };
 
     default: return state;

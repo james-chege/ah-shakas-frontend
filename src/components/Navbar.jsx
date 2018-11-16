@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
+import PropTypes from 'prop-types';
 import { Icon, Navbar as MaterialNavbar, NavItem } from 'react-materialize';
 import LoginContainer from '../containers/Auth/LoginContainer';
 import SignUpComponent from '../containers/Auth/SignUpContainer';
@@ -7,11 +8,24 @@ import Dropdown from './Dropdown';
 import authUser from '../utils/authUser.util';
 
 class Navbar extends React.Component {
-  state = {
-    open: false,
-    openRegistration: false,
-    menuOpen: false,
-  };
+  constructor(props) {
+    super(props);
+
+    const { match } = this.props;
+
+    let login = false;
+    let signup = false;
+    if (match && match.params) {
+      login = match.params.activateModal === 'login';
+      signup = match.params.activateModal === 'signup';
+    }
+
+    this.state = {
+      open: login,
+      openRegistration: signup,
+      menuOpen: false,
+    };
+  }
 
   toggleMenu = () => {
     const { menuOpen } = this.state;
@@ -54,7 +68,7 @@ class Navbar extends React.Component {
                 <NavItem onClick={this.openSignup}>Sign Up</NavItem>
               </React.Fragment>
             )
-        }
+          }
         </MaterialNavbar>
         <Dropdown shown={menuOpen} {...this.props} />
 
@@ -93,5 +107,7 @@ class Navbar extends React.Component {
     );
   }
 }
-
+Navbar.propTypes = {
+  match: PropTypes.shape({}).isRequired,
+};
 export default Navbar;

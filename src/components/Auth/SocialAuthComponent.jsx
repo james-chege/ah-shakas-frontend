@@ -29,10 +29,10 @@ class SocialAuth extends Component {
   render() {
     const { social } = this.props;
     if (social.resolved) {
-      const userToken = social.userdata.token;
-      if (userToken) {
-        localStorage.setItem('userToken', userToken);
-        window.location.replace('/dashboard');
+      const user = social.userdata;
+      if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        window.location.replace('/');
       }
     }
     return (

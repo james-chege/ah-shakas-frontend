@@ -5,7 +5,7 @@ export default {
   },
 
   login: {
-    onPending: true,
+    onPending: false,
     onFulfilled: false,
     onRejected: false,
   },

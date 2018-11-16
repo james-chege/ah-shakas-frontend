@@ -1,3 +1,4 @@
+
 const CONSTANTS = {
   SIGNUP: 'SIGNUP',
   RESETTING_PASSWORD_ACTION: 'RESET_PASSWORD_ACTION',
@@ -16,4 +17,3 @@ const CONSTANTS = {
 };
 
 export default CONSTANTS;
-export const TOKEN = JSON.parse(localStorage.getItem('user')).token;

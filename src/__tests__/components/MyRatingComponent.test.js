@@ -9,10 +9,11 @@ describe('test my rating component', () => {
     rating: 1,
     slug: 'hi-there',
     rateArticleAction,
+    alert: jest.fn(),
   };
-  const wrapper = shallow(<MyRating {...props} />);
 
   it('renders MyRating component', () => {
+    const wrapper = shallow(<MyRating {...props} />);
     expect(wrapper.find(StarRatings).length).toBe(0);
   });
 });

@@ -1,16 +1,16 @@
 import StarRatings from 'react-star-ratings';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { TOKEN } from '../../constants';
+import authUser from '../../utils/authUser.util';
 
 const MyRating = ({ rateArticleAction, slug, rating, alert }) => (
   <div className="star-ratings">
-    {TOKEN ? (
+    {authUser ? (
       <div className="myRating" id="ratings">
         <StarRatings
           numberOfStars={5}
           rating={rating}
-          changeRating={(newRating) => { rateArticleAction(slug, newRating); alert.show('Updated ratings!'); }}
+          changeRating={(newRating) => { rateArticleAction(slug, newRating); alert.show('successful!'); }}
           starDimension="25px"
           starSpacing="2px"
           starRatedColor="rgb(255,120,0)"

@@ -76,7 +76,7 @@ describe('Test Read and Update Articles Component', () => {
     expect(wrapper.find(AverageRatingContainer).length).toBe(1);
   });
 
-  it('renders myRatings component', () => {
-    expect(wrapper.find(MyRatingContainer).length).toBe(1);
+  it('does not render myRatings component on my article', () => {
+    expect(wrapper.find(MyRatingContainer).length).toBe(0);
   });
 });

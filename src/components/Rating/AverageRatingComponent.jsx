@@ -1,4 +1,4 @@
-import StarRatings from 'react-star-ratings';
+
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -8,14 +8,11 @@ const AverageRating = ({ averageRating }) => (
         || averageRating === undefined ? (
         ''
       ) : (
-        <div className="averageRating">
-          <StarRatings
-            rating={averageRating}
-            starRatedColor="#008281"
-            starDimension="12px"
-            starSpacing="0px"
-            numberOfStars={5}
-          />
+        <div className="averageRating" style={{ display: '' }}>
+          <i className="large material-icons" style={{ color: 'orange', marginTop: '-20px' }}>star</i>
+          <p className="white-text" style={{ marginLeft: '32px', marginTop: '-62px', paddingTop: '0' }}>{averageRating.toFixed(1)}</p>
+          <p style={{ fontSize: '14px' }}>Average Rating</p>
+
         </div>
       )}
   </div>

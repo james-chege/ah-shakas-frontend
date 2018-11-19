@@ -91,7 +91,6 @@ class ReadUpdateArticleComponent extends React.Component {
                   </>
                 }
             </Col>
-            {averageRate}
             <div className="article">
               <Col s={12}>
                 {article.body
@@ -104,10 +103,29 @@ class ReadUpdateArticleComponent extends React.Component {
                   />
                   )
                 }
-                {myRate}
               </Col>
             </div>
           </Row>
+          <div className="col s12 card-content">
+            <div className="col s6">
+              <p>How did you find this article?</p>
+              <Row>
+                <Col s={3} m={2} style={{ marginRight: '0' }}>
+                  {averageRate}
+                </Col>
+                <Col s={9} m={10} style={{ marginTop: '30px', marginLeft: '0' }}>
+                  {(article.body
+                      && article.author.username !== authUser.username
+                      && readOnly)
+                  && <>
+                      { /* eslint-disable-next-line */ }
+                      {myRate}
+                  </>
+                  }
+                </Col>
+              </Row>
+            </div>
+          </div>
         </div>
       </div>
     );

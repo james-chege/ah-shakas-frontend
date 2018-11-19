@@ -62,18 +62,5 @@ code {
 }
 
 .ratings {
-  width: 70px;
-  float: left;
   position: relative;
-}
-
-.myRating {
-  position: fixed;
-  top: 300px;
-  left: 0;
-  transform: rotate(-90deg);
-}
-
-.star-container {
-  transform: rotate(90deg);
 }

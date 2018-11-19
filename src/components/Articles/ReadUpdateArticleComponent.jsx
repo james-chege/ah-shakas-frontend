@@ -9,6 +9,7 @@ import AverageRatingContainer from '../../containers/Rating/AverageRatingContain
 import TagsComponent from './TagsComponent';
 import Bookmark from '../../containers/Articles/BookmarkContainer';
 import CommentsContainer from '../../containers/Comments/CommentsContainer';
+import LikeDislike from '../../containers/Articles/LikeDislikeContainer';
 
 class ReadUpdateArticleComponent extends React.Component {
   constructor(props) {
@@ -107,16 +108,16 @@ class ReadUpdateArticleComponent extends React.Component {
                   && readOnly)
                   && (
                   <React.Fragment>
-                    { /* eslint-disable-next-line */ }
+                    { /* eslint-disable-next-line */}
                     <p onClick={() => this.setReadOnly(false)} className="publish-btn teal-text"> Edit </p>
                   </React.Fragment>
                   )
-                }
+              }
               {!readOnly && !updateLoading
-                  && (
+                && (
                   <React.Fragment>
-                    { /* eslint-disable-next-line */ }
-                  <p onClick={this.handleDropDown} className='publish-btn teal-text'>Edit Tags </p>
+                    { /* eslint-disable-next-line */}
+                    <p onClick={this.handleDropDown} className='publish-btn teal-text'>Edit Tags </p>
                     <TagsComponent
                       visible={visible}
                       onPublish={this.onPublish}
@@ -124,8 +125,8 @@ class ReadUpdateArticleComponent extends React.Component {
                       tags={this.reorderTags(article.tags)}
                     />
                   </React.Fragment>
-                  )
-                }
+                )
+              }
             </Col>
             <div id="tag-chips">
               <Col s={12}>
@@ -149,11 +150,17 @@ class ReadUpdateArticleComponent extends React.Component {
             {(authUser() && article.body
               && article.author.username !== authUser().username)
               ? (
-                <div id="bookmark">
-                  <Bookmark bookmarked={article.favourited} slug={slug} />
-                </div>
+                <React.Fragment>
+                  <div id="bookmark">
+                    <Bookmark bookmarked={article.favourited} slug={slug} />
+                  </div>
+                  <div id="likedislike">
+                    <LikeDislike slug={slug} likeStatus={article.like_status} />
+                  </div>
+                </React.Fragment>
               ) : ''
             }
+
           </Row>
           <div className="col s12 card-content">
             <div className="col s6">

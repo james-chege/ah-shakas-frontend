@@ -1,3 +1,4 @@
+import Materialize from 'materialize-css';
 import CONSTANTS from '../constants/index';
 import api from '../api';
 
@@ -47,9 +48,11 @@ export const rateArticleAction = (slug, rate) => (dispatch) => {
     .then((response) => {
       dispatch(rateArticle(response.data.rating));
       dispatch(averageRating(response.data.rating.avg_rating));
+      Materialize.toast({ html: 'rated successfully' });
     })
     .catch((error) => {
       failedRating(error);
+      Materialize.toast({ html: 'you cannot rate your article' });
     });
 };
 

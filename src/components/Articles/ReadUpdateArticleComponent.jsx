@@ -108,7 +108,10 @@ class ReadUpdateArticleComponent extends React.Component {
           </Row>
           <div className="col s12 card-content">
             <div className="col s6">
-              <p>How did you find this article?</p>
+              {(article.body
+                    && article.author.username !== authUser.username)
+                ? <p>How did you find this article?</p> : ''
+                }
               <Row>
                 <Col s={3} m={2} style={{ marginRight: '0' }}>
                   {averageRate}

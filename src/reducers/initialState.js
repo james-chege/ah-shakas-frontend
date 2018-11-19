@@ -10,7 +10,8 @@ export default {
   },
   resetPassword: {
     data: {},
-    errors: {} },
+    errors: {},
+  },
   rating: {
     averageRating: 0,
     rating: 0,

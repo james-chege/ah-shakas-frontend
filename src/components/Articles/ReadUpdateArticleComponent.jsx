@@ -115,8 +115,7 @@ class ReadUpdateArticleComponent extends React.Component {
                 </Col>
                 <Col s={9} m={10} style={{ marginTop: '30px', marginLeft: '0' }}>
                   {(article.body
-                      && article.author.username !== authUser.username
-                      && readOnly)
+                      && article.author.username !== authUser.username)
                   && <>
                       { /* eslint-disable-next-line */ }
                       {myRate}

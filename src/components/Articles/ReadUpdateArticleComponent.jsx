@@ -4,6 +4,8 @@ import { Row, Col } from 'react-materialize';
 import Navbar from '../Navbar';
 import EditorComponent from './EditorComponent';
 import authUser from '../../utils/authUser.util';
+import MyRatingContainer from '../../containers/Rating/MyRatingContainer';
+import AverageRatingContainer from '../../containers/Rating/AverageRatingContainer';
 
 class ReadUpdateArticleComponent extends React.Component {
   constructor(props) {
@@ -20,7 +22,9 @@ class ReadUpdateArticleComponent extends React.Component {
   componentDidMount() {
     const { fetch } = this.props;
     const { slug } = this.state;
+    const { getRatings } = this.props;
     fetch(slug);
+    getRatings(slug);
   }
 
   componentDidUpdate(prevProps) {
@@ -52,9 +56,20 @@ class ReadUpdateArticleComponent extends React.Component {
 
   render() {
     const { readOnly } = this.state;
-    const { fetchState, updateState } = this.props;
+    const { fetchState, updateState, alert } = this.props;
     const { article } = fetchState;
     const { loading: updateLoading } = updateState;
+    const { slug } = this.state;
+    const myRate = slug === '' || slug === undefined ? '' : (
+      <div className="ratings">
+        <MyRatingContainer alert={alert} slug={slug} />
+      </div>
+    );
+    const averageRate = slug === '' || slug === undefined ? '' : (
+      <div>
+        <AverageRatingContainer />
+      </div>
+    );
     return (
       <div>
         <Navbar />
@@ -76,19 +91,43 @@ class ReadUpdateArticleComponent extends React.Component {
                   </>
                 }
             </Col>
-            <Col s={12}>
-              {article.body
-                && (
-                <EditorComponent
-                  spellcheck
-                  readOnly={readOnly}
-                  content={JSON.parse(article.body)}
-                  onChange={this.onArticleChange}
-                />
-                )
-              }
-            </Col>
+            <div className="article">
+              <Col s={12}>
+                {article.body
+                  && (
+                  <EditorComponent
+                    spellcheck
+                    readOnly={readOnly}
+                    content={JSON.parse(article.body)}
+                    onChange={this.onArticleChange}
+                  />
+                  )
+                }
+              </Col>
+            </div>
           </Row>
+          <div className="col s12 card-content">
+            <div className="col s6">
+              {(article.body
+                    && article.author.username !== authUser.username)
+                ? <p>How did you find this article?</p> : ''
+                }
+              <Row>
+                <Col s={3} m={2} style={{ marginRight: '0' }}>
+                  {averageRate}
+                </Col>
+                <Col s={9} m={10} style={{ marginTop: '30px', marginLeft: '0' }}>
+                  {(article.body
+                      && article.author.username !== authUser.username)
+                  && <>
+                      { /* eslint-disable-next-line */ }
+                      {myRate}
+                  </>
+                  }
+                </Col>
+              </Row>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -97,6 +136,7 @@ class ReadUpdateArticleComponent extends React.Component {
 
 ReadUpdateArticleComponent.propTypes = {
   alert: PropTypes.func,
+  getRatings: PropTypes.func.isRequired,
   fetch: PropTypes.func.isRequired,
   update: PropTypes.func.isRequired,
   match: PropTypes.shape({

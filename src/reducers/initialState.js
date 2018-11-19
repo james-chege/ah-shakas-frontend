@@ -12,6 +12,10 @@ export default {
     data: {},
     errors: {},
   },
+  rating: {
+    averageRating: 0,
+    rating: 0,
+  },
   articles: {
     article: {},
     loading: false,

@@ -20,7 +20,7 @@ class SocialAuth extends Component {
   }
 
   onSignIn = (payload) => {
-    this.setState({ access_token: payload._token.accessToken, provider: payload._provider === 'google' ? 'google-oauth2' : payload._provider });
+    this.setState({ access_token: payload._token.accessToken, provider: payload._provider === 'google' ? 'google-oauth2' : payload._provider }); // eslint-disable-line
     const { SocialAuthAct } = this.props;
     SocialAuthAct(this.state);
   }

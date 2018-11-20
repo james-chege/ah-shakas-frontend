@@ -10,10 +10,16 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.center {
+//Variables
+$error-color: #f00;
+$background-body: #eee;
+$form-color: #fff;
+$text-color: #008080;
+
+.centered {
   background-color: $form-color;
   border-radius: 5px;
   margin: 0 auto;
@@ -52,7 +58,14 @@ code {
 }
 
 .msg {
-  color: #008080;
+  color: $text-color;
+}
+
+.verification {
+  color: $error-color;
+  font-weight: 900;
+  margin-top: 100px;
+  text-align: center;
 }
 
 .inline-error {
@@ -63,4 +76,17 @@ code {
 
 .ratings {
   position: relative;
+}
+
+.signupsuccess {
+  margin-top: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.forgot {
+  width: 50%;
+  margin-left: 25%;
 }

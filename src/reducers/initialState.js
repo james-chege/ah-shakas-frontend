@@ -26,4 +26,9 @@ export default {
     rejected: false,
     pending: false,
   },
+  verify: {
+    loading: false,
+    success: false,
+    failed: false,
+  },
 };

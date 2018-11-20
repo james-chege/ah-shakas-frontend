@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'proptypes';
+import loader from '../../assets/img/loader.svg';
 
 class SignUpComponent extends Component {
   state = {
@@ -24,27 +26,19 @@ class SignUpComponent extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  successMessage = () => (
-    <span className="msg">
-      <h6> You have successfully signed up.</h6>
-      <h6>Kindly check your email for a verification link.</h6>
-    </span>
-
-  );
-
   render() {
-    const { errors, success } = this.props;
+    const { errors, success, loading } = this.props;
     const {
       username, email, password, confirmPassword, passwordError,
     } = this.state;
     return (
-      <div className="center">
+      <div className="centered">
         <h5 className="title">Create Account</h5>
-        {success ? this.successMessage() : null}
-        <form onSubmit={this.onSignUp}>
+        {success ? <Redirect to="/signup/success" /> : null}
+        <form onSubmit={this.onSignUp} className="center-align">
           <input
             name="username"
-            placeholder="Enter username"
+            placeholder="Username"
             onChange={this.handleChange}
             defaultValue={username}
             type="text"
@@ -57,7 +51,7 @@ class SignUpComponent extends Component {
 
           <input
             name="email"
-            placeholder="Enter email"
+            placeholder="Email"
             onChange={this.handleChange}
             defaultValue={email}
             type="email"
@@ -69,7 +63,7 @@ class SignUpComponent extends Component {
 
           <input
             name="password"
-            placeholder="Enter password..."
+            placeholder="Password"
             onChange={this.handleChange}
             defaultValue={password}
             type="password"
@@ -83,7 +77,7 @@ class SignUpComponent extends Component {
 
           <input
             name="confirmPassword"
-            placeholder="Re-type password"
+            placeholder="Confirm password"
             onChange={this.handleChange}
             defaultValue={confirmPassword}
             type="password"
@@ -92,8 +86,12 @@ class SignUpComponent extends Component {
             required
           />
           <div className="alert-err">{passwordError}</div>
-
-          <input type="submit" value="Sign Up" className="btn-primary" />
+          {loading
+            ? (
+              <img className="loader" src={loader} alt="loader" />
+            ) : (
+              <input type="submit" value="Sign Up" className="btn-primary" />
+            )}
         </form>
       </div>
     );
@@ -104,5 +102,7 @@ SignUpComponent.propTypes = {
   signup: PropTypes.func.isRequired,
   errors: PropTypes.shape({}).isRequired,
   success: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
+
 export default SignUpComponent;

@@ -11,6 +11,7 @@ import profileReducer from './profile.reducer';
 import updateProfileReducer from './updateProfile.reducer';
 import userArticlesReducer from './userArticles.reducer';
 import favouriteArticlesReducer from './favouriteArticles.reducer';
+import bookmarkReducer from './bookmark.reducer';
 
 const rootReducer = combineReducers({
   reset,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   updateProfileReducer,
   userArticlesReducer,
   favouriteArticlesReducer,
+  bookmarkReducer,
 });
 
 export default rootReducer;

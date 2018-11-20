@@ -65,4 +65,10 @@ export default {
     articles: [],
     loading: false,
   },
+  bookmark: {
+    bookmarked: false,
+    success: false,
+    failure: false,
+    errors: {},
+  },
 };

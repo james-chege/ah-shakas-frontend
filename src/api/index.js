@@ -11,7 +11,7 @@ const authUserHeader = () => {
   return {};
 };
 
-const client = axios.create({
+export const client = axios.create({
   baseURL: config.BASE_URL,
   headers: {
     'Content-Type': 'application/json',

@@ -11,5 +11,5 @@ const props = {
 
 const wrapper = shallow(<FavouriteArticleComponent {...props} />);
 it('Renders <Row /> component', () => {
-  expect(wrapper.find(Row).length).toBe(1);
+  expect(wrapper.find(Row).length).toBe(0);
 });

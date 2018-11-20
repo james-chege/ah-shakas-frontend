@@ -7,6 +7,7 @@ import authUser from '../../utils/authUser.util';
 import MyRatingContainer from '../../containers/Rating/MyRatingContainer';
 import AverageRatingContainer from '../../containers/Rating/AverageRatingContainer';
 import TagsComponent from './TagsComponent';
+import Bookmark from '../../containers/Articles/BookmarkContainer';
 
 class ReadUpdateArticleComponent extends React.Component {
   constructor(props) {
@@ -92,9 +93,9 @@ class ReadUpdateArticleComponent extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="container" style={{ marginTop: '20px' }}>
+        <div className="container navigation">
           <Row>
-            <Col s={12}>
+            <Col s={11}>
               {(article.body
                   && article.author.username === authUser.username
                   && readOnly)
@@ -126,31 +127,39 @@ class ReadUpdateArticleComponent extends React.Component {
               </Col>
             </div>
             <div className="article">
-              <Col s={12}>
+              <Col s={11}>
                 {article.body
                   && (
-                  <EditorComponent
-                    spellcheck
-                    readOnly={readOnly}
-                    content={JSON.parse(article.body)}
-                    onChange={this.onArticleChange}
-                  />
+                    <EditorComponent
+                      spellcheck
+                      readOnly={readOnly}
+                      content={JSON.parse(article.body)}
+                      onChange={this.onArticleChange}
+                    />
                   )
                 }
               </Col>
             </div>
+            {(article.body
+              && article.author.username !== authUser.username)
+              ? (
+                <div id="bookmark">
+                  <Bookmark bookmarked={article.favourited} slug={slug} />
+                </div>
+              ) : ''
+            }
           </Row>
           <div className="col s12 card-content">
             <div className="col s6">
               {(article.body
-                    && article.author.username !== authUser.username)
+                && article.author.username !== authUser.username)
                 ? <p>How did you find this article?</p> : ''
-                }
+              }
               <Row>
-                <Col s={3} m={2} style={{ marginRight: '0' }}>
+                <Col s={3} m={2} className="rating">
                   {averageRate}
                 </Col>
-                <Col s={9} m={10} style={{ marginTop: '30px', marginLeft: '0' }}>
+                <Col s={9} m={10} className="rate">
                   {(article.body
                       && article.author.username !== authUser.username)
                   && (
@@ -191,7 +200,7 @@ ReadUpdateArticleComponent.propTypes = {
 };
 
 ReadUpdateArticleComponent.defaultProps = {
-  alert: () => {},
+  alert: () => { },
   match: { params: { slug: '' } },
   updateState: {
     loading: false,

@@ -286,6 +286,7 @@ $text-color: #008080;
   color: $teal;
   background-color: transparent;
   border-bottom: 2px solid $teal;
+  cursor: pointer;
 }
 
 .stories {
@@ -320,6 +321,10 @@ $text-color: #008080;
 
 #stories-content #content p {
   margin-top: 2px;
+}
+
+.user {
+  margin: 0;
 }
 
 #user-information {
@@ -388,3 +393,48 @@ $teal: #008080;
 $slider-content-border: rgba(255, 255, 255, 0.5);
 $white: #fff;
 $article-border-bottom: #ccc;
+
+.active {
+  color: teal !important;
+}
+
+#bookmark {
+  top: 200px;
+  position: fixed;
+  right: 100px;
+}
+
+.bookmarks i {
+  color: teal;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+#icon_bookmark {
+  background: #fff !important;
+  color: white;
+  filter: drop-shadow(0 5px 5px rgba(1, 1, 0, 0.1));
+}
+
+.bookmark-msg {
+  color: $teal;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.navigation {
+  margin-top: 20px;
+}
+
+.rating {
+  margin-right: 0;
+}
+
+.rate {
+  margin-top: 30px;
+  margin-left: 0;
+}
+
+.fav {
+  margin: 0;
+}

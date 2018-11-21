@@ -39,24 +39,24 @@ class Navbar extends React.Component {
   render() {
     const { open, menuOpen, openRegistration } = this.state;
     return (
-      <>
+      <React.Fragment>
         <MaterialNavbar fixed className="white" brand={'Authors\' Haven'} right>
           {authUser
             ? (
-            <>
-              <NavItem href="#"><Icon>search</Icon></NavItem>
-              <NavItem href="#"><Icon>notifications_none</Icon></NavItem>
-              <NavItem onClick={this.toggleMenu}><Icon>more_vert</Icon></NavItem>
-            </>
+              <React.Fragment>
+                <NavItem href="#"><Icon>search</Icon></NavItem>
+                <NavItem href="#"><Icon>notifications_none</Icon></NavItem>
+                <NavItem onClick={this.toggleMenu}><Icon>more_vert</Icon></NavItem>
+              </React.Fragment>
             ) : (
-            <>
-              <NavItem onClick={this.openLogin}>Login</NavItem>
-              <NavItem onClick={this.openSignup}>Sign Up</NavItem>
-            </>
+              <React.Fragment>
+                <NavItem onClick={this.openLogin}>Login</NavItem>
+                <NavItem onClick={this.openSignup}>Sign Up</NavItem>
+              </React.Fragment>
             )
         }
         </MaterialNavbar>
-        <Dropdown shown={menuOpen} />
+        <Dropdown shown={menuOpen} {...this.props} />
 
         <Modal
           open={open}
@@ -89,7 +89,7 @@ class Navbar extends React.Component {
             </div>
           </div>
         </Modal>
-      </>
+      </React.Fragment>
     );
   }
 }

@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+//Variables
 $error-color: #f00;
 $form-color: #fff;
+$section-color: #ffd800;
+$teal: #008080;
+$slider-content-border: rgba(255, 255, 255, 0.5);
+$white: #fff;
+$article-border-bottom: #ccc;
 
 body {
   margin: 0;
@@ -10,8 +19,18 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace;
 }
+//Variables
+$error-color: #f00;
+// $background-body: #eeeeee;
+$form-color: #fff;
 
 //Variables
 $error-color: #f00;
@@ -68,6 +87,116 @@ $text-color: #008080;
   text-align: center;
 }
 
+.logo a {
+  font-size: 40px;
+  font-family: 'Sacramento', cursive;
+  color: teal;
+}
+
+@media screen and (max-width: 800px) {
+  .brand-logo {
+    width: 100%;
+  }
+
+  .logo a {
+    font-size: 35px;
+  }
+}
+
+.nav-wrapper a {
+  color: teal;
+}
+
+.user-data {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 10px 0;
+}
+
+.user-image img {
+  border-radius: 50%;
+  height: 140px;
+  width: 140px;
+  cursor: pointer;
+}
+
+#progress-bar {
+  margin-top: -6px;
+}
+
+.edit-button {
+  padding: 20px 0 0 15px;
+  width: auto;
+}
+
+.edit-button .btn,
+.update-button .btn {
+  color: teal;
+  background-color: #fff;
+  border: 1px solid teal;
+  border-radius: 5px;
+}
+
+.edit-button .btn:hover {
+  color: #fff;
+  background-color: teal;
+}
+
+.update-button {
+  padding: 20px 0 0 15px;
+}
+
+.file-input {
+  display: none;
+}
+
+.edit-icon {
+  color: teal;
+  margin: 0 0 0 -30px;
+  cursor: pointer;
+}
+
+#cancel-button {
+  color: #bbb;
+  background-color: #fff;
+  border-color: #bbb;
+  margin-left: 12px;
+}
+
+@media screen and (max-width: 800px) {
+  .edit-button .btn {
+    font-size: 10px;
+    width: auto;
+  }
+
+  .user-image img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+  }
+
+  #edit-button,
+  #cancel-button {
+    width: auto;
+  }
+}
+
+#username {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 8px 0 0 0;
+}
+
+#bio {
+  margin-top: 0;
+}
+
+.Avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 .inline-error {
   font-size: 15px;
   font-weight: 400;
@@ -90,3 +219,172 @@ $text-color: #008080;
   width: 50%;
   margin-left: 25%;
 }
+
+.menu {
+  height: 50px;
+  border-bottom: 1px solid #bbb;
+  margin-top: 10px;
+}
+
+.interaction a {
+  color: teal;
+}
+
+.tabs .tab a {
+  color: #bbbb;
+}
+
+.tabs .indicator {
+  background-color: teal;
+}
+
+.user-articles {
+  .article {
+    border-bottom: 1px solid $article-border-bottom;
+    float: left;
+    margin-bottom: 40px;
+    padding-bottom: 45px;
+    width: 100%;
+
+    .img-wrapper {
+      background-size: cover !important;
+      float: left;
+      height: 250px;
+      margin: 10px 20px 0 0;
+      width: 400px;
+    }
+
+    a {
+      color: $teal;
+      font-size: 16px;
+    }
+
+    .article-title a {
+      font-size: 25px;
+    }
+
+    p {
+      padding: 0 20px 0 2px;
+    }
+
+    @media only screen and (max-width: 670px) {
+      .img-wrapper {
+        height: 170px;
+        width: 100%;
+      }
+
+      p {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.tabs .tab a:focus,
+.tabs .tab a.active,
+.tabs .tab a:hover {
+  color: $teal;
+  background-color: transparent;
+  border-bottom: 2px solid $teal;
+}
+
+.stories {
+  margin-bottom: 30px;
+}
+
+#date-created p {
+  color: #bbb;
+  margin-top: 0;
+}
+
+.stories #stories-title p {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.the-story-content {
+  margin: 20px;
+}
+
+#stories-content {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+#stories-content #title p {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 5px 0 0 0;
+}
+
+#stories-content #content p {
+  margin-top: 2px;
+}
+
+#user-information {
+  display: inline-flex;
+}
+
+#user-information .user-image img {
+  border-radius: 50%;
+  height: 65px;
+  width: 65px;
+}
+
+#user-information .user {
+  margin: 5px 0 0 9px;
+}
+
+#user-information #user-username p {
+  margin-bottom: 1px;
+}
+
+#following a {
+  color: #bbb;
+  margin: 10px 50px 5px 0;
+}
+
+#following a:hover {
+  color: $teal;
+}
+
+.the-story-content #content a {
+  color: $teal;
+}
+
+.the-story-content #user-username a {
+  color: #000;
+}
+
+.the-story-content #user-username a:hover {
+  color: $teal;
+}
+
+#icons {
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: $teal;
+}
+
+#thumb-up-like,
+#thumb-down-dislike {
+  color: $teal;
+}
+
+.interaction {
+  display: flex;
+  justify-content: space-between;
+}
+
+#likes #icons {
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: $teal;
+}
+
+$section-color: #ffd800;
+$teal: #008080;
+$slider-content-border: rgba(255, 255, 255, 0.5);
+$white: #fff;
+$article-border-bottom: #ccc;

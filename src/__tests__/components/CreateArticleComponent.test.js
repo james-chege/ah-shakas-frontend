@@ -11,6 +11,8 @@ describe('Renders CreateArticlesComponent correctly', () => {
     success: false,
     onArticleChange: jest.fn(),
     publish: () => {},
+    history: {},
+    alert: {},
   };
 
   const wrapper = shallow(<CreateArticleComponent {...props} />);

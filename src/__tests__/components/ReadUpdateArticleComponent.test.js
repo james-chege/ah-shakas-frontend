@@ -22,7 +22,7 @@ const props = {
     },
   },
   updateState: {
-    loading: '',
+    loading: false,
   },
   match: {
     params: {
@@ -36,7 +36,6 @@ const props = {
   readOnly: true,
   update: jest.fn(),
   makeToast: jest.fn(),
-  // slug: 'test-slug',
 };
 
 const wrapper = shallow(<ReadUpdateArticleComponent {...props} />);

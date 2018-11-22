@@ -78,4 +78,25 @@ describe('Test Read and Update Articles Component', () => {
   it('does not render myRatings component on my article', () => {
     expect(wrapper.find(MyRatingContainer).length).toBe(0);
   });
+
+  it('reorders an array accordingly', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'reorderTags');
+    const arr = ['test', 'tags'];
+    wrapper.instance().reorderTags(arr);
+    expect(spy.mock.calls.length).toEqual(1);
+    expect(spy.mock.results[0].value).toEqual([{ tag: 'test' }, { tag: 'tags' }]);
+  });
+
+  it('Updates state with tags', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'onTagsChange');
+    const arr = ['test-tags', 'tags'];
+    wrapper.instance().onTagsChange(arr);
+    expect(spy.mock.calls.length).toBe(1);
+  });
+
+  it('calls handleDropDown', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'handleDropDown');
+    wrapper.instance().handleDropDown();
+    expect(spy.mock.calls.length).toBe(1);
+  });
 });

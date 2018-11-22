@@ -1,0 +1,33 @@
+#publish-dropdown {
+  position: absolute;
+  width: 500px;
+  top: 19%;
+  left: 60%;
+  z-index: 2000;
+}
+
+#publish-dropdown .show {
+  display: block;
+}
+
+#publish-dropdown .hide {
+  display: none;
+}
+
+ul.collection.publish-card {
+  padding: 10px 20px 0 20px;
+}
+
+.publish-card {
+  height: 200px;
+  position: relative;
+}
+
+#tag-chips {
+  padding-top: 40px;
+}
+
+#tag-chips .col.s12 {
+  margin-top: 50px;
+  margin-left: 10%;
+}

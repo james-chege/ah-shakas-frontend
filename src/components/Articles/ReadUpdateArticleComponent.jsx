@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-materialize';
+import { Row, Col, Chip } from 'react-materialize';
 import Navbar from '../Navbar';
 import EditorComponent from './EditorComponent';
 import authUser from '../../utils/authUser.util';
 import MyRatingContainer from '../../containers/Rating/MyRatingContainer';
 import AverageRatingContainer from '../../containers/Rating/AverageRatingContainer';
+import TagsComponent from './TagsComponent';
 
 class ReadUpdateArticleComponent extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class ReadUpdateArticleComponent extends React.Component {
     this.state = {
       slug,
       readOnly: true,
+      visible: false,
     };
   }
 
@@ -42,9 +44,13 @@ class ReadUpdateArticleComponent extends React.Component {
     this.setReadOnly(true);
   };
 
+  onTagsChange = (tags) => {
+    this.setState({ tags });
+  };
+
   onArticleChange = (article) => {
     this.setState(article);
-  }
+  };
 
   setReadOnly = (readOnly) => {
     const { alert } = this.props;
@@ -52,10 +58,23 @@ class ReadUpdateArticleComponent extends React.Component {
       alert.show('Edit enabled!');
     }
     this.setState({ readOnly });
-  }
+  };
+
+  handleDropDown = () => {
+    const { visible } = this.state;
+    this.setState({ visible: !visible });
+  };
+
+  reorderTags = (arr) => {
+    const data = [];
+    arr.forEach((tag) => {
+      data.push({ tag });
+    });
+    return data;
+  };
 
   render() {
-    const { readOnly } = this.state;
+    const { readOnly, visible } = this.state;
     const { fetchState, updateState, alert } = this.props;
     const { article } = fetchState;
     const { loading: updateLoading } = updateState;
@@ -79,18 +98,33 @@ class ReadUpdateArticleComponent extends React.Component {
               {(article.body
                   && article.author.username === authUser.username
                   && readOnly)
-                  && <>
+                  && (
+                  <React.Fragment>
                     { /* eslint-disable-next-line */ }
                     <p onClick={() => this.setReadOnly(false)} className="publish-btn teal-text"> Edit </p>
-                  </>
+                  </React.Fragment>
+                  )
                 }
               {!readOnly && !updateLoading
-                  && <>
+                  && (
+                  <React.Fragment>
                     { /* eslint-disable-next-line */ }
-                    <p onClick={this.onPublish} className="publish-btn teal-text">Publish </p>
-                  </>
+                  <p onClick={this.handleDropDown} className='publish-btn teal-text'>Edit Tags </p>
+                    <TagsComponent
+                      visible={visible}
+                      onPublish={this.onPublish}
+                      onTagsChange={this.onTagsChange}
+                      tags={this.reorderTags(article.tags)}
+                    />
+                  </React.Fragment>
+                  )
                 }
             </Col>
+            <div id="tag-chips">
+              <Col s={12}>
+                {article.tags && article.tags.map(tag => <Chip>{tag}</Chip>)}
+              </Col>
+            </div>
             <div className="article">
               <Col s={12}>
                 {article.body
@@ -119,10 +153,12 @@ class ReadUpdateArticleComponent extends React.Component {
                 <Col s={9} m={10} style={{ marginTop: '30px', marginLeft: '0' }}>
                   {(article.body
                       && article.author.username !== authUser.username)
-                  && <>
-                      { /* eslint-disable-next-line */ }
+                  && (
+                  <React.Fragment>
+                    { /* eslint-disable-next-line */ }
                       {myRate}
-                  </>
+                  </React.Fragment>
+                  )
                   }
                 </Col>
               </Row>

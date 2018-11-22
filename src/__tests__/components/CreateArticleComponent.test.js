@@ -38,4 +38,17 @@ describe('Renders CreateArticlesComponent correctly', () => {
     wrapper.instance().onArticleChange(data);
     expect(handleClickSpy.mock.calls.length).toEqual(1);
   });
+
+  it('calls onTagsChange', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'onTagsChange');
+    const tags = [];
+    wrapper.instance().onTagsChange(tags);
+    expect(spy.mock.calls.length).toEqual(1);
+  });
+
+  it('calls handleDropDown', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'onTagsChange');
+    wrapper.instance().handleDropDown();
+    expect(spy.mock.calls.length).toEqual(1);
+  });
 });

@@ -1,10 +1,12 @@
 import constants from '../constants/index';
 import initialState from './initialState';
 
-const { LOGIN } = constants;
+const { LOGIN, LOGOUT } = constants;
 
 const loginReducer = (state = initialState.login, action) => {
   switch (action.type) {
+    case LOGOUT:
+      return initialState.login;
     case `${LOGIN}_PENDING`:
       return {
         ...state,

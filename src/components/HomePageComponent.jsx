@@ -131,6 +131,7 @@ HomePageComponent.propTypes = {
   history: PropTypes.shape({}),
   fetchAll: PropTypes.func.isRequired,
   articles: PropTypes.shape({}),
+  logOut: PropTypes.func.isRequired,
 };
 
 HomePageComponent.defaultProps = {

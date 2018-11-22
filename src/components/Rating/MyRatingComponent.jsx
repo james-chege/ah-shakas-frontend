@@ -5,7 +5,7 @@ import authUser from '../../utils/authUser.util';
 
 const MyRating = ({ rateArticleAction, slug, rating }) => (
   <div className="star-ratings">
-    {authUser ? (
+    {authUser() ? (
       <div className="myRating" id="ratings">
         <StarRatings
           numberOfStars={5}

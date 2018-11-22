@@ -97,7 +97,7 @@ class ReadUpdateArticleComponent extends React.Component {
           <Row>
             <Col s={11}>
               {(article.body
-                  && article.author.username === authUser.username
+                  && article.author.username === user.username
                   && readOnly)
                   && (
                   <React.Fragment>

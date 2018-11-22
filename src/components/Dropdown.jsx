@@ -4,15 +4,7 @@ import { Collection, CollectionItem } from 'react-materialize';
 import authUser from '../utils/authUser.util';
 import '../assets/styles/Dropdown.scss';
 
-const user = localStorage.getItem('user');
-const Logout = () => {
-  if (user) {
-    localStorage.removeItem('user');
-    window.location.replace('/');
-  }
-};
-
-const Dropdown = ({ shown }) => (
+const Dropdown = ({ shown, onLogout }) => (
   <div className="dropdown" style={{ display: shown ? 'block' : 'none' }}>
     <Collection className="card">
       <CollectionItem>
@@ -24,7 +16,9 @@ const Dropdown = ({ shown }) => (
         }
         {!username && authUser
          && <a href={`/profiles/${authUser.username}`}>Profile</a> }
-        <button type="button" className="buttonLink" onClick={Logout}>Logout</button>
+      </CollectionItem>
+      <CollectionItem>
+        <button type="button" className="buttonLink" onClick={onLogout}>Logout</button>
       </CollectionItem>
     </Collection>
   </div>
@@ -33,6 +27,7 @@ const Dropdown = ({ shown }) => (
 Dropdown.propTypes = {
   shown: PropTypes.bool,
   username: PropTypes.string.isRequired,
+  onLogout: PropTypes.func.isRequired,
 };
 
 Dropdown.defaultProps = {

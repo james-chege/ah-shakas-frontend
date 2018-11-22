@@ -34,6 +34,22 @@ class Navbar extends React.Component {
     });
   };
 
+  onLogin = () => {
+    this.setState({
+      open: false,
+    });
+  }
+
+  onLogOut = () => {
+    localStorage.clear();
+    this.setState({
+      menuOpen: false,
+    });
+    const { logOut } = this.props;
+    logOut();
+    this.forceUpdate();
+  }
+
   openSignup = () => {
     this.setState({ openRegistration: true });
   };
@@ -51,11 +67,12 @@ class Navbar extends React.Component {
   };
 
   render() {
+    const user = authUser();
     const { open, menuOpen, openRegistration } = this.state;
     return (
       <React.Fragment>
         <MaterialNavbar fixed className="white" brand={'Authors\' Haven'} right>
-          {authUser
+          {user
             ? (
               <React.Fragment>
                 <NavItem href="#"><Icon>search</Icon></NavItem>
@@ -70,7 +87,7 @@ class Navbar extends React.Component {
             )
           }
         </MaterialNavbar>
-        <Dropdown shown={menuOpen} {...this.props} />
+        <Dropdown shown={menuOpen} onLogout={this.onLogOut} />
 
         <Modal
           open={open}
@@ -83,7 +100,7 @@ class Navbar extends React.Component {
           <div className="row">
             <div className="col s={2} image-wrapper">&nbsp;</div>
             <div className="col s={10}">
-              <LoginContainer />
+              <LoginContainer onLogin={this.onLogin} />
             </div>
           </div>
         </Modal>
@@ -109,5 +126,6 @@ class Navbar extends React.Component {
 }
 Navbar.propTypes = {
   match: PropTypes.shape({}).isRequired,
+  logOut: PropTypes.func.isRequired,
 };
 export default Navbar;

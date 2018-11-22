@@ -4,4 +4,4 @@ export default (() => {
     // eslint-disable-next-line
   } catch (e) {}
   return null;
-})();
+});

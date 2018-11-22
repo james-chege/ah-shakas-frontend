@@ -29,7 +29,7 @@ class LoginComponent extends Component {
       const { user } = redirect.logindata.data.data;
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
-        window.location.replace('/');
+        redirect.onLogin();
       }
     }
     const err = { ...redirect.logindata };

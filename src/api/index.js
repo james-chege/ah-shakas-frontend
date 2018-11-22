@@ -3,9 +3,10 @@ import authUser from '../utils/authUser.util';
 import config from '../config';
 
 const authUserHeader = () => {
-  if (authUser && authUser.token) {
+  const user = authUser();
+  if (user && user.token) {
     return {
-      Authorization: authUser.token,
+      Authorization: user.token,
     };
   }
   return {};

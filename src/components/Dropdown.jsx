@@ -4,7 +4,7 @@ import { Collection, CollectionItem } from 'react-materialize';
 import authUser from '../utils/authUser.util';
 import '../assets/styles/Dropdown.scss';
 
-const Dropdown = ({ shown, onLogout }) => (
+const Dropdown = ({ shown, onLogout, username }) => (
   <div className="dropdown" style={{ display: shown ? 'block' : 'none' }}>
     <Collection className="card">
       <CollectionItem>

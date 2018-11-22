@@ -87,7 +87,7 @@ class Navbar extends React.Component {
             )
           }
         </MaterialNavbar>
-        <Dropdown shown={menuOpen} onLogout={this.onLogOut} />
+        <Dropdown shown={menuOpen} onLogout={this.onLogOut} {...this.props} />
 
         <Modal
           open={open}

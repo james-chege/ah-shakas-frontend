@@ -47,7 +47,7 @@ class CreateArticleComponent extends React.Component {
     };
     return (
       <div>
-        <Navbar />
+        <Navbar {...this.props} />
         <div className="container" style={{ marginTop: '20px' }}>
           <Row>
             <Col s={12}>
@@ -78,6 +78,7 @@ CreateArticleComponent.propTypes = {
   publish: PropTypes.func.isRequired,
   postArticle: PropTypes.shape({}),
   history: PropTypes.shape({}).isRequired,
+  logOut: PropTypes.func.isRequired,
 };
 
 CreateArticleComponent.defaultProps = {

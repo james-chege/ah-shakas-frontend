@@ -19,13 +19,18 @@ export default {
     averageRating: 0,
     rating: 0,
   },
-
-  articles: {
+  article: {
     article: {},
     loading: false,
     success: false,
   },
-
+  allArticles: {
+    articles: {
+      results: [],
+      banner: [],
+      recent: [],
+    },
+  },
   socialauth: {
     resolved: false,
     rejected: false,

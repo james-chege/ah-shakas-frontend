@@ -13,12 +13,11 @@ export const fetchArticle = slug => ({
   }),
 });
 
-export const fetchAllArticles = page => ({
+export const fetchAllArticles = (page = 1) => ({
   type: FETCH_ALL_ARTICLES,
   payload: api({
     method: 'GET',
-    url: '/articles/',
-    data: { page },
+    url: `/articles/?page=${page}`,
   }),
 });
 

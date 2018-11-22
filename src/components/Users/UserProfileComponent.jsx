@@ -7,8 +7,10 @@ import {
   ProgressBar,
 } from 'react-materialize';
 import Navbar from '../Navbar';
+import authUser from '../../utils/authUser.util';
 import UserArticlesContainer from '../../containers/Users/UserArticlesContainer';
 import FavouriteArticlesContainer from '../../containers/Users/FavouriteArticlesContainer';
+import FollowUserContainer from '../../containers/Users/FollowUserContainer';
 
 class ProfileComponent extends Component {
   state = {
@@ -54,7 +56,9 @@ class ProfileComponent extends Component {
               />
             </div>
             <div className="edit-button">
-              <Link to={`/profiles/update-info/${profile.username}`} className="waves-effect waves-light btn">Edit Profile</Link>
+              {profile.username === authUser.username
+                ? <Link to={`/profiles/update-info/${profile.username}`} className="waves-effect waves-light btn">Edit Profile</Link>
+                : <FollowUserContainer username={profile.username} />}
             </div>
           </div>
           <div className="UserInfo">
@@ -88,10 +92,22 @@ class ProfileComponent extends Component {
                     </a>
                   </li>
                   <li className="tab">
-                    <Link className={activeTab === 'followers' ? 'active' : ''} to="/favourite-articles">Followers</Link>
+                    { /* eslint-disable-next-line */ }
+                    <a
+                      className={activeTab === 'followers' ? 'active' : ''}
+                      onClick={() => this.setActive('followers')}
+                    >
+                      Followers
+                    </a>
                   </li>
                   <li className="tab">
-                    <Link className={activeTab === 'following' ? 'active' : ''} to="/favourite-articles">Following</Link>
+                    { /* eslint-disable-next-line */ }
+                    <a
+                      className={activeTab === 'following' ? 'active' : ''}
+                      onClick={() => this.setActive('following')}
+                    >
+                      Following
+                    </a>
                   </li>
                 </ul>
               </div>

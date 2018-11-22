@@ -14,6 +14,7 @@ import favouriteArticlesReducer from './favouriteArticles.reducer';
 import bookmarkReducer from './bookmark.reducer';
 import getComments, { postCommentsReducer, updateCommentsReducer, deleteCommentReducer, replyCommentReducer } from './comments.reducer';
 import likeDislike from './likedislike.reducer';
+import followUserReducer from './follow.reducer';
 
 const rootReducer = combineReducers({
   reset,
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   replyComments: replyCommentReducer,
   deleteComment: deleteCommentReducer,
   likeDislike,
+  followUserReducer,
 });
 
 export default rootReducer;

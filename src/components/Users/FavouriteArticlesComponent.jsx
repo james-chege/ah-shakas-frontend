@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 class FavouriteArticlesComponent extends Component {
   componentDidMount() {
-    const { favouriteArticlesAction, username } = this.props;
-    favouriteArticlesAction(username);
+    const { favouriteArticlesAction } = this.props;
+    favouriteArticlesAction();
   }
 
   render() {
@@ -64,7 +64,6 @@ class FavouriteArticlesComponent extends Component {
 FavouriteArticlesComponent.propTypes = {
   favouriteArticlesAction: PropTypes.func.isRequired,
   articles: PropTypes.arrayOf(PropTypes.object),
-  username: PropTypes.string.isRequired,
 };
 
 FavouriteArticlesComponent.defaultProps = {

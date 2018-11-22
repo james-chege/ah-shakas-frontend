@@ -11,37 +11,51 @@ class FavouriteArticlesComponent extends Component {
   render() {
     const { articles } = this.props;
     return (
-      <div className="profile-body">
-        <div className="stories container">
-          <Row>
-            <Col m={12} s={12} className="user-articles">
-              <div id="stories-title">
-                <p>Latest</p>
-              </div>
-              {articles.map(article => (
-                <div key={article.article.slug} className="article">
-                  <div className="article-title">
-                    <a href={`/article/${article.slug}`}>{article.title}</a>
-                  </div>
-                  <p style={{ margin: 0 }}>
-                    <a className="grey-text user-name" href={`/profiles/${article.article.author.username}`}>
-                      By
-                      {' '}
-                      {article.article.author.username}
-                    </a>
-                  </p>
-                  {article.article.image_url
-                    && <div className="img-wrapper" style={{ background: `url('${article.article.image_url}') center center` }}>&nbsp;</div>
-                  }
-                  <p>{article.article.description}</p>
-                  {article.article.tags
-                      && article.article.tags.map(tag => <Chip key={tag}>{tag}</Chip>)
-                    }
+      <div>
+        {articles.length !== 0
+          ? (
+            <div>
+              <div className="profile-body">
+                <div className="stories container">
+                  <Row>
+                    <Col m={12} s={12} className="user-articles">
+                      <div id="stories-title">
+                        <p>My favourites</p>
+                      </div>
+                      {articles.map(article => (
+                        <div key={article.article.slug} className="article">
+                          <div className="article-title">
+                            <a href={`/article/${article.article.slug}`}>{article.article.title}</a>
+                          </div>
+                          <p className="fav">
+                            <a className="grey-text user-name" href={`/profiles/${article.article.author.username}`}>
+                              By
+                              {' '}
+                              {article.article.author.username}
+                            </a>
+                          </p>
+                          {article.article.image_url
+                            && <img alt="background" className="img-wrapper" src={`${article.article.image_url}`} />
+                          }
+                          <p>
+                            {article.article.description}
+                            <a id="read-more" href={`/article/${article.article.slug}`}>
+                              {'...'}
+                              Read more &raquo;
+                            </a>
+                          </p>
+                          {article.article.tags
+                            && article.article.tags.map(tag => <Chip key={tag}>{tag}</Chip>)
+                          }
+                        </div>
+                      ))}
+                    </Col>
+                  </Row>
                 </div>
-              ))}
-            </Col>
-          </Row>
-        </div>
+              </div>
+            </div>
+          ) : <div className="bookmark-msg container"><p>You have no bookmarked articles</p></div>
+        }
       </div>
     );
   }

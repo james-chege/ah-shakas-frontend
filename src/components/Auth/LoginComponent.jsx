@@ -24,22 +24,27 @@ class LoginComponent extends Component {
   };
 
   render() {
-    const redirect = this.props;
-    if (redirect.logindata.onFulfilled) {
-      const { user } = redirect.logindata.data.data;
+    const { logindata, onLogin } = this.props;
+    let emailerr = '';
+    let passerr = '';
+    let notExist = '';
+
+    if (logindata.onFulfilled) {
+      const { user } = logindata.data.data;
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
-        redirect.onLogin();
+        onLogin();
       }
     }
-    const err = { ...redirect.logindata };
-    const err1 = { ...err.errors };
-    const err2 = { ...err1.response };
-    const err3 = { ...err2.data };
-    const err4 = { ...err3.errors };
-    const emailerr = { ...err4.email };
-    const passerr = { ...err4.password };
-    const notExist = { ...err4.error };
+
+    if (logindata.onRejected) {
+      const { errors } = logindata.errors.response.data;
+
+      emailerr = errors.email;
+      passerr = errors.password;
+      notExist = errors.error;
+    }
+
     const { email, password } = this.state;
     return (
       <div className="center" onSubmit={this.onSubmit}>
@@ -84,7 +89,7 @@ class LoginComponent extends Component {
           </div>
 
           <div className="center-align">
-            {redirect.logindata.onPending ? (
+            {logindata.onPending ? (
               <img className="loader" src={loader} alt="loader" />
             ) : (
               <input type="submit" value="Login" className="btn-primary" onClick={this.onSubmit} />
@@ -98,8 +103,16 @@ class LoginComponent extends Component {
     );
   }
 }
+
 LoginComponent.propTypes = {
   login: PropTypes.func.isRequired,
+  logindata: PropTypes.object,
+  onLogin: PropTypes.func,
+};
+
+LoginComponent.defaultProps = {
+  logindata: {},
+  onLogin: () => {},
 };
 
 export default LoginComponent;

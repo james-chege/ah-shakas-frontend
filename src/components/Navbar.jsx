@@ -8,36 +8,14 @@ import Dropdown from './Dropdown';
 import authUser from '../utils/authUser.util';
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    const { match } = this.props;
-
-    let login = false;
-    let signup = false;
-    if (match && match.params) {
-      login = match.params.activateModal === 'login';
-      signup = match.params.activateModal === 'signup';
-    }
-
-    this.state = {
-      open: login,
-      openRegistration: signup,
-      menuOpen: false,
-    };
-  }
-
-  toggleMenu = () => {
-    const { menuOpen } = this.state;
-    this.setState({
-      menuOpen: !menuOpen,
-    });
+  state = {
+    loginModal: false,
+    signupModal: false,
+    menuOpen: false,
   };
 
-  onLogin = () => {
-    this.setState({
-      open: false,
-    });
+  componentDidMount() {
+    this.toggleModals();
   }
 
   onLogOut = () => {
@@ -45,30 +23,45 @@ class Navbar extends React.Component {
     this.setState({
       menuOpen: false,
     });
+
     const { logOut } = this.props;
     logOut();
-    this.forceUpdate();
   }
 
-  openSignup = () => {
-    this.setState({ openRegistration: true });
+  toggleMenu = () => {
+    const { menuOpen } = this.state;
+
+    this.setState({
+      menuOpen: !menuOpen,
+    });
   };
 
-  openLogin = () => {
-    this.setState({ open: true });
+  toggleLoginModal = () => {
+    const { loginModal } = this.state;
+
+    this.setState({ loginModal: !loginModal });
   };
 
-  closeSignup = () => {
-    this.setState({ openRegistration: false });
+  toggleSignupModal = () => {
+    const { signupModal } = this.state;
+
+    this.setState({ signupModal: !signupModal });
   };
 
-  closeLogin = () => {
-    this.setState({ open: false });
+  toggleModals = () => {
+    const { match } = this.props;
+
+    if (match.params.activateModal === 'login') {
+      this.setState({ loginModal: true });
+    } else if (match.params.activateModal === 'signup') {
+      this.setState({ signupModal: true });
+    }
   };
 
   render() {
     const user = authUser();
-    const { open, menuOpen, openRegistration } = this.state;
+    const { loginModal, menuOpen, signupModal } = this.state;
+
     return (
       <React.Fragment>
         <MaterialNavbar fixed className="white" brand={'Authors\' Haven'} right>
@@ -81,8 +74,8 @@ class Navbar extends React.Component {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <NavItem onClick={this.openLogin}>Login</NavItem>
-                <NavItem onClick={this.openSignup}>Sign Up</NavItem>
+                <NavItem onClick={this.toggleLoginModal}>Login</NavItem>
+                <NavItem onClick={this.toggleSignupModal}>Sign Up</NavItem>
               </React.Fragment>
             )
           }
@@ -90,8 +83,8 @@ class Navbar extends React.Component {
         <Dropdown shown={menuOpen} onLogout={this.onLogOut} {...this.props} />
 
         <Modal
-          open={open}
-          onClose={this.closeLogin}
+          open={loginModal}
+          onClose={this.toggleLoginModal}
           classNames={{
             overlay: 'overlay-center',
             modal: 'custom-modal',
@@ -100,13 +93,13 @@ class Navbar extends React.Component {
           <div className="row">
             <div className="col s={2} image-wrapper">&nbsp;</div>
             <div className="col s={10}">
-              <LoginContainer onLogin={this.onLogin} />
+              <LoginContainer onLogin={this.toggleLoginModal} />
             </div>
           </div>
         </Modal>
         <Modal
-          open={openRegistration}
-          onClose={this.closeSignup}
+          open={signupModal}
+          onClose={this.toggleSignupModal}
           center
           classNames={{
             overlay: 'overlay-center',
@@ -124,8 +117,10 @@ class Navbar extends React.Component {
     );
   }
 }
+
 Navbar.propTypes = {
   match: PropTypes.shape({}).isRequired,
   logOut: PropTypes.func.isRequired,
 };
+
 export default Navbar;

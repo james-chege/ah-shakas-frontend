@@ -26,12 +26,14 @@ const Dropdown = ({ shown, onLogout, username }) => (
 
 Dropdown.propTypes = {
   shown: PropTypes.bool,
-  username: PropTypes.string.isRequired,
-  onLogout: PropTypes.func.isRequired,
+  username: PropTypes.string,
+  onLogout: PropTypes.func,
 };
 
 Dropdown.defaultProps = {
   shown: false,
+  username: '',
+  onLogout: () => {},
 };
 
 export default Dropdown;

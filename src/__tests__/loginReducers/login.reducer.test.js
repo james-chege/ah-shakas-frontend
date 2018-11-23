@@ -28,4 +28,8 @@ describe('User Reducer test', () => {
     action.type = `${LOGIN}_FULFILLED`;
     expect(loginReducer(initialState.login, action).onFulfilled).toEqual(true);
   });
+  it('should handle USER_LOAD_REJECTED', () => {
+    action.type = `${LOGIN}_REJECTED`;
+    expect(loginReducer(initialState.login, action).onFulfilled).toEqual(false);
+  });
 });

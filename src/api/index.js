@@ -2,7 +2,7 @@ import axios from 'axios';
 import authUser from '../utils/authUser.util';
 import config from '../config';
 
-const authUserHeader = () => {
+export const authUserHeader = () => {
   const user = authUser();
   if (user && user.token) {
     return {

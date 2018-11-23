@@ -16,6 +16,11 @@ const action = { data: {} };
 
 describe('User Reducer test', () => {
   it('should return initial state when there is no action', () => {
+    expect(loginReducer(initialState.login, action)).toEqual(initialState.login);
+  });
+
+  it('should handle USER_LOAD_REQUEST', () => {
+    action.type = LOGIN;
     expect(loginReducer(initialState, action)).toEqual(initialState);
   });
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import loader from '../../assets/img/loader.svg';
 import Sociallogin from '../../containers/Auth/SocialAuthContainer';
 
 class LoginComponent extends Component {
@@ -22,14 +24,27 @@ class LoginComponent extends Component {
   };
 
   render() {
-    const redirect = this.props;
-    if (redirect.logindata.onFulfilled) {
-      const { user } = redirect.logindata.data.data;
+    const { logindata, onLogin } = this.props;
+    let emailerr = '';
+    let passerr = '';
+    let notExist = '';
+
+    if (logindata.onFulfilled) {
+      const { user } = logindata.data.data;
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
-        window.location.replace('/');
+        onLogin();
       }
     }
+
+    if (logindata.onRejected) {
+      const { errors } = logindata.errors.response.data;
+
+      emailerr = errors.email;
+      passerr = errors.password;
+      notExist = errors.error;
+    }
+
     const { email, password } = this.state;
     return (
       <div className="center" onSubmit={this.onSubmit}>
@@ -37,6 +52,9 @@ class LoginComponent extends Component {
           <div className="">
             <span className="center-align"><h5>Sign In</h5></span>
             <div className="row">
+              {notExist
+                && <div className="alert-err">{notExist[0]}</div>
+              }
               <div className="input-field col s12">
                 <input
                   placeholder="Enter email"
@@ -46,7 +64,9 @@ class LoginComponent extends Component {
                   value={email}
                   required
                 />
-                <div id="errors" />
+                {emailerr
+                  && <div className="alert-err">{emailerr[0]}</div>
+                }
               </div>
               <div className="col s12">
                 <input
@@ -58,28 +78,41 @@ class LoginComponent extends Component {
                   value={password}
                   required
                 />
+                {passerr
+                  && <div className="alert-err">{passerr[0]}</div>
+                }
               </div>
             </div>
           </div>
           <div className="center-align">
-            <a className="teal-text" href="#!"><b>Forgot Password?</b></a>
+            <Link className="teal-text" to="/forgot_password"><b>Forgot Password?</b></Link>
           </div>
 
           <div className="center-align">
-            <input type="submit" value="Login" className="btn-primary" onClick={this.onSubmit} />
+            {logindata.onPending ? (
+              <img className="loader" src={loader} alt="loader" />
+            ) : (
+              <input type="submit" value="Login" className="btn-primary" onClick={this.onSubmit} />
+            )
+            }
             <span className="center-align"><h6>or</h6></span>
             <Sociallogin />
           </div>
         </form>
-        <div className="center-align">
-          <a className="teal-text" href="#!">Create account</a>
-        </div>
       </div>
     );
   }
 }
+
 LoginComponent.propTypes = {
   login: PropTypes.func.isRequired,
+  logindata: PropTypes.object,
+  onLogin: PropTypes.func,
+};
+
+LoginComponent.defaultProps = {
+  logindata: {},
+  onLogin: () => {},
 };
 
 export default LoginComponent;

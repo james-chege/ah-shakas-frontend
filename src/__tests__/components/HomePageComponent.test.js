@@ -33,6 +33,7 @@ const props = {
     count: 12,
   },
   username: '',
+  match: { path: '/:activateModal?', url: '/', isExact: true, params: {} },
 };
 const wrapper = mount(<HomePageComponent {...props} store={store} />);
 

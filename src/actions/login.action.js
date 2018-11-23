@@ -1,7 +1,7 @@
 import api from '../api';
 import CONSTANTS from '../constants';
 
-const { LOGIN } = CONSTANTS;
+const { LOGIN, LOGOUT } = CONSTANTS;
 const loginAct = credentials => ({
   type: LOGIN,
   payload: api({
@@ -12,6 +12,10 @@ const loginAct = credentials => ({
       'Content-Type': 'application/json',
     },
   }),
+});
+
+export const logOutAct = () => ({
+  type: LOGOUT,
 });
 
 export default loginAct;

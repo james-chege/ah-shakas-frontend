@@ -20,7 +20,7 @@ class SocialAuth extends Component {
   }
 
   onSignIn = (payload) => {
-    this.setState({ access_token: payload._token.accessToken, provider: payload._provider === 'google' ? 'google-oauth2' : payload._provider });
+    this.setState({ access_token: payload._token.accessToken, provider: payload._provider === 'google' ? 'google-oauth2' : payload._provider }); // eslint-disable-line
     const { SocialAuthAct } = this.props;
     SocialAuthAct(this.state);
   }
@@ -29,10 +29,10 @@ class SocialAuth extends Component {
   render() {
     const { social } = this.props;
     if (social.resolved) {
-      const userToken = social.userdata.token;
-      if (userToken) {
-        localStorage.setItem('userToken', userToken);
-        window.location.replace('/dashboard');
+      const user = social.userdata;
+      if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        window.location.replace('/');
       }
     }
     return (

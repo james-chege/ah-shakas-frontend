@@ -136,3 +136,17 @@ nav {
 .loader {
   width: 30px;
 }
+.buttonLink {
+  background:none!important;
+  color:$primary-color;
+  border:none;
+  text-transform: none;
+  font-variant: small-caps; 
+  padding:0!important;
+  font: inherit;
+  cursor: pointer; 
+}
+
+.buttonLink:hover{
+  color: $primary-color;
+}

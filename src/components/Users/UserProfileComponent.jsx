@@ -43,7 +43,7 @@ class ProfileComponent extends Component {
     }
     return (
       <div>
-        <Navbar username={profile.username} />
+        <Navbar username={profile.username} {...this.props} />
         <div className="profile container">
           <div className="user-data">
             <div className="UserImage">
@@ -123,6 +123,7 @@ ProfileComponent.propTypes = {
   profile: PropTypes.shape({}),
   loading: PropTypes.bool.isRequired,
   match: PropTypes.shape({}),
+  logOut: PropTypes.func.isRequired,
 };
 
 ProfileComponent.defaultProps = {

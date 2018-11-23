@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
+import PropTypes from 'prop-types';
 import { Icon, Navbar as MaterialNavbar, NavItem } from 'react-materialize';
 import LoginContainer from '../containers/Auth/LoginContainer';
 import SignUpComponent from '../containers/Auth/SignUpContainer';
@@ -8,40 +9,63 @@ import authUser from '../utils/authUser.util';
 
 class Navbar extends React.Component {
   state = {
-    open: false,
-    openRegistration: false,
+    loginModal: false,
+    signupModal: false,
     menuOpen: false,
   };
 
+  componentDidMount() {
+    this.toggleModals();
+  }
+
+  onLogOut = () => {
+    localStorage.clear();
+    this.setState({
+      menuOpen: false,
+    });
+
+    const { logOut } = this.props;
+    logOut();
+  }
+
   toggleMenu = () => {
     const { menuOpen } = this.state;
+
     this.setState({
       menuOpen: !menuOpen,
     });
   };
 
-  openSignup = () => {
-    this.setState({ openRegistration: true });
+  toggleLoginModal = () => {
+    const { loginModal } = this.state;
+
+    this.setState({ loginModal: !loginModal });
   };
 
-  openLogin = () => {
-    this.setState({ open: true });
+  toggleSignupModal = () => {
+    const { signupModal } = this.state;
+
+    this.setState({ signupModal: !signupModal });
   };
 
-  closeSignup = () => {
-    this.setState({ openRegistration: false });
-  };
+  toggleModals = () => {
+    const { match } = this.props;
 
-  closeLogin = () => {
-    this.setState({ open: false });
+    if (match.params.activateModal === 'login') {
+      this.setState({ loginModal: true });
+    } else if (match.params.activateModal === 'signup') {
+      this.setState({ signupModal: true });
+    }
   };
 
   render() {
-    const { open, menuOpen, openRegistration } = this.state;
+    const user = authUser();
+    const { loginModal, menuOpen, signupModal } = this.state;
+
     return (
       <React.Fragment>
         <MaterialNavbar fixed className="white" brand={'Authors\' Haven'} right>
-          {authUser
+          {user
             ? (
               <React.Fragment>
                 <NavItem href="#"><Icon>search</Icon></NavItem>
@@ -50,17 +74,17 @@ class Navbar extends React.Component {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <NavItem onClick={this.openLogin}>Login</NavItem>
-                <NavItem onClick={this.openSignup}>Sign Up</NavItem>
+                <NavItem onClick={this.toggleLoginModal}>Login</NavItem>
+                <NavItem onClick={this.toggleSignupModal}>Sign Up</NavItem>
               </React.Fragment>
             )
-        }
+          }
         </MaterialNavbar>
-        <Dropdown shown={menuOpen} {...this.props} />
+        <Dropdown shown={menuOpen} onLogout={this.onLogOut} {...this.props} />
 
         <Modal
-          open={open}
-          onClose={this.closeLogin}
+          open={loginModal}
+          onClose={this.toggleLoginModal}
           classNames={{
             overlay: 'overlay-center',
             modal: 'custom-modal',
@@ -69,13 +93,13 @@ class Navbar extends React.Component {
           <div className="row">
             <div className="col s={2} image-wrapper">&nbsp;</div>
             <div className="col s={10}">
-              <LoginContainer />
+              <LoginContainer onLogin={this.toggleLoginModal} />
             </div>
           </div>
         </Modal>
         <Modal
-          open={openRegistration}
-          onClose={this.closeSignup}
+          open={signupModal}
+          onClose={this.toggleSignupModal}
           center
           classNames={{
             overlay: 'overlay-center',
@@ -93,5 +117,10 @@ class Navbar extends React.Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  match: PropTypes.shape({}).isRequired,
+  logOut: PropTypes.func.isRequired,
+};
 
 export default Navbar;

@@ -10,6 +10,7 @@ import TagsComponent from './TagsComponent';
 import Bookmark from '../../containers/Articles/BookmarkContainer';
 import CommentsContainer from '../../containers/Comments/CommentsContainer';
 import LikeDislike from '../../containers/Articles/LikeDislikeContainer';
+import SocialShare from './ShareComponent';
 
 class ReadUpdateArticleComponent extends React.Component {
   constructor(props) {
@@ -153,6 +154,7 @@ class ReadUpdateArticleComponent extends React.Component {
                 <React.Fragment>
                   <div id="bookmark">
                     <Bookmark bookmarked={article.favourited} slug={slug} />
+                    <SocialShare title={article.title} slug={article.slug} />
                   </div>
                   <div id="likedislike">
                     <LikeDislike slug={slug} likeStatus={article.like_status} />

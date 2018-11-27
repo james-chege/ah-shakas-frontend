@@ -100,11 +100,13 @@ nav {
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: teal;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .filled_icon {
   color: teal;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .like-dislike {
@@ -112,7 +114,7 @@ nav {
 }
 
 #likedislike {
-  top: 200px;
+  top: 225px;
   position: fixed;
   right: 100px;
 }
@@ -166,17 +168,18 @@ nav {
 .loader {
   width: 30px;
 }
+
 .buttonLink {
-  background:none!important;
-  color:$primary-color;
-  border:none;
+  background: none !important;
+  color: $primary-color;
+  border: none;
   text-transform: none;
-  font-variant: small-caps; 
-  padding:0!important;
-  font: inherit;
-  cursor: pointer; 
+  font-variant: small-caps;
+  padding: 0 !important;
+  font-style: inherit;
+  cursor: pointer;
 }
 
-.buttonLink:hover{
+.buttonLink:hover {
   color: $primary-color;
 }

@@ -4,15 +4,6 @@ import api from '../api';
 const { FOLLOW_USER, UNFOLLOW_USER, FOLLOWERS, FOLLOWING } = CONSTANTS;
 
 // action creators
-
-export const followUser = (username, followed) => ({
-  type: followed ? UNFOLLOW_USER : FOLLOW_USER,
-  payload: api({
-    url: `/profile/${username}/follow/`,
-    method: followed ? 'DELETE' : 'POST',
-  }),
-});
-
 export const followersAction = username => ({
   type: FOLLOWERS,
   payload: api({
@@ -28,3 +19,16 @@ export const followingAction = username => ({
     method: 'GET',
   }),
 });
+
+export const followUser = (parentUser, username, followed) => (dispatch) => {
+  dispatch({
+    type: followed ? UNFOLLOW_USER : FOLLOW_USER,
+    payload: api({
+      url: `/profile/${username}/follow/`,
+      method: followed ? 'DELETE' : 'POST',
+    }),
+  }).then(() => {
+    dispatch(followersAction(parentUser));
+    dispatch(followingAction(parentUser));
+  });
+};

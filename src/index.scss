@@ -87,6 +87,11 @@ $text-color: #008080;
   text-align: center;
 }
 
+.profile,
+.edit-profile {
+  margin-top: 20px;
+}
+
 .logo a {
   font-size: 40px;
   font-family: 'Sacramento', cursive;
@@ -107,10 +112,8 @@ $text-color: #008080;
   color: teal;
 }
 
-.user-data {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0 10px 0;
+.logout-tag:hover {
+  cursor: pointer;
 }
 
 .user-image img {
@@ -142,8 +145,48 @@ $text-color: #008080;
   background-color: teal;
 }
 
+#follow-btn {
+  color: #fff;
+  background-color: teal;
+  border-radius: 5px;
+}
+
 .update-button {
   padding: 20px 0 0 15px;
+}
+
+.username {
+  color: teal;
+}
+
+.collection {
+  border-radius: 5px;
+  margin-top: 1px;
+}
+
+#follow-button {
+  color: teal;
+  background-color: #fff;
+  border: 1px solid teal;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+#following-button {
+  color: #fff;
+  background-color: teal;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.user-data {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .file-input {
@@ -236,6 +279,7 @@ $text-color: #008080;
 
 .tabs .indicator {
   background-color: teal;
+  width: 50%;
 }
 
 .user-articles {
@@ -278,6 +322,17 @@ $text-color: #008080;
       }
     }
   }
+}
+
+.featured {
+  .img-wrapper img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.tabs .tab {
+  margin: 0 5px 0 5px;
 }
 
 .tabs .tab a:focus,

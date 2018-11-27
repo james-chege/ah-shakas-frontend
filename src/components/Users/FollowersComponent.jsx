@@ -3,7 +3,7 @@ import PropTypes from 'proptypes';
 import { Col, Row, Button } from 'react-materialize';
 import authUser from '../../utils/authUser.util';
 
-class FollowingComponent extends Component {
+class FollowersComponent extends Component {
   componentDidMount() {
     const { followersAction, match } = this.props;
     const { params } = match;
@@ -11,6 +11,7 @@ class FollowingComponent extends Component {
   }
 
   render() {
+    const { match: { params } } = this.props;
     const { followers, followUser } = this.props;
     return (
       <div>
@@ -18,7 +19,11 @@ class FollowingComponent extends Component {
           ? (
             <div className="container">
               <div id="stories-title">
-                <p>Followers</p>
+                <span>
+                  <strong>{followers.length}</strong>
+                  {' '}
+                  Followers
+                </span>
               </div>
               <Row>
                 {followers.map(user => (
@@ -33,14 +38,14 @@ class FollowingComponent extends Component {
                               {user.bio}
                             </p>
                           </div>
-                          {user.username !== authUser.username
+                          {user.username !== authUser().username
                             ? (
-                              <div>
+                              <div id="follow-interaction">
                                 {user.follow_status
-                                  && <Button id="following-button" onClick={() => followUser(user.username, user.follow_status)}>Following</Button>
+                                  && <Button id="following-button" onClick={() => followUser(params.username, user.username, user.follow_status)}>Following</Button>
                                 }
                                 {!user.follow_status
-                                  && <Button id="follow-button" onClick={() => followUser(user.username, user.follow_status)}>Follow</Button>
+                                  && <Button id="follow-button" onClick={() => followUser(params.username, user.username, user.follow_status)}>Follow</Button>
                                 }
                               </div>
                             ) : ''
@@ -59,15 +64,15 @@ class FollowingComponent extends Component {
   }
 }
 
-FollowingComponent.propTypes = {
+FollowersComponent.propTypes = {
   followUser: PropTypes.func.isRequired,
   followersAction: PropTypes.func.isRequired,
   followers: PropTypes.arrayOf(PropTypes.object),
   match: PropTypes.shape({}).isRequired,
 };
 
-FollowingComponent.defaultProps = {
+FollowersComponent.defaultProps = {
   followers: [],
 };
 
-export default FollowingComponent;
+export default FollowersComponent;

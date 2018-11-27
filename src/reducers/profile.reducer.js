@@ -15,7 +15,7 @@ export default function (state = initialState.userProfile, action) {
       };
 
     case `${FOLLOW_USER}_FULFILLED`:
-      return {
+      return action.payload.data.username === state.profile.username ? {
         ...state,
         profile: {
           ...state.profile,
@@ -24,7 +24,7 @@ export default function (state = initialState.userProfile, action) {
         loading: false,
         success: true,
         followSuccess: true,
-      };
+      } : state;
 
     case `${LOAD_PROFILE}_FULFILLED`:
       return {
@@ -36,7 +36,7 @@ export default function (state = initialState.userProfile, action) {
       };
 
     case `${UNFOLLOW_USER}_FULFILLED`:
-      return {
+      return action.payload.data.username === state.profile.username ? {
         ...state,
         profile: {
           ...state.profile,
@@ -45,7 +45,7 @@ export default function (state = initialState.userProfile, action) {
         loading: false,
         success: true,
         followSuccess: true,
-      };
+      } : state;
 
     case `${LOAD_PROFILE}_REJECTED`:
       return {

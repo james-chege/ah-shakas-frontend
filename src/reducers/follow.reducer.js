@@ -6,17 +6,18 @@ const { FOLLOW_USER, UNFOLLOW_USER } = constants;
 export default function (state = initialState.followUser, action) {
   const { payload, type } = action;
   switch (type) {
-    case `${FOLLOW_USER}_FULFILLED`:
+    case `${UNFOLLOW_USER}_PENDING`:
+    case `${FOLLOW_USER}_PENDING`:
       return {
         ...state,
-        followed: payload.data.follow_status,
-        loading: false,
-        success: true,
+        loading: true,
+        success: false,
       };
+    case `${FOLLOW_USER}_FULFILLED`:
     case `${UNFOLLOW_USER}_FULFILLED`:
       return {
         ...state,
-        followed: payload.data.follow_status,
+        followed: payload.data,
         loading: false,
         success: true,
       };

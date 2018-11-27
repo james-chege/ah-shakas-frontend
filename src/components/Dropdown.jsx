@@ -18,7 +18,8 @@ const Dropdown = ({ shown, onLogout, username }) => (
          && <a href={`/profiles/${authUser().username}`}>Profile</a> }
       </CollectionItem>
       <CollectionItem>
-        <button type="button" className="buttonLink" onClick={onLogout}>Logout</button>
+        { /* eslint-disable-next-line */ }
+        <a className="logout-tag" onClick={onLogout}>Logout</a>
       </CollectionItem>
     </Collection>
   </div>

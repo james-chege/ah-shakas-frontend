@@ -24,8 +24,9 @@ class Navbar extends React.Component {
       menuOpen: false,
     });
 
-    const { logOut } = this.props;
+    const { logOut, history } = this.props;
     logOut();
+    history.push('/');
   }
 
   toggleMenu = () => {

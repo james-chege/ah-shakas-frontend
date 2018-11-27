@@ -3,7 +3,7 @@ import initialState from '../../reducers/initialState';
 import profile from '../../mock/profile';
 import constants from '../../constants';
 
-const { LOAD_PROFILE } = constants;
+const { LOAD_PROFILE, FOLLOW_USER, UNFOLLOW_USER } = constants;
 
 const action = { payload: {} };
 
@@ -27,6 +27,16 @@ describe('profile reducer', () => {
     expect(profileReducer(initialState.userProfile, action).profile)
       .toEqual(action.payload.data.profile);
     expect(profileReducer(initialState.userProfile, action).loading).toEqual(false);
+  });
+
+  it('should handle FOLLOW_USER_FULFILLED', () => {
+    action.type = `${FOLLOW_USER}_FULFILLED`;
+    expect(profileReducer(initialState.userProfile, action).followSuccess).toEqual(true);
+  });
+
+  it('should handle UNFOLLOW_USER_FULFILLED', () => {
+    action.type = `${UNFOLLOW_USER}_FULFILLED`;
+    expect(profileReducer(initialState.userProfile, action).followSuccess).toEqual(true);
   });
 
   it('should handle LOAD_PROFILE_REJECTED', () => {

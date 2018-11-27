@@ -11,6 +11,7 @@ class FollowingComponent extends Component {
   }
 
   render() {
+    const { match: { params } } = this.props;
     const { following, followUser } = this.props;
     return (
       <div>
@@ -18,13 +19,11 @@ class FollowingComponent extends Component {
           ? (
             <div className="container">
               <div id="stories-title">
-                <p>
-                  Following
-                  {' '}
+                <span>
                   <strong>{following.length}</strong>
                   {' '}
-                  authors
-                </p>
+                  Following
+                </span>
               </div>
               <Row>
                 {following.map(user => (
@@ -39,14 +38,14 @@ class FollowingComponent extends Component {
                               {user.bio}
                             </p>
                           </div>
-                          {user.username !== authUser.username
+                          {user.username !== authUser().username
                             ? (
                               <div>
                                 {user.follow_status
-                                  && <Button onClick={() => followUser(user.username, user.follow_status)} id="following-button">Following</Button>
+                                  && <Button onClick={() => followUser(params.username, user.username, user.follow_status)} id="following-button">Following</Button>
                                 }
                                 {!user.follow_status
-                                  && <Button onClick={() => followUser(user.username, user.follow_status)} id="follow-button">Follow</Button>
+                                  && <Button onClick={() => followUser(params.username, user.username, user.follow_status)} id="follow-button">Follow</Button>
                                 }
                               </div>
                             ) : ''

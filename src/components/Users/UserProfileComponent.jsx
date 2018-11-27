@@ -35,12 +35,13 @@ class ProfileComponent extends Component {
   onFollow = () => {
     const { followUser, profile, match } = this.props;
     const { username } = match.params;
-    followUser(username, profile.follow_status);
+    followUser(username, username, profile.follow_status);
   }
 
   userInfo = () => {
     const { activeTab } = this.state;
     const { loading, profile } = this.props;
+    const user = authUser();
     if (loading) {
       return (
         <div className="loader-element" id="progress-bar">
@@ -54,7 +55,7 @@ class ProfileComponent extends Component {
     }
     return (
       <div>
-        <Navbar username={profile.username} {...this.props} />
+        <Navbar username={user && user.username} {...this.props} />
         <div className="profile container">
           <div className="user-data">
             <div className="UserImage">
@@ -65,7 +66,7 @@ class ProfileComponent extends Component {
               />
             </div>
             <div className="edit-button">
-              {profile.username === authUser.username
+              {user && (profile.username === user.username)
                 ? <Link to={`/profiles/update-info/${profile.username}`} className="waves-effect waves-light btn">Edit Profile</Link>
                 : (
                   <div>
@@ -101,15 +102,18 @@ class ProfileComponent extends Component {
                       Profile
                     </a>
                   </li>
-                  <li className="tab">
-                    { /* eslint-disable-next-line */ }
-                    <a
-                      className={activeTab === 'favourites' ? 'active' : ''}
-                      onClick={() => this.setActive('favourites')}
-                    >
-                      Favorites
-                    </a>
-                  </li>
+                  {user && (profile.username === user.username)
+                    && (
+                    <li className="tab">
+                        { /* eslint-disable-next-line */ }
+                      <a
+                        className={activeTab === 'favourites' ? 'active' : ''}
+                        onClick={() => this.setActive('favourites')}
+                      >
+                        Favorites
+                      </a>
+                    </li>)
+                  }
                   <li className="tab">
                     { /* eslint-disable-next-line */ }
                     <a

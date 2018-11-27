@@ -56,8 +56,8 @@ class UpdateProfileComponent extends Component {
     const { username, bio, imageUrl } = this.state;
     return (
       <div>
-        <Navbar />
-        <div className="container">
+        <Navbar {...this.props} />
+        <div className="container edit-profile">
           <Row>
             <form s={6} onSubmit={this.onEdit}>
               <div className="user-data">

@@ -5,12 +5,15 @@ import {
   Row,
   Col,
   ProgressBar,
+  Button,
 } from 'react-materialize';
 import Navbar from '../Navbar';
 import authUser from '../../utils/authUser.util';
 import UserArticlesContainer from '../../containers/Users/UserArticlesContainer';
 import FavouriteArticlesContainer from '../../containers/Users/FavouriteArticlesContainer';
-import FollowUserContainer from '../../containers/Users/FollowUserContainer';
+import FollowersContainer from '../../containers/Users/FollowersContainer';
+import FollowingContainer from '../../containers/Users/FollowingContainer';
+
 
 class ProfileComponent extends Component {
   state = {
@@ -27,6 +30,12 @@ class ProfileComponent extends Component {
     this.setState({
       activeTab,
     });
+  }
+
+  onFollow = () => {
+    const { followUser, profile, match } = this.props;
+    const { username } = match.params;
+    followUser(username, profile.follow_status);
   }
 
   userInfo = () => {
@@ -58,7 +67,17 @@ class ProfileComponent extends Component {
             <div className="edit-button">
               {profile.username === authUser.username
                 ? <Link to={`/profiles/update-info/${profile.username}`} className="waves-effect waves-light btn">Edit Profile</Link>
-                : <FollowUserContainer username={profile.username} />}
+                : (
+                  <div>
+                    {profile.follow_status
+                      && <Button onClick={this.onFollow} id="follow-btn" className="waves-effect waves-light btn">Following</Button>
+                    }
+                    {!profile.follow_status
+                      && <Button onClick={this.onFollow} className="waves-effect waves-light btn">Follow</Button>
+                    }
+                  </div>
+                )
+                }
             </div>
           </div>
           <div className="UserInfo">
@@ -128,6 +147,12 @@ class ProfileComponent extends Component {
         }
         {activeTab === 'favourites'
          && <FavouriteArticlesContainer {...this.props} />
+        }
+        {activeTab === 'followers'
+         && <FollowersContainer {...this.props} />
+        }
+        {activeTab === 'following'
+         && <FollowingContainer {...this.props} />
         }
       </div>
     );

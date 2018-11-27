@@ -9,18 +9,16 @@ export default function (state = initialState.followUser, action) {
     case `${FOLLOW_USER}_FULFILLED`:
       return {
         ...state,
-        profile: payload.data,
+        followed: payload.data.follow_status,
         loading: false,
         success: true,
-        followed: true,
       };
     case `${UNFOLLOW_USER}_FULFILLED`:
       return {
         ...state,
-        profile: payload.data,
+        followed: payload.data.follow_status,
         loading: false,
         success: true,
-        followed: false,
       };
     case `${UNFOLLOW_USER}_REJECTED`:
     case `${FOLLOW_USER}_REJECTED`:

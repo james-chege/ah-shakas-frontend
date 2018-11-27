@@ -1,11 +1,11 @@
 import CONSTANTS from '../constants';
 import api from '../api';
 
-const { FOLLOW_USER, UNFOLLOW_USER } = CONSTANTS;
+const { FOLLOW_USER, UNFOLLOW_USER, FOLLOWERS, FOLLOWING } = CONSTANTS;
 
 // action creators
 
-const followUser = (username, followed) => ({
+export const followUser = (username, followed) => ({
   type: followed ? UNFOLLOW_USER : FOLLOW_USER,
   payload: api({
     url: `/profile/${username}/follow/`,
@@ -13,4 +13,18 @@ const followUser = (username, followed) => ({
   }),
 });
 
-export default followUser;
+export const followersAction = username => ({
+  type: FOLLOWERS,
+  payload: api({
+    url: `/profile/${username}/followers/`,
+    method: 'GET',
+  }),
+});
+
+export const followingAction = username => ({
+  type: FOLLOWING,
+  payload: api({
+    url: `/profile/${username}/following/`,
+    method: 'GET',
+  }),
+});

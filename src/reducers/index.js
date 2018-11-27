@@ -12,6 +12,7 @@ import updateProfileReducer from './updateProfile.reducer';
 import userArticlesReducer from './userArticles.reducer';
 import favouriteArticlesReducer from './favouriteArticles.reducer';
 import bookmarkReducer from './bookmark.reducer';
+import getComments, { postCommentsReducer, updateCommentsReducer, deleteCommentReducer, replyCommentReducer } from './comments.reducer';
 
 const rootReducer = combineReducers({
   reset,
@@ -27,6 +28,11 @@ const rootReducer = combineReducers({
   userArticlesReducer,
   favouriteArticlesReducer,
   bookmarkReducer,
+  updateComments: updateCommentsReducer,
+  getComments,
+  postComments: postCommentsReducer,
+  replyComments: replyCommentReducer,
+  deleteComment: deleteCommentReducer,
 });
 
 export default rootReducer;

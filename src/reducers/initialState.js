@@ -69,6 +69,12 @@ export default {
     bookmarked: false,
     success: false,
     failure: false,
+  },
+  comments: {
+    data: {},
+    loading: false,
+    success: false,
+    failed: false,
     errors: {},
   },
 };

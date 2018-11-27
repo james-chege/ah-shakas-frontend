@@ -8,6 +8,7 @@ import MyRatingContainer from '../../containers/Rating/MyRatingContainer';
 import AverageRatingContainer from '../../containers/Rating/AverageRatingContainer';
 import TagsComponent from './TagsComponent';
 import Bookmark from '../../containers/Articles/BookmarkContainer';
+import CommentsContainer from '../../containers/Comments/CommentsContainer';
 
 class ReadUpdateArticleComponent extends React.Component {
   constructor(props) {
@@ -90,14 +91,19 @@ class ReadUpdateArticleComponent extends React.Component {
         <AverageRatingContainer />
       </div>
     );
+    const comments = slug === '' || slug === undefined ? '' : (
+      <div className="comments">
+        <CommentsContainer slug={slug} />
+      </div>
+    );
     return (
       <div>
-        <Navbar />
+        <Navbar {...this.props} />
         <div className="container navigation">
           <Row>
             <Col s={11}>
-              {(article.body
-                  && article.author.username === authUser.username
+              {(authUser() && article.body
+                  && article.author.username === authUser().username
                   && readOnly)
                   && (
                   <React.Fragment>
@@ -140,8 +146,8 @@ class ReadUpdateArticleComponent extends React.Component {
                 }
               </Col>
             </div>
-            {(article.body
-              && article.author.username !== authUser.username)
+            {(authUser() && article.body
+              && article.author.username !== authUser().username)
               ? (
                 <div id="bookmark">
                   <Bookmark bookmarked={article.favourited} slug={slug} />
@@ -151,8 +157,8 @@ class ReadUpdateArticleComponent extends React.Component {
           </Row>
           <div className="col s12 card-content">
             <div className="col s6">
-              {(article.body
-                && article.author.username !== authUser.username)
+              {(authUser() && article.body
+                && article.author.username !== authUser().username)
                 ? <p>How did you find this article?</p> : ''
               }
               <Row>
@@ -160,8 +166,8 @@ class ReadUpdateArticleComponent extends React.Component {
                   {averageRate}
                 </Col>
                 <Col s={9} m={10} className="rate">
-                  {(article.body
-                      && article.author.username !== authUser.username)
+                  {(authUser() && article.body
+                      && article.author.username !== authUser().username)
                   && (
                   <React.Fragment>
                     { /* eslint-disable-next-line */ }
@@ -173,6 +179,7 @@ class ReadUpdateArticleComponent extends React.Component {
               </Row>
             </div>
           </div>
+          {comments}
         </div>
       </div>
     );

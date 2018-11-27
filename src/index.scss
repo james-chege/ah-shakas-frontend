@@ -438,3 +438,90 @@ $article-border-bottom: #ccc;
 .fav {
   margin: 0;
 }
+
+#clickable {
+  cursor: pointer;
+  margin-right: 15px;
+  margin-top: 25px;
+  border-radius: 15px;
+}
+
+.drop {
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  width: 100px;
+  text-align: center;
+
+  #card-content {
+    padding: 0;
+  }
+}
+
+.card-threads {
+  border-radius: 2px;
+  //margin-left: -40px;
+  width: 100%;
+  padding-top: 0;
+  margin-top: -1%;
+  padding-left: 5px;
+  font-size: small;
+}
+
+.circle-thread {
+  max-height: 70px;
+}
+
+.card-reply {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding-bottom: 10px;
+  margin-bottom: 2.5em;
+}
+
+.card-username {
+  width: 30%;
+  font-weight: bold;
+  font-size: smaller;
+}
+
+.card-body {
+  width: 80%;
+  font-size: smaller;
+}
+
+.card-user {
+  width: 70%;
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 0;
+}
+
+.card-main {
+  width: 600px;
+  font-size: large;
+  display: inline-block;
+  margin-top: 5%;
+  margin-bottom: 5px;
+}
+
+.average {
+  color: orange;
+  margin-top: -20px;
+}
+
+.no-average {
+  color: grey;
+  margin-top: -20px;
+}
+
+.rating-text {
+  margin-left: 32px;
+  margin-top: -62px;
+  padding-top: 0;
+}
+
+.average-rating-font {
+  font-size: 14px;
+}

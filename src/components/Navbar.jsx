@@ -52,10 +52,12 @@ class Navbar extends React.Component {
   toggleModals = () => {
     const { match } = this.props;
 
-    if (match.params.activateModal === 'login') {
-      this.setState({ loginModal: true });
-    } else if (match.params.activateModal === 'signup') {
-      this.setState({ signupModal: true });
+    if (match) {
+      if (match.params.activateModal === 'login') {
+        this.setState({ loginModal: true });
+      } else if (match.params.activateModal === 'signup') {
+        this.setState({ signupModal: true });
+      }
     }
   };
 
@@ -69,12 +71,13 @@ class Navbar extends React.Component {
           {user
             ? (
               <React.Fragment>
-                <NavItem href="#"><Icon>search</Icon></NavItem>
+                <NavItem href="/search"><Icon>search</Icon></NavItem>
                 <NavItem href="#"><Icon>notifications_none</Icon></NavItem>
                 <NavItem onClick={this.toggleMenu}><Icon>more_vert</Icon></NavItem>
               </React.Fragment>
             ) : (
               <React.Fragment>
+                <NavItem href="/search"><Icon>search</Icon></NavItem>
                 <NavItem onClick={this.toggleLoginModal}>Login</NavItem>
                 <NavItem onClick={this.toggleSignupModal}>Sign Up</NavItem>
               </React.Fragment>

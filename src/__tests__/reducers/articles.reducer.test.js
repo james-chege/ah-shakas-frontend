@@ -8,7 +8,7 @@ const initialState = {
   fetchArticle: state.article,
   fetchAllArticles: state.allArticles,
 };
-const { POST_ARTICLE, FETCH_ALL_ARTICLES } = constants;
+const { SEARCH, POST_ARTICLE, FETCH_ALL_ARTICLES } = constants;
 
 const action = { payload: {} };
 
@@ -71,5 +71,43 @@ describe('Test post articles reducer', () => {
       },
     };
     expect(articlesReducer(initialState, action).fetchAllArticles.success).toEqual(false);
+  });
+
+  it('should handle SEARCH', () => {
+    action.type = `${SEARCH}_PENDING`;
+    action.payload = {
+      data: {
+        article: {
+          results: [{ slug: 'a' }, { slug: 'b' }],
+        },
+      },
+    };
+    expect(articlesReducer(initialState, action).searchArticles.articles).toEqual({ results: [] });
+  });
+
+  it('should handle SEARCH_FULFILLED', () => {
+    action.type = `${SEARCH}_FULFILLED`;
+    action.payload = {
+      data: {
+        article: {
+          results: [{ slug: 'a' }, { slug: 'b' }],
+        },
+      },
+    };
+    expect(
+      articlesReducer(initialState, action).searchArticles.articles,
+    ).toEqual({ results: [{ slug: 'a' }, { slug: 'b' }] });
+  });
+
+  it('should handle SEARCH_REJECTED', () => {
+    action.type = `${SEARCH}_REJECTED`;
+    action.payload = {
+      data: {
+        article: {
+          results: [{ slug: 'a' }, { slug: 'b' }],
+        },
+      },
+    };
+    expect(articlesReducer(initialState, action).searchArticles.success).toEqual(false);
   });
 });

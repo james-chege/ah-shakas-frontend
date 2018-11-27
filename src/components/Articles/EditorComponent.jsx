@@ -26,7 +26,12 @@ class EditorComponent extends React.Component {
     content.blocks.forEach((block) => {
       const { type } = block;
       if (type === 'unstyled' && description === undefined) {
-        description = block.text;
+        const { text } = block;
+        if (text.length > config.MAX_DESCRIPTION_SIZE) {
+          description = `${text.substr(0, config.MAX_DESCRIPTION_SIZE - 3)}...`;
+        } else {
+          description = text;
+        }
       }
 
       const headers = ['header-one', 'header-two', 'header-three'];

@@ -183,14 +183,14 @@ nav {
   color: $primary-color;
 }
 
-.outline_icon {
-  color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: teal;
-  cursor: pointer;
-}
+.search {
+  margin-top: 30px;
 
-.filled_icon {
-  color: teal;
-  cursor: pointer;
+  input {
+    font-size: 24px !important;
+  }
+
+  .input-field {
+    max-width: 100%;
+  }
 }

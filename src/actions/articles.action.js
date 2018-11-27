@@ -2,7 +2,7 @@ import api from '../api';
 import constants from '../constants';
 
 const {
-  POST_ARTICLE, FETCH_ARTICLE, UPDATE_ARTICLE, FETCH_ALL_ARTICLES,
+  SEARCH, POST_ARTICLE, FETCH_ARTICLE, UPDATE_ARTICLE, FETCH_ALL_ARTICLES,
 } = constants;
 
 export const fetchArticle = slug => ({
@@ -40,5 +40,13 @@ export const updateArticle = article => ({
     data: {
       article: { ...article },
     },
+  }),
+});
+
+export const searchArticles = (query = '', page = 1) => ({
+  type: SEARCH,
+  payload: api({
+    method: 'GET',
+    url: `/articles/?page=${page}&${query}`,
   }),
 });

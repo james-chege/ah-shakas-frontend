@@ -123,4 +123,11 @@ export default {
     isSubscribed: false,
     error: {},
   },
+  search: {
+    articles: {
+      results: [],
+    },
+    loading: false,
+    success: false,
+  },
 };

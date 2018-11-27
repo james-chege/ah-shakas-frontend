@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-animated-slider';
-import { Row, Col, Chip, Pagination } from 'react-materialize';
+import { Row, Col, Pagination } from 'react-materialize';
 import config from '../config';
 import Navbar from './Navbar';
 import EmptyArticlesComponent from './EmptyArticlesComponent';
+import ListArticleComponent from './Articles/ListArticleComponent';
 import '../assets/styles/HomePageComponent.scss';
 
 class HomePageComponent extends React.Component {
+  state = {
+    page: 1,
+  };
+
   componentDidMount() {
     const { fetchAll } = this.props;
     fetchAll();
@@ -16,9 +21,11 @@ class HomePageComponent extends React.Component {
   onPageChange = (page) => {
     const { fetchAll } = this.props;
     fetchAll(page);
+    this.setState({ page });
   };
 
   render() {
+    const { page } = this.state;
     const { articles, history } = this.props;
     const articlesAvailable = (articles && articles.results && articles.results.length);
 
@@ -59,51 +66,30 @@ class HomePageComponent extends React.Component {
               </Slider>
               <div className="container-fluid home-articles">
                 <Row>
-                  <Col m={9} s={12} className="recommended">
+                  <Col m={9} s={12} className="featured">
                     <h5 className="header">Featured Articles</h5>
                     {articles.results.map(article => (
-                      <div key={article.slug} className="article">
-                        <div
-                          className="img-wrapper"
-                          style={{ background: `url('${article.image_url ? article.image_url : config.PLACEHOLDER_IMAGE}') center center` }}
-                        >
-                          &nbsp;
-                        </div>
-                        <div>
-                          <a href={`/article/${article.slug}`}>{article.title}</a>
-                          <p>
-                            <i className="grey-text">
-                              By
-                              {' '}
-                              {article.author.username}
-                            </i>
-                          </p>
-                          <p>{article.description}</p>
-                          {article.tags
-                              && article.tags.map(tag => <Chip key={tag}>{tag}</Chip>)
-                          }
-                        </div>
-                      </div>
+                      <ListArticleComponent key={article.slug} {...article} />
                     ))}
                     {articles.count > config.PAGE_SIZE
                       && (
                       <Pagination
                         onSelect={this.onPageChange}
                         items={Math.ceil(articles.count / config.PAGE_SIZE)}
-                        activePage={1}
+                        activePage={page}
                         maxButtons={5}
                       />
                       )
                     }
                   </Col>
-                  <Col m={3} s={12} className="featured">
+                  <Col m={3} s={12} className="recent">
                     <h5 className="header">Recent Articles</h5>
                     {articles.recent.map(article => (
                       <div key={article.slug} className="article card">
                         <a href={`/article/${article.slug}`}>
                           <div
                             className="img-wrapper"
-                            style={{ background: `url('${article.image_url ? article.image_url : config.PLACEHOLDER_IMAGE}') center center` }}
+                            style={{ background: `url('${article.image_url || config.PLACEHOLDER_IMAGE}') top center` }}
                           >
                             &nbsp;
                           </div>

@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
 import {
-  postArticle, fetchArticle, fetchAllArticles, updateArticle,
+  searchArticles, postArticle, fetchArticle, fetchAllArticles, updateArticle,
 } from '../../actions/articles.action';
 
 const mockStore = configureStore();
@@ -38,5 +38,10 @@ describe('Test articles actions', () => {
   it('send update article action', () => {
     store.dispatch(updateArticle(article));
     expect(store.getActions()[0].type).toBe('UPDATE_ARTICLE');
+  });
+
+  it('send search article action', () => {
+    store.dispatch(searchArticles(article));
+    expect(store.getActions()[0].type).toBe('SEARCH');
   });
 });

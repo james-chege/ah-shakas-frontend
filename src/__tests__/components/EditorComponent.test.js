@@ -28,7 +28,16 @@ describe('Test Editor Component', () => {
   it('text handles save', () => {
     const handleSaveSpy = jest.spyOn(wrapper.instance(), 'saveHandler');
     const context = {};
-    const content = { blocks: [] };
+    let text = '';
+    for (let i = 0; i < 1000; i += 1) {
+      text += 'word';
+    }
+    const content = {
+      blocks: [{
+        text,
+        type: 'unstyled',
+      }],
+    };
     wrapper.instance().saveHandler(context, content);
     expect(handleSaveSpy.mock.calls.length).toEqual(1);
   });

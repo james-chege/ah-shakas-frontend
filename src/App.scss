@@ -116,7 +116,7 @@ nav {
 #likedislike {
   top: 225px;
   position: fixed;
-  right: 100px;
+  right: 105px;
 }
 
 .icon {
@@ -198,4 +198,8 @@ nav {
 .oops-image {
   width: 200px;
   margin-left: calc(50% - 100px);
+}
+
+.no-bottom {
+  border-bottom: none;
 }

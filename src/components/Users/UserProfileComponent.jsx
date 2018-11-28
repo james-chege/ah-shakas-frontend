@@ -15,6 +15,7 @@ import FollowersContainer from '../../containers/Users/FollowersContainer';
 import FollowingContainer from '../../containers/Users/FollowingContainer';
 import NotificationSubscription from '../../containers/Notifications/SubscribeUnsubscribeContainer';
 
+import Stats from '../../containers/Users/ReadingStatsContainer';
 
 class ProfileComponent extends Component {
   state = {
@@ -83,7 +84,7 @@ class ProfileComponent extends Component {
                     }
                   </div>
                 )
-                }
+              }
             </div>
           </div>
           <div className="UserInfo">
@@ -99,7 +100,7 @@ class ProfileComponent extends Component {
               <div className="col s12">
                 <ul className="tabs">
                   <li className="tab">
-                    { /* eslint-disable-next-line */ }
+                    { /* eslint-disable-next-line */}
                     <a
                       className={activeTab === 'articles' ? 'active' : ''}
                       onClick={() => this.setActive('articles')}
@@ -109,18 +110,18 @@ class ProfileComponent extends Component {
                   </li>
                   {user && (profile.username === user.username)
                     && (
-                    <li className="tab">
-                        { /* eslint-disable-next-line */ }
-                      <a
-                        className={activeTab === 'favourites' ? 'active' : ''}
-                        onClick={() => this.setActive('favourites')}
-                      >
-                        Favorites
-                      </a>
-                    </li>)
+                      <li className="tab">
+                        { /* eslint-disable-next-line */}
+                        <a
+                          className={activeTab === 'favourites' ? 'active' : ''}
+                          onClick={() => this.setActive('favourites')}
+                        >
+                          Favorites
+                        </a>
+                      </li>)
                   }
                   <li className="tab">
-                    { /* eslint-disable-next-line */ }
+                    { /* eslint-disable-next-line */}
                     <a
                       className={activeTab === 'followers' ? 'active' : ''}
                       onClick={() => this.setActive('followers')}
@@ -129,7 +130,7 @@ class ProfileComponent extends Component {
                     </a>
                   </li>
                   <li className="tab">
-                    { /* eslint-disable-next-line */ }
+                    { /* eslint-disable-next-line */}
                     <a
                       className={activeTab === 'following' ? 'active' : ''}
                       onClick={() => this.setActive('following')}
@@ -139,16 +140,28 @@ class ProfileComponent extends Component {
                   </li>
                   {user && (profile.username === user.username)
                     && (
-                    <li className="tab">
-                      { /* eslint-disable-next-line */ }
-                            <a
-                              className={activeTab === 'settings' ? 'active' : ''}
-                              onClick={() => this.setActive('settings')}
-                            >
-                                Settings
-                            </a>
-                    </li>)
-                    }
+                      <li className="tab">
+                        { /* eslint-disable-next-line */}
+                        <a
+                          className={activeTab === 'settings' ? 'active' : ''}
+                          onClick={() => this.setActive('settings')}
+                        >
+                          Settings
+                        </a>
+                      </li>)
+                  }
+                  {user && (profile.username === user.username)
+                    && (
+                      <li className="tab">
+                        { /* eslint-disable-next-line */}
+                        <a
+                          className={activeTab === 'stats' ? 'active' : ''}
+                          onClick={() => this.setActive('stats')}
+                        >
+                          Stats
+                        </a>
+                      </li>)
+                  }
                 </ul>
               </div>
             </div>
@@ -164,22 +177,26 @@ class ProfileComponent extends Component {
       <div>
         {this.userInfo()}
         {activeTab === 'articles'
-         && <UserArticlesContainer {...this.props} />
+          && <UserArticlesContainer {...this.props} />
         }
         {activeTab === 'favourites'
-         && <FavouriteArticlesContainer {...this.props} />
+          && <FavouriteArticlesContainer {...this.props} />
+        }
+        {
+          activeTab === 'stats'
+          && <Stats {...this.props} />
         }
         {activeTab === 'followers'
-         && <FollowersContainer {...this.props} />
+          && <FollowersContainer {...this.props} />
         }
         {activeTab === 'following'
-         && <FollowingContainer {...this.props} />
+          && <FollowingContainer {...this.props} />
         }
         {activeTab === 'settings'
           && (
-          <div className="notifications">
-            <NotificationSubscription />
-          </div>
+            <div className="notifications">
+              <NotificationSubscription />
+            </div>
           )
         }
       </div>

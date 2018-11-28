@@ -114,6 +114,7 @@ class ReadUpdateArticleComponent extends React.Component {
     const { tags } = this.state;
     const { loading: updateLoading } = updateState;
     const { slug } = this.state;
+    const image = '/static/media/avatar.d28ebf45.png';
     const myRate = slug === '' || slug === undefined ? '' : (
       <div className="ratings">
         <MyRatingContainer alert={alert} slug={slug} />
@@ -172,14 +173,14 @@ class ReadUpdateArticleComponent extends React.Component {
           <Row>
             <Col s={11}>
               {(authUser() && highlightedArticle
-                  && article.author.username === authUser().username
-                  && readOnly)
-                  && (
+                && article.author.username === authUser().username
+                && readOnly)
+                && (
                   <React.Fragment>
                     { /* eslint-disable-next-line */}
                     <p onClick={() => this.setReadOnly(false)} className="publish-btn teal-text"> Edit </p>
                   </React.Fragment>
-                  )
+                )
               }
               {!readOnly && !updateLoading
                 && (
@@ -195,7 +196,41 @@ class ReadUpdateArticleComponent extends React.Component {
                   </React.Fragment>
                 )
               }
+              {(authUser() && article.body
+                && article.author.username !== authUser().username)
+                && (
+                  <p>&nbsp;</p>
+                )
+              }
             </Col>
+            <div className="author-profile">
+              {article.author ? (
+                <div className="col s12">
+
+                  <div className="row">
+                    <div className="col s4">
+                      <img className="author-image" src={article.author.image_url === 'image-url' ? image : article.author.image_url} alt="" />
+                    </div>
+                    <div className="col s8">
+                      <div id="posted-by">
+                        Posted by
+                        {' '}
+                        <strong>
+                          <a href={`/profiles/${article.author.username}`}>
+                            {article.author.username}
+                          </a>
+                        </strong>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              )
+                : <div>empty</div>
+
+              }
+            </div>
             <div id="tag-chips">
               <Col s={12}>
                 {article.tags && tags.map(tag => <Chip>{tag}</Chip>)}
@@ -265,13 +300,13 @@ class ReadUpdateArticleComponent extends React.Component {
                 </Col>
                 <Col s={9} m={10} className="rate">
                   {(authUser() && article.body
-                      && article.author.username !== authUser().username)
-                  && (
-                    <React.Fragment>
-                      { /* eslint-disable-next-line */ }
-                      {myRate}
-                    </React.Fragment>
-                  )
+                    && article.author.username !== authUser().username)
+                    && (
+                      <React.Fragment>
+                        { /* eslint-disable-next-line */}
+                        {myRate}
+                      </React.Fragment>
+                    )
                   }
                 </Col>
               </Row>

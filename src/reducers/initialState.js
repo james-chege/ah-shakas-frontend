@@ -101,6 +101,14 @@ export default {
     success: false,
     loading: false,
     following: [],
+  commentLikeinit: {
+    success: false,
+    failure: false,
+    liked: false,
+    onFetched: false,
+  },
+  commentLikes: {
+
   },
   highlight: {
     data: {},

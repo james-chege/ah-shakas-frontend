@@ -33,7 +33,7 @@ class CommentsComponent extends Component {
   );
 
   render() {
-    const { payload, slug } = this.props;
+    const { payload, slug, commentLike } = this.props;
     return (
       payload.loading || payload.data.comments === undefined ? this.loadingProgress()
         : (
@@ -51,6 +51,7 @@ class CommentsComponent extends Component {
                     id={data.id}
                     history={data.history}
                     slug={slug}
+                    commentLike={commentLike}
                     author={data.author.username}
                     body={data.body}
                     imageUrl={data.author.image_url}
@@ -72,6 +73,7 @@ CommentsComponent.propTypes = {
   postComment: PropTypes.func.isRequired,
   getComments: PropTypes.func.isRequired,
   payload: PropTypes.shape({}).isRequired,
+  commentLike: PropTypes.func.isRequired,
 };
 
 export default CommentsComponent;

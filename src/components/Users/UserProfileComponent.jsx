@@ -5,10 +5,15 @@ import {
   Row,
   Col,
   ProgressBar,
+  Button,
 } from 'react-materialize';
 import Navbar from '../Navbar';
+import authUser from '../../utils/authUser.util';
 import UserArticlesContainer from '../../containers/Users/UserArticlesContainer';
 import FavouriteArticlesContainer from '../../containers/Users/FavouriteArticlesContainer';
+import FollowersContainer from '../../containers/Users/FollowersContainer';
+import FollowingContainer from '../../containers/Users/FollowingContainer';
+
 
 class ProfileComponent extends Component {
   state = {
@@ -27,9 +32,16 @@ class ProfileComponent extends Component {
     });
   }
 
+  onFollow = () => {
+    const { followUser, profile, match } = this.props;
+    const { username } = match.params;
+    followUser(username, username, profile.follow_status);
+  }
+
   userInfo = () => {
     const { activeTab } = this.state;
     const { loading, profile } = this.props;
+    const user = authUser();
     if (loading) {
       return (
         <div className="loader-element" id="progress-bar">
@@ -43,7 +55,7 @@ class ProfileComponent extends Component {
     }
     return (
       <div>
-        <Navbar username={profile.username} {...this.props} />
+        <Navbar username={user && user.username} {...this.props} />
         <div className="profile container">
           <div className="user-data">
             <div className="UserImage">
@@ -54,7 +66,19 @@ class ProfileComponent extends Component {
               />
             </div>
             <div className="edit-button">
-              <Link to={`/profiles/update-info/${profile.username}`} className="waves-effect waves-light btn">Edit Profile</Link>
+              {user && (profile.username === user.username)
+                ? <Link to={`/profiles/update-info/${profile.username}`} className="waves-effect waves-light btn">Edit Profile</Link>
+                : (
+                  <div>
+                    {profile.follow_status
+                      && <Button onClick={this.onFollow} id="follow-btn" className="waves-effect waves-light btn">Following</Button>
+                    }
+                    {!profile.follow_status
+                      && <Button onClick={this.onFollow} className="waves-effect waves-light btn">Follow</Button>
+                    }
+                  </div>
+                )
+                }
             </div>
           </div>
           <div className="UserInfo">
@@ -78,20 +102,35 @@ class ProfileComponent extends Component {
                       Profile
                     </a>
                   </li>
+                  {user && (profile.username === user.username)
+                    && (
+                    <li className="tab">
+                        { /* eslint-disable-next-line */ }
+                      <a
+                        className={activeTab === 'favourites' ? 'active' : ''}
+                        onClick={() => this.setActive('favourites')}
+                      >
+                        Favorites
+                      </a>
+                    </li>)
+                  }
                   <li className="tab">
                     { /* eslint-disable-next-line */ }
                     <a
-                      className={activeTab === 'favourites' ? 'active' : ''}
-                      onClick={() => this.setActive('favourites')}
+                      className={activeTab === 'followers' ? 'active' : ''}
+                      onClick={() => this.setActive('followers')}
                     >
-                      Favorites
+                      Followers
                     </a>
                   </li>
                   <li className="tab">
-                    <Link className={activeTab === 'followers' ? 'active' : ''} to="/favourite-articles">Followers</Link>
-                  </li>
-                  <li className="tab">
-                    <Link className={activeTab === 'following' ? 'active' : ''} to="/favourite-articles">Following</Link>
+                    { /* eslint-disable-next-line */ }
+                    <a
+                      className={activeTab === 'following' ? 'active' : ''}
+                      onClick={() => this.setActive('following')}
+                    >
+                      Following
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -112,6 +151,12 @@ class ProfileComponent extends Component {
         }
         {activeTab === 'favourites'
          && <FavouriteArticlesContainer {...this.props} />
+        }
+        {activeTab === 'followers'
+         && <FollowersContainer {...this.props} />
+        }
+        {activeTab === 'following'
+         && <FollowingContainer {...this.props} />
         }
       </div>
     );

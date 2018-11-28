@@ -42,6 +42,10 @@ const CONSTANTS = {
   },
   LIKE_DISLIKE: 'LIKE_DISLIKE',
   LIKES_COUNT: 'LIKES_COUNT',
+  FOLLOW_USER: 'FOLLOW_USER',
+  UNFOLLOW_USER: 'UNFOLLOW_USER',
+  FOLLOWERS: 'FOLLOWERS',
+  FOLLOWING: 'FOLLOWING',
 };
 
 export const TOKEN = localStorage.getItem('userToken');

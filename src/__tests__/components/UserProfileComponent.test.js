@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Row } from 'react-materialize';
+import { mount } from 'enzyme';
+import { Button } from 'react-materialize';
+import storeConfig from '../../store';
 import ProfileComponent from '../../components/Users/UserProfileComponent';
 import { loadProfile } from '../../actions/profile.actions';
 
@@ -14,7 +15,12 @@ const props = {
   loadProfile,
 };
 
-const wrapper = shallow(<ProfileComponent {...props} />);
-it('Renders <Row /> component', () => {
-  expect(wrapper.find(Row).length).toBe(0);
+const wrapper = mount(
+  <ProfileComponent store={storeConfig()} {...props} />,
+);
+
+describe('Test Profile Component', () => {
+  it('Renders <Button /> component', () => {
+    expect(wrapper.find(Button).length).toBe(1);
+  });
 });

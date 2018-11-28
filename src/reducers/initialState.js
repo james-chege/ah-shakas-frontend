@@ -84,4 +84,22 @@ export default {
     rejected: false,
     resolved: false,
   },
+
+  followUser: {
+    success: false,
+    loading: false,
+    followed: false,
+  },
+
+  followers: {
+    success: false,
+    loading: false,
+    followers: [],
+  },
+
+  following: {
+    success: false,
+    loading: false,
+    following: [],
+  },
 };

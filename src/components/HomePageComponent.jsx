@@ -30,7 +30,7 @@ class HomePageComponent extends React.Component {
             <EmptyArticlesComponent />
           ) : (
             <React.Fragment>
-              <Slider autoplay duration={4000} className="slider-wrapper">
+              <Slider autoplay duration={6000} className="slider-wrapper">
                 {articles.banner.map(item => (
                   <div
                     key={item.slug}
@@ -47,7 +47,11 @@ class HomePageComponent extends React.Component {
                       <span>
                         Posted by
                         {' '}
-                        <strong>{item.author.username}</strong>
+                        <strong>
+                          <a href={`/profiles/${item.author.username}`}>
+                            {item.author.username}
+                          </a>
+                        </strong>
                       </span>
                     </section>
                   </div>

@@ -11,7 +11,7 @@ import PropTypes from 'proptypes';
 import ResettingPasswordRequest from '../../actions/resetingPassword.action';
 import InlineError from '../Messages/InlineError';
 
-class ResetPasswordForm extends React.Component {
+export class ResetPasswordForm extends React.Component {
   state = {
     data: {
       password: '',
@@ -107,7 +107,7 @@ ResetPasswordForm.propTypes = {
   token: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({ resetting }) => ({ ...resetting });
+export const mapStateToProps = ({ resetting }) => ({ ...resetting });
 
 export default connect(mapStateToProps, {
   resetpassword: ResettingPasswordRequest,

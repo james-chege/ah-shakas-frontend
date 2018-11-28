@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'proptypes';
 import { Redirect } from 'react-router-dom';
+// eslint-disable-next-line
 import ResetPasswordForm from '../forms/ResetPasswordForm';
 
 class ResetPasswordComponent extends React.Component {
@@ -28,7 +29,7 @@ ResetPasswordComponent.propTypes = {
       token: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  data: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default ResetPasswordComponent;

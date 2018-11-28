@@ -1,7 +1,7 @@
 import expect from 'expect';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import highlightRequest from '../../actions/getHighlight.action';
+import highlightRequest from '../../actions/highlight.action';
 import CONSTANTS from '../../constants/index';
 import RESPONSES from '../../mock/responses';
 
@@ -19,7 +19,11 @@ describe('Highlight text Action tests', () => {
 
   it('should dispatch GET_HIGHLIGHT_ACTION when getting the highlights', () => {
     const data = RESPONSES.GET_HIGHLIGHT_SUCCESS_MESSAGE;
-    store.dispatch(highlightRequest('time-management')).then(() => {
+    const highlight = {
+      snippet: 'text',
+      index: 0,
+    };
+    store.dispatch(highlightRequest('time-management', highlight)).then(() => {
       expect(store.getActions()).toContainEqual({
         type: HIGHLIGHT.HIGHLIGHTING_ACTION,
         payload: data,

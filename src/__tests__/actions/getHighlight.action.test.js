@@ -28,11 +28,11 @@ describe('Highlight text Action tests', () => {
   });
 
   it('should dispatch GET_HIGHLIGHT_ERROR_ACTION if fail to fetch highlights', () => {
-    const err = RESPONSES.HIGHLIGHTING_ERROR_MESSAGE;
-    store.dispatch(GetHighlightRequest('time-management')).catch(() => {
+    store.dispatch(GetHighlightRequest()).catch((err) => {
+      const errors = err && 'Something went wrong!';
       expect(store.getActions()).toContainEqual({
         type: HIGHLIGHT.GET_HIGHLIGHT_ERROR_ACTION,
-        payload: err.response.data.errors.errors,
+        payload: errors,
       });
     });
   });

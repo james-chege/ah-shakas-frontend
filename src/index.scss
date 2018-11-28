@@ -399,9 +399,9 @@ $article-border-bottom: #ccc;
 }
 
 #bookmark {
-  top: 270px;
+  top: 500px;
   position: fixed;
-  right: 110px;
+  right: 108px;
 }
 
 .bookmarks i {
@@ -524,4 +524,15 @@ $article-border-bottom: #ccc;
 
 .average-rating-font {
   font-size: 14px;
+}
+
+#social-sharing {
+  top: 300px;
+  position: fixed;
+  right: 100px;
+  cursor: pointer;
+}
+
+.share-icons {
+  margin-bottom: 18px;
 }

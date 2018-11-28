@@ -95,6 +95,36 @@ nav {
   padding-bottom: 10px;
 }
 
+.outline_icon {
+  color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: teal;
+  cursor: pointer;
+}
+
+.filled_icon {
+  color: teal;
+  cursor: pointer;
+}
+
+.like-dislike {
+  color: teal;
+}
+
+#likedislike {
+  top: 200px;
+  position: fixed;
+  right: 100px;
+}
+
+.icon {
+  color: teal;
+}
+
+.count {
+  margin-left: 5px;
+}
+
 .overlay {
   display: flex;
   align-items: flex-start;

@@ -65,6 +65,7 @@ export default {
     articles: [],
     loading: false,
   },
+
   bookmark: {
     bookmarked: false,
     success: false,
@@ -76,5 +77,11 @@ export default {
     success: false,
     failed: false,
     errors: {},
+  },
+
+  likeDislike: {
+    pending: false,
+    rejected: false,
+    resolved: false,
   },
 };

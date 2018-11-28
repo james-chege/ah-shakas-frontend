@@ -13,6 +13,7 @@ import userArticlesReducer from './userArticles.reducer';
 import favouriteArticlesReducer from './favouriteArticles.reducer';
 import bookmarkReducer from './bookmark.reducer';
 import getComments, { postCommentsReducer, updateCommentsReducer, deleteCommentReducer, replyCommentReducer } from './comments.reducer';
+import likeDislike from './likedislike.reducer';
 
 const rootReducer = combineReducers({
   reset,
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   postComments: postCommentsReducer,
   replyComments: replyCommentReducer,
   deleteComment: deleteCommentReducer,
+  likeDislike,
 });
 
 export default rootReducer;

@@ -17,10 +17,10 @@ export const mapStateToProps = ({ article, highlight, getHighlight, highlightSto
 });
 
 export default connect(mapStateToProps, {
+  logOut: logOutAct,
   fetch: fetchArticle,
   update: updateArticle,
   getRatings,
-  logOut: logOutAct,
   getComments,
   highlighting: highlightRequest,
   getHighlight: GetHighlightRequest,

@@ -119,4 +119,8 @@ export default {
     data: {},
     errors: {},
   },
+  notificationSubscription: {
+    isSubscribed: false,
+    error: {},
+  },
 };

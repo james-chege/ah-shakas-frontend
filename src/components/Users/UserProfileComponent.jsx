@@ -13,6 +13,7 @@ import UserArticlesContainer from '../../containers/Users/UserArticlesContainer'
 import FavouriteArticlesContainer from '../../containers/Users/FavouriteArticlesContainer';
 import FollowersContainer from '../../containers/Users/FollowersContainer';
 import FollowingContainer from '../../containers/Users/FollowingContainer';
+import NotificationSubscription from '../../containers/Notifications/SubscribeUnsubscribeContainer';
 
 
 class ProfileComponent extends Component {
@@ -67,7 +68,11 @@ class ProfileComponent extends Component {
             </div>
             <div className="edit-button">
               {user && (profile.username === user.username)
-                ? <Link to={`/profiles/update-info/${profile.username}`} className="waves-effect waves-light btn">Edit Profile</Link>
+                ? (
+                  <div>
+                    <Link to={`/profiles/update-info/${profile.username}`} className="waves-effect waves-light btn">Edit Profile</Link>
+                  </div>
+                )
                 : (
                   <div>
                     {profile.follow_status
@@ -132,6 +137,18 @@ class ProfileComponent extends Component {
                       Following
                     </a>
                   </li>
+                  {user && (profile.username === user.username)
+                    && (
+                    <li className="tab">
+                      { /* eslint-disable-next-line */ }
+                            <a
+                              className={activeTab === 'settings' ? 'active' : ''}
+                              onClick={() => this.setActive('settings')}
+                            >
+                                Settings
+                            </a>
+                    </li>)
+                    }
                 </ul>
               </div>
             </div>
@@ -157,6 +174,13 @@ class ProfileComponent extends Component {
         }
         {activeTab === 'following'
          && <FollowingContainer {...this.props} />
+        }
+        {activeTab === 'settings'
+          && (
+          <div className="notifications">
+            <NotificationSubscription />
+          </div>
+          )
         }
       </div>
     );

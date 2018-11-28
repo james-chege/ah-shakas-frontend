@@ -13,18 +13,16 @@ export class CommentsLike extends Component {
     // eslint-disable-next-line
     const { likeStatus, likeCount } = this.props[id] || { likeStatus: false, likeCount: 0 };
     return (
-      <div>
-        <span>
-          { /* eslint-disable-next-line */ }
-          <a
-            id="likeComm"
-            onClick={() => commentLike({ id, slug, liked: likeStatus })}
-          >
-            <Icon className={likeStatus === true ? 'filled_icon' : 'outline_icon'}>thumb_up</Icon>
-          </a>
-          {likeCount}
-        </span>
-      </div>
+      <span>
+        { /* eslint-disable-next-line */ }
+        <a
+          id="likeComm"
+          onClick={() => commentLike({ id, slug, liked: likeStatus })}
+        >
+          <Icon className={likeStatus === true ? 'filled_icon' : 'outline_icon'}>thumb_up</Icon>
+        </a>
+        {likeCount}
+      </span>
     );
   }
 }

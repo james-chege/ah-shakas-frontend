@@ -101,6 +101,7 @@ export default {
     success: false,
     loading: false,
     following: [],
+  },
   commentLikeinit: {
     success: false,
     failure: false,

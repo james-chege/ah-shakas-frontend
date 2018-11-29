@@ -177,7 +177,7 @@ class Comment extends Component {
               <div id="comment-body">{body}</div>
             </div>
             <div id="reply-button">
-              <inputs
+              <input
                 type="submit"
                 id="thread-button"
                 value="View Replies"
@@ -199,7 +199,6 @@ class Comment extends Component {
             </div>
           </div>
           <CommentsLikeContainer {...this.props} />
-
         </div>
         <div className="edit-comment">
           <div className={this.getClassName('', showEdit)}>

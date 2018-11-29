@@ -137,4 +137,10 @@ export default {
     data: {},
     failed: false,
   },
+  notifications: {
+    success: false,
+    loading: false,
+    failure: false,
+    Notification_List: [],
+  },
 };

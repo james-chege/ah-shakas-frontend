@@ -1,0 +1,15 @@
+.dropdown {
+  position: fixed;
+  top: 60px;
+  right: 40px;
+  width: 300px;
+  z-index: 10000;
+
+  .card-content {
+    padding: 0;
+  }
+
+  a {
+    color: teal;
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Button } from 'react-materialize';
-import storeConfig from '../../store';
+import configureMockStore from 'redux-mock-store';
 import ProfileComponent from '../../components/Users/UserProfileComponent';
 import { loadProfile } from '../../actions/profile.actions';
 
@@ -15,8 +15,12 @@ const props = {
   loadProfile,
 };
 
-const wrapper = mount(
-  <ProfileComponent store={storeConfig()} {...props} />,
+const mock = configureMockStore();
+
+const store = mock({});
+
+const wrapper = shallow(
+  <ProfileComponent store={store} {...props} />, store,
 );
 
 describe('Test Profile Component', () => {

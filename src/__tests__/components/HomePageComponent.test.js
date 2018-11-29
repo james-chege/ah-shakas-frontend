@@ -1,9 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 import Slider from 'react-animated-slider';
 import { Chip, Pagination } from 'react-materialize';
-import HomePageComponent from '../../components/HomePageComponent';
+import HomePageComponent from '../../components/HomePageComponent'; //eslint-disable-line
 
 const mock = configureMockStore();
 
@@ -35,7 +35,7 @@ const props = {
   username: '',
   match: { path: '/:activateModal?', url: '/', isExact: true, params: {} },
 };
-const wrapper = mount(<HomePageComponent {...props} store={store} />);
+const wrapper = shallow(<HomePageComponent {...props} store={store} />, store);
 
 describe('renders <HomePageComponent/>', () => {
   it('tests if component did mount', () => {

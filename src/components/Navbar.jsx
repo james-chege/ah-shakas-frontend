@@ -5,13 +5,16 @@ import { Icon, Navbar as MaterialNavbar, NavItem } from 'react-materialize';
 import LoginContainer from '../containers/Auth/LoginContainer';
 import SignUpComponent from '../containers/Auth/SignUpContainer';
 import Dropdown from './Dropdown';
+// import Notification from './DropDownNotification';
 import authUser from '../utils/authUser.util';
+import DropdownNotification from './DropDownNotification';
 
 class Navbar extends React.Component {
   state = {
     loginModal: false,
     signupModal: false,
     menuOpen: false,
+    NotificationOpen: false,
   };
 
   componentDidMount() {
@@ -34,6 +37,14 @@ class Navbar extends React.Component {
 
     this.setState({
       menuOpen: !menuOpen,
+    });
+  };
+
+  toggleNotification = () => {
+    const { NotificationOpen } = this.state;
+
+    this.setState({
+      NotificationOpen: !NotificationOpen,
     });
   };
 
@@ -63,7 +74,7 @@ class Navbar extends React.Component {
 
   render() {
     const user = authUser();
-    const { loginModal, menuOpen, signupModal } = this.state;
+    const { loginModal, menuOpen, signupModal, NotificationOpen } = this.state;
 
     return (
       <React.Fragment>
@@ -72,7 +83,7 @@ class Navbar extends React.Component {
             ? (
               <React.Fragment>
                 <NavItem href="/search"><Icon>search</Icon></NavItem>
-                <NavItem href="#"><Icon>notifications_none</Icon></NavItem>
+                <NavItem onClick={this.toggleNotification}><Icon>notifications_none</Icon></NavItem>
                 <NavItem onClick={this.toggleMenu}><Icon>more_vert</Icon></NavItem>
               </React.Fragment>
             ) : (
@@ -85,6 +96,7 @@ class Navbar extends React.Component {
           }
         </MaterialNavbar>
         <Dropdown shown={menuOpen} onLogout={this.onLogOut} {...this.props} />
+        <DropdownNotification {...this.props} shown={NotificationOpen} />
 
         <Modal
           open={loginModal}

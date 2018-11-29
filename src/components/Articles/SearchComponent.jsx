@@ -12,6 +12,7 @@ import {
 import Navbar from '../Navbar';
 import config from '../../config';
 import ListArticleComponent from './ListArticleComponent';
+import OopsImage from '../../assets/img/oops.jpg';
 
 class SearchComponent extends React.Component {
   state = {
@@ -107,7 +108,10 @@ class SearchComponent extends React.Component {
             ) : (
               <Col s={12} className="featured">
                 {articles.count === 0 && (
-                  <p className="center"><i>No article found... </i></p>
+                  <React.Fragment>
+                    <img className="oops-image center" src={OopsImage} alt="No article found..." />
+                    <p className="center"><i>Sorry, we could not find that article.</i></p>
+                  </React.Fragment>
                 )}
                 {articles.results.map(article => (
                   <ListArticleComponent {...article} />

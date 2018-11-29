@@ -87,6 +87,12 @@ describe('Test Read and Update Articles Component', () => {
     expect(handleClickSpy.mock.calls.length).toEqual(1);
   });
 
+  it('test handleModal', () => {
+    const handleClickSpy = jest.spyOn(wrapper.instance(), 'handleModal');
+    wrapper.instance().handleModal();
+    expect(handleClickSpy.mock.calls.length).toEqual(1);
+  });
+
   it('renders Average rating component', () => {
     expect(wrapper.find(AverageRatingContainer).length).toBe(1);
   });

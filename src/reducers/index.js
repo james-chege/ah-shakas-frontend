@@ -20,6 +20,7 @@ import likeDislike from './likedislike.reducer';
 import followUserReducer from './follow.reducer';
 import followersReducer from './followers.reducer';
 import followingReducer from './following.reducer';
+import reportArticleReducer from './report.reducer';
 import highlight from './highlight.reducer';
 import getHighlight from './getHighlight.reducer';
 import storeHighlights from './storeHiglights.reducer';
@@ -52,6 +53,7 @@ const rootReducer = combineReducers({
   storeHighlights,
   likeComment,
   subscribeNotifications,
+  reportArticleReducer,
 });
 
 export default rootReducer;

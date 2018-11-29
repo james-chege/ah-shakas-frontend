@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Chip } from 'react-materialize';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navbar from '../Navbar';
 import EditorComponent from './EditorComponent';
 import authUser from '../../utils/authUser.util';
@@ -14,6 +15,8 @@ import SocialShare from './ShareComponent';
 import '../../assets/styles/Highlight.scss';
 import WithHighlightMessage from '../Messages/HighlightMessage';
 import HighlightsComments from './HighlightsCommentsComponent';
+import ReportArticle from '../../containers/Articles/ReportArticlesContainer';
+import '../../assets/styles/ReportArticleComponent.scss';
 
 class ReadUpdateArticleComponent extends React.Component {
   constructor(props) {
@@ -26,6 +29,8 @@ class ReadUpdateArticleComponent extends React.Component {
       readOnly: true,
       highlightedText: '',
       visible: false,
+      show: false,
+      tags: [],
     };
   }
 
@@ -45,6 +50,13 @@ class ReadUpdateArticleComponent extends React.Component {
     getRatings(slug);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { tags } = this.state;
+    if (!tags || tags.length === 0) {
+      this.setState({ tags: nextProps.fetchState.article.tags });
+    }
+  }
+
   componentDidUpdate(prevProps) {
     const { updateState, alert } = this.props;
     const { loading: currentLoading, success } = updateState;
@@ -59,6 +71,7 @@ class ReadUpdateArticleComponent extends React.Component {
     update(this.state);
     this.setReadOnly(true);
   };
+
 
   onTagsChange = (tags) => {
     this.setState({ tags });
@@ -81,6 +94,11 @@ class ReadUpdateArticleComponent extends React.Component {
     this.setState({ visible: !visible });
   };
 
+  handleModal = () => {
+    const { show } = this.state;
+    this.setState({ show: !show });
+  };
+
   reorderTags = (arr) => {
     const data = [];
     arr.forEach((tag) => {
@@ -90,9 +108,10 @@ class ReadUpdateArticleComponent extends React.Component {
   };
 
   render() {
-    const { readOnly, visible } = this.state;
+    const { readOnly, visible, show } = this.state;
     const { fetchState, updateState, alert } = this.props;
     const { article } = fetchState;
+    const { tags } = this.state;
     const { loading: updateLoading } = updateState;
     const { slug } = this.state;
     const myRate = slug === '' || slug === undefined ? '' : (
@@ -179,9 +198,13 @@ class ReadUpdateArticleComponent extends React.Component {
             </Col>
             <div id="tag-chips">
               <Col s={12}>
-                {article.tags && article.tags.map(tag => <Chip key={tag}>{tag}</Chip>)}
+                {article.tags && tags.map(tag => <Chip>{tag}</Chip>)}
               </Col>
             </div>
+            <span id="time-to-read">
+              <span>Read Time: </span>
+              {article.time_to_read}
+            </span>
             <div className="article">
               <Col s={11}>
                 {highlightedArticle
@@ -194,18 +217,36 @@ class ReadUpdateArticleComponent extends React.Component {
                     />
                   )
                 }
+                { <ReportArticle
+                  show={show}
+                  slug={slug}
+                  handleModal={this.handleModal}
+                />}
               </Col>
             </div>
             {(authUser() && article.body
               && article.author.username !== authUser().username)
               ? (
                 <React.Fragment>
-                  <div id="bookmark">
-                    <Bookmark bookmarked={article.favourited} slug={slug} />
-                    <SocialShare title={article.title} slug={article.slug} />
-                  </div>
-                  <div id="likedislike">
-                    <LikeDislike slug={slug} likeStatus={article.like_status} />
+                  <div className="right-buttons">
+                    <div id="bookmark">
+                      <Bookmark bookmarked={article.favourited} slug={slug} />
+                      <SocialShare title={article.title} slug={article.slug} />
+                      <div id="report-article">
+                        { /* eslint-disable-next-line */}
+                        <a href="javascript:void(0);" onClick={(e) => { e.preventDefault(); this.handleModal(); }}>
+                          <FontAwesomeIcon
+                            icon="flag"
+                            color="teal"
+                            size="lg"
+                            title="Report this Article"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                    <div id="likedislike">
+                      <LikeDislike slug={slug} likeStatus={article.like_status} />
+                    </div>
                   </div>
                 </React.Fragment>
               ) : ''

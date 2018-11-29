@@ -11,6 +11,9 @@ import Bookmark from '../../containers/Articles/BookmarkContainer';
 import CommentsContainer from '../../containers/Comments/CommentsContainer';
 import LikeDislike from '../../containers/Articles/LikeDislikeContainer';
 import SocialShare from './ShareComponent';
+import '../../assets/styles/Highlight.scss';
+import WithHighlightMessage from '../Messages/HighlightMessage';
+import HighlightsComments from './HighlightsCommentsComponent';
 
 class ReadUpdateArticleComponent extends React.Component {
   constructor(props) {
@@ -21,8 +24,17 @@ class ReadUpdateArticleComponent extends React.Component {
     this.state = {
       slug,
       readOnly: true,
+      highlightedText: '',
       visible: false,
     };
+  }
+
+  componentWillMount() {
+    const { match } = this.props;
+    const { params } = match;
+    const { slug } = params;
+    const { getHighlight } = this.props;
+    getHighlight(slug);
   }
 
   componentDidMount() {
@@ -98,13 +110,49 @@ class ReadUpdateArticleComponent extends React.Component {
         <CommentsContainer slug={slug} />
       </div>
     );
+
+    if ((authUser() !== null) && authUser().username) {
+      document.onmouseup = () => {
+        const highlightedText = window.getSelection().toString();
+        if (highlightedText.length > 1) {
+          document.getElementById('highlightMessage').style.display = 'block';
+          this.setState({ highlightedText });
+          const { highlightStore } = this.props;
+          highlightStore(highlightedText);
+        }
+      };
+    }
+
+    const { data } = this.props;
+    const { highlights } = data;
+
+    let highlightedArticle = '';
+
+    if (article.body) {
+      highlightedArticle = JSON.parse(article.body);
+    }
+    if (highlights && article.body) {
+      highlights.map(highlight => highlight.snippet).forEach((phrase) => {
+        // eslint-disable-next-line
+        for (const block of highlightedArticle.blocks) {
+          if (block.type === 'unstyled') {
+            const offset = block.text.indexOf(phrase);
+            if (offset !== -1) {
+              block.inlineStyleRanges.push({ offset, length: phrase.length, style: 'CUSTOM_COLOR_#59AA92' });
+            }
+          }
+        }
+      });
+    }
+    const { highlightedText } = this.state;
     return (
       <div>
         <Navbar {...this.props} />
+        <WithHighlightMessage highlightedText={highlightedText} />
         <div className="container navigation">
           <Row>
             <Col s={11}>
-              {(authUser() && article.body
+              {(authUser() && highlightedArticle
                   && article.author.username === authUser().username
                   && readOnly)
                   && (
@@ -131,17 +179,17 @@ class ReadUpdateArticleComponent extends React.Component {
             </Col>
             <div id="tag-chips">
               <Col s={12}>
-                {article.tags && article.tags.map(tag => <Chip>{tag}</Chip>)}
+                {article.tags && article.tags.map(tag => <Chip key={tag}>{tag}</Chip>)}
               </Col>
             </div>
             <div className="article">
               <Col s={11}>
-                {article.body
+                {highlightedArticle
                   && (
                     <EditorComponent
                       spellcheck
                       readOnly={readOnly}
-                      content={JSON.parse(article.body)}
+                      content={highlightedArticle}
                       onChange={this.onArticleChange}
                     />
                   )
@@ -178,10 +226,10 @@ class ReadUpdateArticleComponent extends React.Component {
                   {(authUser() && article.body
                       && article.author.username !== authUser().username)
                   && (
-                  <React.Fragment>
-                    { /* eslint-disable-next-line */ }
+                    <React.Fragment>
+                      { /* eslint-disable-next-line */ }
                       {myRate}
-                  </React.Fragment>
+                    </React.Fragment>
                   )
                   }
                 </Col>
@@ -189,6 +237,9 @@ class ReadUpdateArticleComponent extends React.Component {
             </div>
           </div>
           {comments}
+          <Col s={12}>
+            <HighlightsComments highlights={highlights} />
+          </Col>
         </div>
       </div>
     );
@@ -200,6 +251,9 @@ ReadUpdateArticleComponent.propTypes = {
   getRatings: PropTypes.func.isRequired,
   fetch: PropTypes.func.isRequired,
   update: PropTypes.func.isRequired,
+  highlightStore: PropTypes.func.isRequired,
+  getHighlight: PropTypes.func.isRequired,
+  data: PropTypes.shape({}).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       slug: PropTypes.string,

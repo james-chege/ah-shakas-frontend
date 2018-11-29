@@ -19,7 +19,7 @@ class ForgotPasswordComponent extends React.Component {
 }
 
 ForgotPasswordComponent.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default ForgotPasswordComponent;

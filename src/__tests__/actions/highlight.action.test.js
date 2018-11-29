@@ -1,6 +1,8 @@
 import expect from 'expect';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 import highlightRequest from '../../actions/highlight.action';
 import CONSTANTS from '../../constants/index';
 import RESPONSES from '../../mock/responses';
@@ -10,7 +12,7 @@ const mockStore = configureMockStore(middleware);
 let store;
 
 const { HIGHLIGHT } = CONSTANTS;
-
+const mock = new MockAdapter(axios);
 describe('Highlight text Action tests', () => {
   store = mockStore({});
   afterEach(() => {
@@ -18,25 +20,27 @@ describe('Highlight text Action tests', () => {
   });
 
   it('should dispatch GET_HIGHLIGHT_ACTION when getting the highlights', () => {
-    const data = RESPONSES.GET_HIGHLIGHT_SUCCESS_MESSAGE;
+    const data = 'Something went wrong!';
     const highlight = {
       snippet: 'text',
       index: 0,
     };
+    mock.onPost('http://127.0.0.1:8000/api').reply(401, data);
     store.dispatch(highlightRequest('time-management', highlight)).then(() => {
       expect(store.getActions()).toContainEqual({
-        type: HIGHLIGHT.HIGHLIGHTING_ACTION,
+        type: HIGHLIGHT.HIGHLIGHTING_ERROR_ACTION,
         payload: data,
       });
     });
   });
 
   it('should dispatch HIGHLIGHTING_ERROR_ACTION if fail to highlight', () => {
-    const err = RESPONSES.HIGHLIGHTING_ERROR_MESSAGE;
-    store.dispatch(highlightRequest('time-management')).catch(() => {
+    const data = RESPONSES.HIGHLIGHTING_ERROR_MESSAGE;
+    mock.onPost('url').reply(401, data);
+    return store.dispatch(highlightRequest('time-management')).catch(() => {
       expect(store.getActions()).toContainEqual({
         type: HIGHLIGHT.HIGHLIGHTING_ERROR_ACTION,
-        payload: err.response.data.errors.error,
+        payload: data.response.data,
       });
     });
   });

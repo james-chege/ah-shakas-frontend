@@ -14,9 +14,10 @@ const highlightRequest = (slug, highlight) => dispatch => api({
       payload: data.data,
     });
   }).catch((err) => {
+    const errors = err && 'Something went wrong!';
     dispatch({
       type: HIGHLIGHT.HIGHLIGHTING_ERROR_ACTION,
-      payload: err.response.data,
+      payload: errors,
     });
   });
 

@@ -2,7 +2,10 @@
 export const threads = [{
   id: 52,
   body: 'another reply',
-  author: 'kevin',
+  author: {
+    username: 'kevin',
+    image_url: 'image-url',
+  },
   created_at: '20 Nov 2018 12:23:41',
   replies: 0,
   comment_like_count: 0,
@@ -11,7 +14,10 @@ export const threads = [{
 {
   id: 51,
   body: 'this is a reply',
-  author: 'kevin',
+  author: {
+    username: 'kevin',
+    image_url: 'image-url',
+  },
   created_at: '20 Nov 2018 12:23:26',
   replies: 0,
   comment_like_count: 0,
@@ -26,6 +32,7 @@ export const history = [{
 export const props = {
   author: 'kevin',
   createdAt: '20 Nov 2018 08:23:45',
+  imageUrl: 'image-url',
   id: 1,
   slug: 'slug',
   body: 'body',

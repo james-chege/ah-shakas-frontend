@@ -14,6 +14,7 @@ import favouriteArticlesReducer from './favouriteArticles.reducer';
 import bookmarkReducer from './bookmark.reducer';
 // eslint-disable-next-line
 import likeComment from './commentLike.reducer';
+import subscribeNotifications from './subscribeUnsubscribeNotifications.reducer';
 import getComments, { postCommentsReducer, updateCommentsReducer, deleteCommentReducer, replyCommentReducer } from './comments.reducer';
 import likeDislike from './likedislike.reducer';
 import followUserReducer from './follow.reducer';
@@ -50,6 +51,7 @@ const rootReducer = combineReducers({
   getHighlight,
   storeHighlights,
   likeComment,
+  subscribeNotifications,
 });
 
 export default rootReducer;

@@ -19,7 +19,7 @@ const Dropdown = ({ shown, onLogout, username }) => (
       </CollectionItem>
       <CollectionItem>
         { /* eslint-disable-next-line */ }
-        <a className="logout-tag" onClick={onLogout}>Logout</a>
+        <a href="/" onClick={onLogout}>Logout</a>
       </CollectionItem>
     </Collection>
   </div>

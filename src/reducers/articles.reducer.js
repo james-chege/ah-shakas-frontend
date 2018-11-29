@@ -6,6 +6,7 @@ import uniqueBySlug from '../utils/uniqueBySlug.util';
 import nRandom from '../utils/nRandom.util';
 
 const {
+  SEARCH,
   POST_ARTICLE,
   FETCH_ARTICLE,
   UPDATE_ARTICLE,
@@ -71,9 +72,39 @@ const fetchAllArticles = (state = allArticlesInitialState, action) => {
   }
 };
 
+const searchArticles = (state = initialState.search, action) => {
+  const { type, payload = {} } = action;
+  const { data = {} } = payload;
+  const { article: articles } = data;
+  switch (type) {
+    case `${SEARCH}_PENDING`:
+      return {
+        ...state,
+        loading: true,
+        success: false,
+      };
+    case `${SEARCH}_FULFILLED`:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        articles,
+      };
+    case `${SEARCH}_REJECTED`:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+      };
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   updateArticle,
   postArticle,
   fetchArticle,
+  searchArticles,
   fetchAllArticles,
 });

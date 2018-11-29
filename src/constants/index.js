@@ -65,6 +65,7 @@ const CONSTANTS = {
     SUCCESSFUL: 'SUCCESSFUL',
     FAILED: 'FAILED',
   },
+  SEARCH: 'SEARCH',
 };
 
 export default CONSTANTS;

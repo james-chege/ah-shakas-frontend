@@ -6,7 +6,7 @@ $article-border-bottom: #ccc;
 
 body {
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 header {
@@ -45,12 +45,11 @@ header {
 }
 
 button {
-  appearance: none;
   background: $teal;
   border: none;
   box-sizing: border-box;
   color: white;
-  cursor: cursor;
+  cursor: pointer;
   font-weight: 400;
   font-size: 13px;
   filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
@@ -94,7 +93,7 @@ button:hover {
 .slide::before {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
   bottom: 0;
-  content: '';
+  content: "";
   display: block;
   height: 100%;
   left: 0;
@@ -104,7 +103,7 @@ button:hover {
 
 .previousButton,
 .nextButton {
-  background: url('../img/arrow.svg') no-repeat center center / 16px;
+  background: url("../img/arrow.svg") no-repeat center center / 16px;
   cursor: pointer;
   height: 128px;
   position: absolute;
@@ -126,7 +125,7 @@ button:hover {
 
 .previousButton:hover,
 .nextButton:hover {
-  background: url('../img/arrow.svg') no-repeat center center / 16px;
+  background: url("../img/arrow.svg") no-repeat center center / 16px;
 }
 
 .previousButton:hover {
@@ -302,7 +301,8 @@ button:hover {
   transition-delay: 0.9s;
 }
 
-.home-articles {
+.home-articles,
+.search-articles {
   margin: 50px;
 
   .header {
@@ -313,14 +313,19 @@ button:hover {
     margin: 10px;
   }
 
-  .featured {
+  .recent {
+    .article {
+      width: 100%;
+    }
+
     .img-wrapper {
-      height: 120px;
+      background-size: cover !important;
+      height: 130px;
       width: 100%;
     }
 
     .inner {
-      padding: 20px;
+      padding: 0 20px 10px 20px;
     }
 
     a {
@@ -346,7 +351,7 @@ button:hover {
     }
   }
 
-  .recommended {
+  .featured {
     .article {
       border-bottom: 1px solid $article-border-bottom;
       float: left;
@@ -357,12 +362,16 @@ button:hover {
       .img-wrapper {
         background-size: cover !important;
         float: left;
-        height: 200px;
+        height: 220px;
         margin-right: 20px;
-        width: 300px;
+        width: 320px;
       }
 
-      p {
+      .author {
+        display: block;
+      }
+
+      .description {
         padding: 0 20px 0 2px;
       }
 

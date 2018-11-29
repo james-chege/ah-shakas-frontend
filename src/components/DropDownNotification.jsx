@@ -21,5 +21,4 @@ DropdownNotification.propTypes = {
 DropdownNotification.defaultProps = {
   shown: false,
 };
-
 export default DropdownNotification;

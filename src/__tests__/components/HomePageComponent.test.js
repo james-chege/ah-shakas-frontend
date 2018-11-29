@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 import Slider from 'react-animated-slider';
-import { Chip, Pagination } from 'react-materialize';
+import { Pagination } from 'react-materialize';
 import HomePageComponent from '../../components/HomePageComponent'; //eslint-disable-line
 
 const mock = configureMockStore();
@@ -64,9 +64,5 @@ describe('renders <HomePageComponent/>', () => {
 
   it('maps articles accordingly', () => {
     expect(wrapper.find('.title')).toHaveLength(1);
-  });
-
-  it('maps tags correctly', () => {
-    expect(wrapper.find(Chip)).toHaveLength(1);
   });
 });

@@ -12,8 +12,7 @@ import CommentsContainer from '../../containers/Comments/CommentsContainer';
 import LikeDislike from '../../containers/Articles/LikeDislikeContainer';
 import SocialShare from './ShareComponent';
 import '../../assets/styles/Highlight.scss';
-// eslint-disable-next-line
-import HighlightMessage from '../Messages/HighlightMessage';
+import WithHighlightMessage from '../Messages/HighlightMessage';
 import HighlightsComments from './HighlightsCommentsComponent';
 
 class ReadUpdateArticleComponent extends React.Component {
@@ -29,7 +28,6 @@ class ReadUpdateArticleComponent extends React.Component {
       visible: false,
     };
   }
-
 
   componentWillMount() {
     const { match } = this.props;
@@ -150,7 +148,7 @@ class ReadUpdateArticleComponent extends React.Component {
     return (
       <div>
         <Navbar {...this.props} />
-        <HighlightMessage highlightedText={highlightedText} />
+        <WithHighlightMessage highlightedText={highlightedText} />
         <div className="container navigation">
           <Row>
             <Col s={11}>

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'proptypes';
 import { Redirect } from 'react-router-dom';
-// eslint-disable-next-line
-import ResetPasswordForm from '../forms/ResetPasswordForm';
+import PasswordResetForm from '../forms/ResetPasswordForm';
 
 class ResetPasswordComponent extends React.Component {
   state ={
@@ -16,7 +15,7 @@ class ResetPasswordComponent extends React.Component {
     const { token } = params;
     return (
       <div className="container">
-        { user ? alert.show('Password successfully reset!', 1000) && <Redirect to="/users/login" /> : <ResetPasswordForm token={token} /> }
+        { user ? alert.show('Password successfully reset!', 1000) && <Redirect to="/users/login" /> : <PasswordResetForm token={token} /> }
       </div>
     );
   }

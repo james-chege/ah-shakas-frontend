@@ -7,7 +7,6 @@ import CommentsLikeComponent from '../../components/Comments/CommentLikeComponen
 const mockStore = configureMockStore();
 const store = mockStore({});
 
-
 const props = {
   fetchComment: jest.fn(),
   commentLike: jest.fn(),

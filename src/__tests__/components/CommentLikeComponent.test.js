@@ -8,7 +8,6 @@ describe('test commentLike', () => {
     commentLike: jest.fn(),
     slug: '',
     id: '',
-
   };
   const wrapper = mount(<CommentsLikeComponent {...props} />);
 

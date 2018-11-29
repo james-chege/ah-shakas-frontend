@@ -1,6 +1,8 @@
 import React from 'react';
 import { withAlert } from 'react-alert';
 import { Route, Switch } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import HomePageContainer from './containers/HomePageContainer';
 import CreateArticleComponent from './containers/Articles/CreateArticleContainer';
 import SearchComponent from './containers/Articles/SearchContainer';
@@ -12,6 +14,9 @@ import UpdateProfile from './containers/Users/UpdateProfileContainer';
 import './App.scss';
 import VerificationContainer from './containers/Auth/VerificationContainer';
 import SignUpSuccess from './components/Messages/SignUpSuccess';
+
+
+library.add(faFlag);
 
 require('dotenv').config();
 

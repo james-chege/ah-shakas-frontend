@@ -130,4 +130,11 @@ export default {
     loading: false,
     success: false,
   },
+  report: {
+    loading: false,
+    success: false,
+    error: {},
+    data: {},
+    failed: false,
+  },
 };

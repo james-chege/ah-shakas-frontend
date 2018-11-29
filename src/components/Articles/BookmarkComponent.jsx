@@ -11,7 +11,7 @@ class Bookmark extends Component {
   handleBookmark = () => {
     const { slug, bookmarked, favourite } = this.props;
     favourite(slug, bookmarked);
-  }
+  };
 
   render() {
     const { bookmarked } = this.props;

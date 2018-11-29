@@ -20,6 +20,7 @@ const verifyReducer = (state = initialState.verify, action) => {
     case `${VERIFY}_REJECTED`:
       return {
         ...state,
+        loading: false,
         failed: true,
       };
     default:

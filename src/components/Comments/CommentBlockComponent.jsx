@@ -145,7 +145,7 @@ class Comment extends Component {
       showThreadButton,
     } = this.state;
     return (
-      <div className="card" id="show-drop">
+      <div className="card card-comment" id="show-drop">
         {authUser() === null || authUser().username !== author ? ('') : (
           <div
             className="right waves-effect waves-dark"
@@ -159,7 +159,7 @@ class Comment extends Component {
           </div>
         ) }
 
-        <span className={this.getClassName('drop card waves-effect waves-light', showDrop)}>
+        <span className={this.getClassName('drop card card-comment waves-effect waves-light', showDrop)}>
           <input type="submit" id="edit" value="Edit" onClick={this.showEditText} className="waves-effect" />
           <input type="submit" id="show-history" value="History" onClick={this.showHistory} className="waves-effect white" />
           <input type="submit" id="on-delete" value="Delete" onClick={this.onDelete} className="waves-effect white" />
@@ -211,7 +211,7 @@ class Comment extends Component {
         </div>
         <div className={this.getClassName('card-threads z-depth-0 col s5', showThreads)}>
           {threads.map(thread => (
-            <div key={thread.id} className="card z-depth-0 thread">
+            <div key={thread.id} className="card card-comment z-depth-0 thread">
               <img
                 className="circle-thread circle thread-avatar"
                 src={thread.author.image_url === 'image-url' ? avatar : thread.author.image_url}
@@ -245,7 +245,7 @@ class Comment extends Component {
         </div>
         <div className="Reply">
           <div className={this.getClassName('input-field reply-form', showReply)}>
-            <div className=" card z-depth-0 form-reply thread">
+            <div className="card card-comment z-depth-0 form-reply thread">
               <form onSubmit={this.onReply} id="submit-reply">
                 <input
                   type="text"

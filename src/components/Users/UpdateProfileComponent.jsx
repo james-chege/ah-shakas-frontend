@@ -89,6 +89,7 @@ class UpdateProfileComponent extends Component {
                   defaultValue={username}
                   className="input-field"
                   minLength="4"
+                  required
                   s={12}
                 />
                 {updateProfileReducer.errors
@@ -103,6 +104,7 @@ class UpdateProfileComponent extends Component {
                   defaultValue={bio}
                   className="input-field"
                   minLength="1"
+                  required
                   s={12}
                 />
                 {updateProfileReducer.errors

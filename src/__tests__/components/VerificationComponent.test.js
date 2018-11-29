@@ -5,6 +5,7 @@ import VerificationComponent from '../../components/Auth/VerificationComponent';
 
 const props = {
   success: false,
+  loading: false,
   verification: jest.fn(),
   match: {
     params: {
@@ -25,5 +26,10 @@ describe('componentDidMount', () => {
   it('redirects on success', () => {
     wrapper.setProps({ success: true });
     expect(wrapper.find(Redirect).length).toEqual(1);
+  });
+
+  it('loads', () => {
+    wrapper.setProps({ success: false, loading: true });
+    expect(wrapper.find('div').length).toEqual(1);
   });
 });

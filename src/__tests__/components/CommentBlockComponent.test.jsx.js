@@ -3,10 +3,11 @@ import { mount } from 'enzyme';
 import CommentBlockComponent from '../../components/Comments/CommentBlockComponent';
 import { replyComment } from '../../actions/replyComment.action';
 import { threads, history, props } from '../../mock/comments';
+import storeConfig from '../../store';
 
 describe('test commentBlock', () => {
   const prop = { ...props, history, replyComment, threads };
-  const wrapper = mount(<CommentBlockComponent {...prop} />);
+  const wrapper = mount(<CommentBlockComponent store={storeConfig()} {...prop} />);
 
   it('changes state on click cancel', () => {
     const mockOnClick = jest.fn();

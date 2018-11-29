@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchArticle, updateArticle } from '../../actions/articles.action';
 import { getRatings } from '../../actions/rating.action';
+import { logOutAct } from '../../actions/login.action';
 import ReadUpdateArticleComponent from '../../components/Articles/ReadUpdateArticleComponent';
 import { getComments } from '../../actions/getComments.action';
 import highlightRequest from '../../actions/highlight.action';
@@ -19,6 +20,7 @@ export default connect(mapStateToProps, {
   fetch: fetchArticle,
   update: updateArticle,
   getRatings,
+  logOut: logOutAct,
   getComments,
   highlighting: highlightRequest,
   getHighlight: GetHighlightRequest,

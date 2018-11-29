@@ -12,6 +12,8 @@ import updateProfileReducer from './updateProfile.reducer';
 import userArticlesReducer from './userArticles.reducer';
 import favouriteArticlesReducer from './favouriteArticles.reducer';
 import bookmarkReducer from './bookmark.reducer';
+// eslint-disable-next-line
+import likeComment from './commentLike.reducer';
 import getComments, { postCommentsReducer, updateCommentsReducer, deleteCommentReducer, replyCommentReducer } from './comments.reducer';
 import likeDislike from './likedislike.reducer';
 import followUserReducer from './follow.reducer';
@@ -47,6 +49,7 @@ const rootReducer = combineReducers({
   highlight,
   getHighlight,
   storeHighlights,
+  likeComment,
 });
 
 export default rootReducer;

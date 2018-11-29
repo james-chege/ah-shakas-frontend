@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import authUser from '../../utils/authUser.util';
 import avatar from '../../assets/img/avatar.png';
 import '../../assets/styles/Comments.scss';
+import CommentsLikeContainer from '../../containers/Comments/CommentsLikeContainer';
 
 class Comment extends Component {
   constructor(props) {
@@ -197,6 +198,7 @@ class Comment extends Component {
               <br />
             </div>
           </div>
+          <CommentsLikeContainer {...this.props} />
         </div>
         <div className="edit-comment">
           <div className={this.getClassName('', showEdit)}>

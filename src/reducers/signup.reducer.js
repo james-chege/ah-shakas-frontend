@@ -23,7 +23,7 @@ const signUpReducer = (state = initialState.signUp, action) => {
         ...state,
         loading: false,
         success: false,
-        errors: payload,
+        error: payload,
       };
     default:
       return state;

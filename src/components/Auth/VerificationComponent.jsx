@@ -9,10 +9,19 @@ class VerificationComponent extends Component {
   }
 
   render() {
-    const { success } = this.props;
+    const { success, loading } = this.props;
+    let message = 'Ooops! Something went wrong...';
+    if (success) {
+      message = '';
+    } else if (loading) {
+      message = 'loading...';
+    } else {
+      message = 'Ooops! Something went wrong...';
+    }
+
     return (
       <div className="verification">
-        {success ? <Redirect to="/login" /> : 'Ooops! Something went wrong...'}
+        {message === '' ? <Redirect to="/users/login" /> : message}
       </div>
     );
   }
@@ -20,6 +29,7 @@ class VerificationComponent extends Component {
 
 VerificationComponent.propTypes = {
   success: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
   verification: PropTypes.func.isRequired,
   match: PropTypes.string.isRequired,
 };

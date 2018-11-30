@@ -27,7 +27,8 @@ class SignUpComponent extends Component {
   }
 
   render() {
-    const { errors, success, loading } = this.props;
+    const { success, loading, error } = this.props;
+    const { errors } = error ? error.response.data : { errrors: '' };
     const {
       username, email, password, confirmPassword, passwordError,
     } = this.state;
@@ -100,7 +101,7 @@ class SignUpComponent extends Component {
 
 SignUpComponent.propTypes = {
   signup: PropTypes.func.isRequired,
-  errors: PropTypes.shape({}).isRequired,
+  error: PropTypes.shape({}).isRequired,
   success: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
 };

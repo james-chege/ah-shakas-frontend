@@ -78,13 +78,11 @@ export default {
     failed: false,
     errors: {},
   },
-
   likeDislike: {
     pending: false,
     rejected: false,
     resolved: false,
   },
-
   followUser: {
     success: false,
     loading: false,
@@ -136,5 +134,11 @@ export default {
     error: {},
     data: {},
     failed: false,
+  },
+  readingStats: {
+    pending: false,
+    resolved: false,
+    failed: false,
+    stats: [],
   },
 };

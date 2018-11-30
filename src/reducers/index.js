@@ -24,6 +24,7 @@ import reportArticleReducer from './report.reducer';
 import highlight from './highlight.reducer';
 import getHighlight from './getHighlight.reducer';
 import storeHighlights from './storeHiglights.reducer';
+import readingStats from './readingstats.reducer';
 
 const rootReducer = combineReducers({
   reset,
@@ -54,6 +55,7 @@ const rootReducer = combineReducers({
   likeComment,
   subscribeNotifications,
   reportArticleReducer,
+  readingStats,
 });
 
 export default rootReducer;

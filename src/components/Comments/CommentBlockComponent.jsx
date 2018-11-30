@@ -198,7 +198,7 @@ class Comment extends Component {
               <br />
             </div>
           </div>
-          <CommentsLikeContainer {...this.props} />
+          {showEdit ? '' : <CommentsLikeContainer {...this.props} />}
         </div>
         <div className="edit-comment">
           <div className={this.getClassName('', showEdit)}>

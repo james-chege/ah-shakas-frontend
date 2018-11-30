@@ -1,7 +1,6 @@
 import constants from '../constants';
 import initialstate from './initialState';
 
-
 const { readingStats } = initialstate;
 const { READSTATS } = constants;
 

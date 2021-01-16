@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SocialLogin from 'react-social-login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+// import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 
 
 export const buttonsocial = ({ children, triggerLogin, ...props }) => (
@@ -20,6 +21,8 @@ class SocialAuth extends Component {
   }
 
   onSignIn = (payload) => {
+    // eslint-disable-next-line no-underscore-dangle
+    if (!payload._token) return;
     this.setState({ access_token: payload._token.accessToken, provider: payload._provider === 'google' ? 'google-oauth2' : payload._provider }); // eslint-disable-line
     const { SocialAuthAct } = this.props;
     SocialAuthAct(this.state);
@@ -48,16 +51,16 @@ class SocialAuth extends Component {
           <span>Login with  </span>
           <FontAwesomeIcon icon={faGoogle} />
         </SocialButton>
-        <SocialButton
-          className="btn-primary fb-button"
-          provider="facebook"
-          appId={process.env.REACT_APP_FACEBOOK_ID}
-          onLoginSuccess={this.onSignIn}
-          onLoginFailure={this.onSignIn}
-        >
-          <span>Login with </span>
-          <FontAwesomeIcon icon={faFacebookF} />
-        </SocialButton>
+        {/* <SocialButton */}
+        {/*  className="btn-primary fb-button" */}
+        {/*  provider="facebook" */}
+        {/*  appId={process.env.REACT_APP_FACEBOOK_ID} */}
+        {/*  onLoginSuccess={this.onSignIn} */}
+        {/*  onLoginFailure={this.onSignIn} */}
+        {/* > */}
+        {/*  <span>Login with </span> */}
+        {/*  <FontAwesomeIcon icon={faFacebookF} /> */}
+        {/* </SocialButton> */}
       </div>
     );
   }

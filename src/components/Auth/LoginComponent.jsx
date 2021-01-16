@@ -55,7 +55,7 @@ class LoginComponent extends Component {
               {notExist
                 && <div className="alert-err">{notExist[0]}</div>
               }
-              <div className="input-field col s12">
+              <div className="col s12">
                 <input
                   placeholder="Enter email"
                   name="email"

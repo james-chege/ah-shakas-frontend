@@ -35,7 +35,7 @@ const { allArticles: allArticlesInitialState } = initialState;
 const fetchAllArticles = (state = allArticlesInitialState, action) => {
   const { type, payload = {} } = action;
   const { data = {} } = payload;
-  const { article } = data;
+  const { article = { results: [] } } = data;
   switch (type) {
     case `${FETCH_ALL_ARTICLES}_PENDING`:
       return {

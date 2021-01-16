@@ -107,16 +107,16 @@ class SearchComponent extends React.Component {
               </Col>
             ) : (
               <Col s={12} className="featured">
-                {articles.count === 0 && (
+                {articles && articles.count === 0 && (
                   <React.Fragment>
                     <img className="oops-image center" src={OopsImage} alt="No article found..." />
                     <p className="center"><i>Sorry, we could not find that article.</i></p>
                   </React.Fragment>
                 )}
-                {articles.results.map(article => (
+                {articles && articles.results.map(article => (
                   <ListArticleComponent {...article} />
                 ))}
-                {articles.count > config.PAGE_SIZE && (
+                {articles && articles.count > config.PAGE_SIZE && (
                   <Pagination
                     onSelect={this.onPageChange}
                     items={Math.ceil(articles.count / config.PAGE_SIZE)}

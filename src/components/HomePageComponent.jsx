@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import EmptyArticlesComponent from './EmptyArticlesComponent';
 import ListArticleComponent from './Articles/ListArticleComponent';
 import '../assets/styles/HomePageComponent.scss';
+import defaultAvatar from '../assets/img/avatar.png';
 
 class HomePageComponent extends React.Component {
   state = {
@@ -50,7 +51,8 @@ class HomePageComponent extends React.Component {
                       <button onClick={() => history.push(`article/${item.slug}`)} type="button">Read More</button>
                     </div>
                     <section>
-                      <img src={item.author.image_url} alt="" />
+                      {/* <img src={item.author.image_url} alt="" /> */}
+                      <img src={defaultAvatar} alt="" />
                       <span>
                         Posted by
                         {' '}

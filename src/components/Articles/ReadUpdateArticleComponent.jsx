@@ -131,18 +131,6 @@ class ReadUpdateArticleComponent extends React.Component {
       </div>
     );
 
-    if ((authUser() !== null) && authUser().username) {
-      document.onmouseup = () => {
-        const highlightedText = window.getSelection().toString();
-        if (highlightedText.length > 1) {
-          document.getElementById('highlightMessage').style.display = 'block';
-          this.setState({ highlightedText });
-          const { highlightStore } = this.props;
-          highlightStore(highlightedText);
-        }
-      };
-    }
-
     const { data } = this.props;
     const { highlights } = data;
 

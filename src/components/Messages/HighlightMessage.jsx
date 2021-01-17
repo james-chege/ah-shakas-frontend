@@ -19,9 +19,7 @@ export class HighlightMessage extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { highlighting } = this.props;
-    const { fetchState } = this.props;
-    const { article } = fetchState;
-    const { slug } = article;
+    const { fetchState: { article: { slug } } } = this.props;
     const { data } = this.state;
     this.setState({
       isButtonDisabled: true,
@@ -62,8 +60,10 @@ export class HighlightMessage extends Component {
     });
   };
 
-  highlightDisable = () => {
-    document.getElementById('highlightMessage').style.display = 'none';
+  cancelHighlight = () => {
+    this.setState({ highlightedText: '' }, () => {
+      document.getElementById('highlightMessage').style.display = 'none';
+    });
   };
 
 
@@ -72,12 +72,19 @@ export class HighlightMessage extends Component {
     const { isButtonDisabled } = this.state;
     if ((authUser() !== null) && authUser().username) {
       document.onmouseup = () => {
-        document.getElementById('highlightMessage').style.display = 'block';
+        const highlightModal = document.getElementById('highlightMessage').style;
+        highlightModal.display = 'block';
+        highlightModal.position = 'absolute';
+        highlightModal.top = `${window.pageYOffset + 150}px`;
         const highlightedText = window.getSelection().toString();
         if (highlightedText.length > 1) {
           this.setState({ highlightedText });
           const { highlightStore } = this.props;
           highlightStore(highlightedText);
+        } else {
+          this.setState({ highlightedText: '' }, () => {
+            document.getElementById('highlightMessage').style.display = 'none';
+          });
         }
       };
     }
@@ -88,37 +95,36 @@ export class HighlightMessage extends Component {
     return (
       <div className="HighlightComponent container floating" id="highlightMessage">
         <Card className="container">
-          <form onSubmit={this.onSubmit}>
-            <Col className="highlighted container">
-              <p>{ !userHighlight ? initialHighlightedText : userHighlight }</p>
-            </Col>
-            <Col className="container">
-              <Input
-                placeholder="comment(optional)"
-                name="highlightComment"
-                type="text"
-                s={12}
-                value={data.highlightComment}
-                onChange={this.onChange}
-                onFocus={this.onFocus}
-              />
-              <Col>
-                <Button
-                  disabled={isButtonDisabled}
-                  className="waves-effect waves-light highlighting"
-                >
+          <Col className="highlighted container">
+            <p>{ !userHighlight ? initialHighlightedText : userHighlight }</p>
+          </Col>
+          <Col className="container">
+            <Input
+              placeholder="comment(optional)"
+              name="highlightComment"
+              type="text"
+              s={12}
+              value={data.highlightComment}
+              onChange={this.onChange}
+              onFocus={this.onFocus}
+            />
+            <Col>
+              <Button
+                disabled={isButtonDisabled}
+                className="waves-effect waves-light highlighting"
+                onClick={this.onSubmit}
+              >
                   Highlight
-                  <i className="large material-icons">highlight </i>
-                </Button>
-                <Button
-                  className="red dismiss"
-                  onClick={this.highlightDisable}
-                >
+                <i className="large material-icons">highlight </i>
+              </Button>
+              <Button
+                className="red dismiss"
+                onClick={this.cancelHighlight}
+              >
                   Dismiss
-                </Button>
-              </Col>
+              </Button>
             </Col>
-          </form>
+          </Col>
         </Card>
       </div>
     );

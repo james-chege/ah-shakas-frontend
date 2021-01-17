@@ -55,6 +55,9 @@ class ReadUpdateArticleComponent extends React.Component {
     if (!tags || tags.length === 0) {
       this.setState({ tags: nextProps.fetchState.article.tags });
     }
+    if (nextProps.data && nextProps.data.highlights) {
+      this.setState({ highlights: nextProps.data.highlights });
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -131,8 +134,7 @@ class ReadUpdateArticleComponent extends React.Component {
       </div>
     );
 
-    const { data } = this.props;
-    const { highlights } = data;
+    const { highlights } = this.state;
 
     let highlightedArticle = '';
 

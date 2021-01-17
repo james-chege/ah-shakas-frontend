@@ -6,6 +6,7 @@ import { fetchArticle } from '../../actions/articles.action';
 import highlightRequest from '../../actions/highlight.action';
 import StoreHighlightRequest from '../../actions/storeHighlightSnippet.action';
 import authUser from '../../utils/authUser.util';
+import GetHighlightRequest from '../../actions/getHighlight.action';
 
 export class HighlightMessage extends Component {
   state = {
@@ -16,15 +17,21 @@ export class HighlightMessage extends Component {
     highlightedText: '',
   };
 
-  onSubmit = (e) => {
+  componentDidMount() {
+    this.setState({
+      isButtonDisabled: false,
+    });
+  }
+
+  onSubmit = async (e) => {
     e.preventDefault();
-    const { highlighting } = this.props;
+    const { highlighting, getHighlight } = this.props;
     const { fetchState: { article: { slug } } } = this.props;
     const { data } = this.state;
     this.setState({
       isButtonDisabled: true,
     });
-    const { highlightedText } = this.props;
+    const { highlightedText } = this.state;
     const { highlightComment } = data;
     if (highlightComment.length < 1) {
       const highlight = {
@@ -33,7 +40,10 @@ export class HighlightMessage extends Component {
           index: 0,
         },
       };
-      highlighting(slug, highlight);
+      await highlighting(slug, highlight);
+      document.getElementById('highlightMessage').style.display = 'none';
+      await getHighlight(slug);
+      window.location.reload();
       // eslint-disable-next-line
     }
     else if (highlightComment.length > 1) {
@@ -140,7 +150,6 @@ export class HighlightMessage extends Component {
 HighlightMessage.propTypes = {
   highlighting: PropTypes.func.isRequired,
   highlightStore: PropTypes.func.isRequired,
-  highlightedText: PropTypes.string.isRequired,
   fetchState: PropTypes.shape({
     loading: PropTypes.bool,
     success: PropTypes.bool,
@@ -155,4 +164,5 @@ export default connect(mapStateToProps, {
   fetch: fetchArticle,
   highlighting: highlightRequest,
   highlightStore: StoreHighlightRequest,
+  getHighlight: GetHighlightRequest,
 })(HighlightMessage);

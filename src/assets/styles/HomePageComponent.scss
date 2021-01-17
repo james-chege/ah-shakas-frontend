@@ -3,6 +3,7 @@ $teal: #008080;
 $slider-content-border: rgba(255, 255, 255, 0.5);
 $white: #fff;
 $article-border-bottom: #ccc;
+$black: #5d5d5f;
 
 body {
   box-sizing: border-box;
@@ -373,6 +374,7 @@ button:hover {
 
       .description {
         padding: 0 20px 0 2px;
+        color: $black;
       }
 
       a {

@@ -71,7 +71,9 @@ class HomePageComponent extends React.Component {
                   <Col m={9} s={12} className="featured">
                     <h5 className="header">Featured Articles</h5>
                     {articles.results.map(article => (
-                      <ListArticleComponent key={article.slug} {...article} />
+                      <a href={`/article/${article.slug}`}>
+                        <ListArticleComponent key={article.slug} {...article} />
+                      </a>
                     ))}
                     {articles.count > config.PAGE_SIZE
                       && (

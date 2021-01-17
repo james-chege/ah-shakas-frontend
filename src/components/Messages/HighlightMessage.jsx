@@ -71,7 +71,13 @@ export class HighlightMessage extends Component {
     const { data } = this.state;
     const { isButtonDisabled } = this.state;
     if ((authUser() !== null) && authUser().username) {
-      document.onmouseup = () => {
+      document.onmouseup = (e) => {
+        const elementsFromPoint = document.elementsFromPoint(e.clientX, e.clientY);
+        const isSelectedElementInDante = elementsFromPoint[2].classList.toString().indexOf('Draft') >= 0;
+        if (!isSelectedElementInDante) return;
+        const selectedDocTagName = elementsFromPoint[3].tagName;
+        // if selection is probably title
+        if (['H1', 'H2', 'H3'].includes(selectedDocTagName)) return;
         const highlightModal = document.getElementById('highlightMessage').style;
         highlightModal.display = 'block';
         highlightModal.position = 'absolute';

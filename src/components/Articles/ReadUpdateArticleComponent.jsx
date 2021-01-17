@@ -27,7 +27,6 @@ class ReadUpdateArticleComponent extends React.Component {
     this.state = {
       slug,
       readOnly: true,
-      highlightedText: '',
       visible: false,
       show: false,
       tags: [],
@@ -54,9 +53,6 @@ class ReadUpdateArticleComponent extends React.Component {
     const { tags } = this.state;
     if (!tags || tags.length === 0) {
       this.setState({ tags: nextProps.fetchState.article.tags });
-    }
-    if (nextProps.data && nextProps.data.highlights) {
-      this.setState({ highlights: nextProps.data.highlights });
     }
   }
 
@@ -134,7 +130,7 @@ class ReadUpdateArticleComponent extends React.Component {
       </div>
     );
 
-    const { highlights } = this.state;
+    const { data: { highlights } } = this.props;
 
     let highlightedArticle = '';
 
@@ -154,11 +150,10 @@ class ReadUpdateArticleComponent extends React.Component {
         }
       });
     }
-    const { highlightedText } = this.state;
     return (
       <div>
         <Navbar {...this.props} />
-        <WithHighlightMessage highlightedText={highlightedText} />
+        <WithHighlightMessage />
         <div className="container navigation">
           <Row>
             <Col s={11}>

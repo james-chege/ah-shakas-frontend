@@ -7,7 +7,7 @@ import '../assets/styles/EmptyHomePageComponent.scss';
 const content = [
   {
     title: 'Welcome to Authors Haven',
-    description: 'Sign up and start engaging with some of the brightest minds on the planet',
+    description: 'Engage with some of the brightest minds on the planet',
     image: background,
   },
 ];

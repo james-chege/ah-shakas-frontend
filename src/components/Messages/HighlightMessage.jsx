@@ -43,6 +43,7 @@ export class HighlightMessage extends Component {
       await highlighting(slug, highlight);
       document.getElementById('highlightMessage').style.display = 'none';
       await getHighlight(slug);
+      window.location.reload();
       // eslint-disable-next-line
     }
     else if (highlightComment.length > 1) {
